@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Embodied Emissions Flows Through the Provincial Economies</title>
+<link rel="stylesheet" href="styles.css">
+
+<div class="body">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster">
+
+	<header class="header">
+		<nav>
+      
+      <ul>
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><a href="Charts_Index.html">Charts and Diagrams</a></li>
+			<li><a href="CV.html" target="_self">CV</a></li>
+			<li><a href="Publications.html" target="_self">Academic Publications</a></li>
+			<li><a href="OPED.html" target="_self">Blogs, Op-Eds and Podcasts</a></li>
+			<li><a href="Contact.html" target="_self">Contact</a></li>
+		</ul></nav>
+				<nav>
+      <ul>
+	<li class="active"><a href="Charts_Index.html">Charts:</a></li>
+	<li class="active"><a href="GHG_Sankey.html">Embodied Emissions Sankey Diagrams</a></li>
+		</ul></nav>
+	</header>
+		
+	<div class="mainContent">
+
+<!-- Comment -->  
+<article class="content-1">
+
+</head><b>Embodied Emissions Flows Through the Provincial Economies </b><hr></head>
+Data Source: Fellows, G.K. and Dobson, S., 2017. Embodied Emissions in Inputs and Outputs: A Value-Added Approach to National Emissions Accounting. <i>Canadian Public Policy</i>, pp.1-25. 
+<br> Links: <a href="https://doi.org/10.3138/cpp.2016-040">Paper</b></a> and <a href="http://www.policyschool.ca/embodied-emissions-inputs-outputs-data-tables-2004-2011/">Data Tables</b></a>
+<br>
+<br>
+
+  <th>
+Choose a province from the drop down menu    <select id="chart" name='select1' onchange="change()">
+  <option selected disabled>Choose</option> 
+  <option value="AB">Alberta</option>
+  <option value="BC">British Columbia</option>
+  <option value="MB">Manitoba</option>
+  <option value="NB">New Brunswick</option>
+  <option value="NL">Newfoundland & Labrador</option>
+  <option value="NS">Nova Scotia</option>
+  <option value="NU">Nunavut</option>
+  <option value="ON">Ontario</option>
+  <option value="PE">Prince Edward Island</option>
+  <option value="QC">Quebec</option>
+  <option value="SK">Saskatchewan</option>
+  <option value="YNT">Yukon and Northwest Territories</option>
+  <option value="CAN">Canada Detailed</option>
+  <option value="CDN">Canada By Province</option>
+</select></th>
+
+<br>
+<br>
+
+
+<head>
+   <style>
+    .chartWithOverlay {
+           position: relative;
+           width: 800px;
+    }
+    .overlay {
+           width: 600px;
+           height: 150px;
+           position: absolute;
+           top: -180px;   /* chartArea top  */
+           left: 300px; /* chartArea left */
+    }
+   </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <div id="sankey_basic" style="width: 800px; height: 550px;"></div>
+
+<script type='text/javascript'>//<![CDATA[
+
+  function change() {
+    var listbox = document.getElementById("chart");
+    var selIndex = listbox.selectedIndex;
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    console.log(selValue);
+
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+<!-- Alberta -->  
+dataAB = [
+[ 'From BC' , 'InterProv Imports' , 10654],
+[ 'From MB' , 'InterProv Imports' , 2118],
+[ 'From NB' , 'InterProv Imports' , 621],
+[ 'From NL' , 'InterProv Imports' , 139],
+[ 'From NS' , 'InterProv Imports' , 430],
+[ 'From NU' , 'InterProv Imports' , 14],
+[ 'From ON' , 'InterProv Imports' , 11029],
+[ 'From PE' , 'InterProv Imports' , 44],
+[ 'From QC' , 'InterProv Imports' , 3974],
+[ 'From SK' , 'InterProv Imports' , 6351],
+[ 'From YNT' , 'InterProv Imports' , 194],
+
+[ 'InterProv Imports' , 'Imports: 88Mt'  , 35567],
+[ 'International Imports' , 'Imports: 88Mt'  , 52536],
+
+[ 'Production: 219Mt' , 'AB' , 219209],
+[ 'Imports: 88Mt' , 'AB' , 88104],
+
+[ 'InterProv Exports' , 'To BC' , 12701],
+[ 'InterProv Exports' , 'To MB' , 4358],
+[ 'InterProv Exports' , 'To NB' , 841],
+
+[ 'InterProv Exports' , 'To NL' , 524],
+[ 'InterProv Exports' , 'To NS' , 434],
+[ 'InterProv Exports' , 'To NU' , 199],
+[ 'InterProv Exports' , 'To ON' , 18149],
+[ 'InterProv Exports' , 'To PE' , 71],
+[ 'InterProv Exports' , 'To QC' , 4111],
+[ 'InterProv Exports' , 'To SK' , 11211],
+[ 'InterProv Exports' , 'To YNT' , 639],
+
+[ 'Exports: 176Mt' , 'InterProv Exports' , 53239],
+[ 'Exports: 176Mt' , 'International Exports' , 122318],
+[ 'AB' , 'Exports: 176Mt' , 175557],
+[ 'AB' , 'Consumption: 132Mt' , 131755],
+
+[ 'Consumption: 132Mt' , 'Households' , 62822],
+[ 'Consumption: 132Mt' , 'Investment' , 56684],
+[ 'Consumption: 132Mt' , 'Government' , 12249],
+
+[ 'Household Heating: 9Mt' , 'Households' ,8910],
+[ 'Personal Transportation: 9Mt' , 'Households' ,8941],
+];
+
+
+
+
+<!-- British Columbia -->  
+dataBC = [
+[ 'From AB' , 'InterProv Imports' , 12701],
+[ 'From MB' , 'InterProv Imports' , 874],
+[ 'From NB' , 'InterProv Imports' , 241],
+[ 'From NL' , 'InterProv Imports' , 60],
+[ 'From NS' , 'InterProv Imports' , 350],
+[ 'From NU' , 'InterProv Imports' , 5],
+[ 'From ON' , 'InterProv Imports' , 6827],
+[ 'From PE' , 'InterProv Imports' , 23],
+[ 'From QC' , 'InterProv Imports' , 2841],
+[ 'From SK' , 'InterProv Imports' , 1535],
+[ 'From YNT' , 'InterProv Imports' , 126],
+
+[ 'InterProv Imports' , 'Imports: 76Mt'  , 25582],
+[ 'International Imports' , 'Imports: 76Mt'  , 50019],
+
+[ 'Production: 47Mt' , 'BC' , 46576],
+[ 'Imports: 76Mt' , 'BC' , 75601],
+
+
+[ 'InterProv Exports' , 'To AB' , 10654],
+[ 'InterProv Exports' , 'To MB' , 869],
+[ 'InterProv Exports' , 'To NB' , 260],
+[ 'InterProv Exports' , 'To NL' , 174],
+[ 'InterProv Exports' , 'To NS' , 334],
+[ 'InterProv Exports' , 'To NU' , 94],
+[ 'InterProv Exports' , 'To ON' , 5653],
+[ 'InterProv Exports' , 'To PE' , 45],
+[ 'InterProv Exports' , 'To QC' , 2012],
+[ 'InterProv Exports' , 'To SK' , 1157],
+[ 'InterProv Exports' , 'To YNT' , 527],
+
+[ 'Exports: 54Mt' , 'InterProv Exports' , 21778],
+[ 'Exports: 54Mt' , 'International Exports' , 32553],
+[ 'BC' , 'Exports: 54Mt' , 54330],
+[ 'BC' , 'Consumption: 68Mt' , 67847],
+
+[ 'Consumption: 68Mt' , 'Households' , 40665],
+[ 'Consumption: 68Mt' , 'Investment' , 19776],
+[ 'Consumption: 68Mt' , 'Government' , 7406],
+
+[ 'Household Heating: 5Mt' , 'Households' ,4760],
+[ 'Personal Transportation: 9Mt' , 'Households' ,8544],
+];
+
+
+
+
+<!-- Manitoba -->  
+dataMB = [
+[ 'From AB' , 'InterProv Imports' , 4358],
+[ 'From BC' , 'InterProv Imports' , 869],
+[ 'From NB' , 'InterProv Imports' , 150],
+[ 'From NL' , 'InterProv Imports' , 22],
+[ 'From NS' , 'InterProv Imports' , 142],
+[ 'From NU' , 'InterProv Imports' , 5],
+[ 'From ON' , 'InterProv Imports' , 3749],
+[ 'From PE' , 'InterProv Imports' , 15],
+[ 'From QC' , 'InterProv Imports' , 1194],
+[ 'From SK' , 'InterProv Imports' , 2615],
+[ 'From YNT' , 'InterProv Imports' , 17],
+
+[ 'InterProv Imports' , 'Imports: 24Mt'  , 13136],
+[ 'International Imports' , 'Imports: 24Mt'  , 10976],
+
+[ 'Production: 15Mt' , 'MB' , 14992],
+[ 'Imports: 24Mt' , 'MB' , 24111],
+
+
+[ 'InterProv Exports' , 'To AB' , 2118],
+[ 'InterProv Exports' , 'To BC' , 874],
+[ 'InterProv Exports' , 'To NB' , 112],
+[ 'InterProv Exports' , 'To NL' , 72],
+[ 'InterProv Exports' , 'To NS' , 139],
+[ 'InterProv Exports' , 'To NU' , 14],
+[ 'InterProv Exports' , 'To ON' , 4093],
+[ 'InterProv Exports' , 'To PE' , 23],
+[ 'InterProv Exports' , 'To QC' , 1310],
+[ 'InterProv Exports' , 'To SK' , 1353],
+[ 'InterProv Exports' , 'To YNT' , 54],
+
+[ 'Exports: 22Mt' , 'InterProv Exports' , 10161],
+[ 'Exports: 22Mt' , 'International Exports' , 11650],
+[ 'MB' , 'Exports: 22Mt' , 21811],
+[ 'MB' , 'Consumption: 17Mt' , 17292],
+
+[ 'Consumption: 17Mt' , 'Households' , 9974],
+[ 'Consumption: 17Mt' , 'Investment' , 4826],
+[ 'Consumption: 17Mt' , 'Government' , 2493],
+
+[ 'Household Heating: 1Mt' , 'Households' ,1120],
+[ 'Personal Transportation: 3Mt' , 'Households' ,2729],
+];
+
+
+
+
+<!-- New Brunswick -->  
+dataNB = [
+[ 'From AB' , 'InterProv Imports' , 841],
+[ 'From BC' , 'InterProv Imports' , 260],
+[ 'From MB' , 'InterProv Imports' , 112],
+[ 'From NL' , 'InterProv Imports' , 1431],
+[ 'From NS' , 'InterProv Imports' , 955],
+[ 'From NU' , 'InterProv Imports' , 1],
+[ 'From ON' , 'InterProv Imports' , 1797],
+[ 'From PE' , 'InterProv Imports' , 224],
+[ 'From QC' , 'InterProv Imports' , 1553],
+[ 'From SK' , 'InterProv Imports' , 151],
+[ 'From YNT' , 'InterProv Imports' , 5],
+
+[ 'InterProv Imports' , 'Imports: 19Mt'  , 7329],
+[ 'International Imports' , 'Imports: 19Mt'  , 11711],
+
+[ 'Production: 15Mt' , 'NB' , 15226],
+[ 'Imports: 19Mt' , 'NB' , 19040],
+
+
+[ 'InterProv Exports' , 'To AB' , 621],
+[ 'InterProv Exports' , 'To BC' , 241],
+[ 'InterProv Exports' , 'To MB' , 150],
+[ 'InterProv Exports' , 'To NL' , 704],
+[ 'InterProv Exports' , 'To NS' , 1229],
+[ 'InterProv Exports' , 'To NU' , 12],
+[ 'InterProv Exports' , 'To ON' , 1422],
+[ 'InterProv Exports' , 'To PE' , 662],
+[ 'InterProv Exports' , 'To QC' , 3437],
+[ 'InterProv Exports' , 'To SK' , 68],
+[ 'InterProv Exports' , 'To YNT' , 45],
+
+[ 'Exports: 20Mt' , 'InterProv Exports' , 8591],
+[ 'Exports: 20Mt' , 'International Exports' , 11684],
+[ 'NB' , 'Exports: 20Mt' , 20274],
+[ 'NB' , 'Consumption: 14Mt' , 13992],
+
+[ 'Consumption: 14Mt' , 'Households' , 8761],
+[ 'Consumption: 14Mt' , 'Investment' , 3020],
+[ 'Consumption: 14Mt' , 'Government' , 2211],
+
+[ 'Household Heating: 1Mt' , 'Households' ,1080],
+[ 'Personal Transportation: 2Mt' , 'Households' ,1843],
+];
+
+
+
+
+
+<!-- New Foundland -->  
+dataNL = [
+[ 'From AB' , 'InterProv Imports' , 524],
+[ 'From BC' , 'InterProv Imports' , 174],
+[ 'From MB' , 'InterProv Imports' , 72],
+[ 'From NB' , 'InterProv Imports' , 704],
+[ 'From NS' , 'InterProv Imports' , 700],
+[ 'From NU' , 'InterProv Imports' , 1],
+[ 'From ON' , 'InterProv Imports' , 1097],
+[ 'From PE' , 'InterProv Imports' , 60],
+[ 'From QC' , 'InterProv Imports' , 805],
+[ 'From SK' , 'InterProv Imports' , 37],
+[ 'From YNT' , 'InterProv Imports' , 8],
+
+[ 'InterProv Imports' , 'Imports: 11Mt'  , 4183],
+[ 'International Imports' , 'Imports: 11Mt'  , 6760],
+
+[ 'Production: 8Mt' , 'NL' , 7724],
+[ 'Imports: 11Mt' , 'NL' , 10943],
+
+
+[ 'InterProv Exports' , 'To AB' , 139],
+[ 'InterProv Exports' , 'To BC' , 60],
+[ 'InterProv Exports' , 'To MB' , 22],
+[ 'InterProv Exports' , 'To NB' , 1431],
+[ 'InterProv Exports' , 'To NS' , 450],
+[ 'InterProv Exports' , 'To NU' , 5],
+[ 'InterProv Exports' , 'To ON' , 477],
+[ 'InterProv Exports' , 'To PE' , 39],
+[ 'InterProv Exports' , 'To QC' , 528],
+[ 'InterProv Exports' , 'To SK' , 37],
+[ 'InterProv Exports' , 'To YNT' , 10],
+
+[ 'Exports: 10Mt' , 'InterProv Exports' , 3198],
+[ 'Exports: 10Mt' , 'International Exports' , 6536],
+[ 'NL' , 'Exports: 10Mt' , 9734],
+[ 'NL' , 'Consumption: 9Mt' , 8933],
+
+[ 'Consumption: 9Mt' , 'Households' , 4586],
+[ 'Consumption: 9Mt' , 'Investment' , 3074],
+[ 'Consumption: 9Mt' , 'Government' , 1273],
+
+[ 'Household Heating: 1Mt' , 'Households' ,646],
+[ 'Personal Transportation: 1Mt' , 'Households' ,1396],
+];
+
+
+
+
+<!-- Nova Scotia -->  
+dataNS = [
+[ 'From AB' , 'InterProv Imports' , 434],
+[ 'From BC' , 'InterProv Imports' , 334],
+[ 'From MB' , 'InterProv Imports' , 139],
+[ 'From NB' , 'InterProv Imports' , 1229],
+[ 'From NL' , 'InterProv Imports' , 450],
+[ 'From NU' , 'InterProv Imports' , 1],
+[ 'From ON' , 'InterProv Imports' , 1962],
+[ 'From PE' , 'InterProv Imports' , 175],
+[ 'From QC' , 'InterProv Imports' , 1203],
+[ 'From SK' , 'InterProv Imports' , 119],
+[ 'From YNT' , 'InterProv Imports' , 7],
+
+[ 'InterProv Imports' , 'Imports: 16Mt'  , 6052],
+[ 'International Imports' , 'Imports: 16Mt'  , 9768],
+
+[ 'Production: 17Mt' , 'NS' , 17047],
+[ 'Imports: 16Mt' , 'NS' , 15820],
+
+
+[ 'InterProv Exports' , 'To AB' , 430],
+[ 'InterProv Exports' , 'To BC' , 350],
+[ 'InterProv Exports' , 'To MB' , 142],
+[ 'InterProv Exports' , 'To NB' , 955],
+[ 'InterProv Exports' , 'To NL' , 700],
+[ 'InterProv Exports' , 'To NU' , 26],
+[ 'InterProv Exports' , 'To ON' , 1548],
+[ 'InterProv Exports' , 'To PE' , 267],
+[ 'InterProv Exports' , 'To QC' , 1285],
+[ 'InterProv Exports' , 'To SK' , 111],
+[ 'InterProv Exports' , 'To YNT' , 33],
+
+[ 'Exports: 12Mt' , 'InterProv Exports' , 5846],
+[ 'Exports: 12Mt' , 'International Exports' , 5901],
+[ 'NS' , 'Exports: 12Mt' , 11747],
+[ 'NS' , 'Consumption: 21Mt' , 21120],
+
+[ 'Consumption: 21Mt' , 'Households' , 13446],
+[ 'Consumption: 21Mt' , 'Investment' , 4246],
+[ 'Consumption: 21Mt' , 'Government' , 3428],
+
+[ 'Household Heating: 2Mt' , 'Households' ,2190],
+[ 'Personal Transportation: 2Mt' , 'Households' ,2054],
+];
+
+
+<!-- Nunavut -->  
+dataNU = [
+[ 'From AB' , 'InterProv Imports' , 199],
+[ 'From BC' , 'InterProv Imports' , 94],
+[ 'From MB' , 'InterProv Imports' , 14],
+[ 'From NB' , 'InterProv Imports' , 12],
+[ 'From NL' , 'InterProv Imports' , 5],
+[ 'From NS' , 'InterProv Imports' , 26],
+[ 'From ON' , 'InterProv Imports' , 390],
+[ 'From PE' , 'InterProv Imports' , 0],
+[ 'From QC' , 'InterProv Imports' , 168],
+[ 'From SK' , 'InterProv Imports' , 23],
+[ 'From YNT' , 'InterProv Imports' , 36],
+
+[ 'InterProv Imports' , 'Imports: 1Mt'  , 967],
+[ 'International Imports' , 'Imports: 1Mt'  , 231],
+
+[ 'Production: <0.5Mt' , 'NU' , 199],
+[ 'Imports: 1Mt' , 'NU' , 1198],
+
+
+[ 'InterProv Exports' , 'To AB' , 14],
+[ 'InterProv Exports' , 'To BC' , 5],
+[ 'InterProv Exports' , 'To MB' , 5],
+[ 'InterProv Exports' , 'To NB' , 1],
+[ 'InterProv Exports' , 'To NL' , 1],
+[ 'InterProv Exports' , 'To NS' , 1],
+[ 'InterProv Exports' , 'To ON' , 24],
+[ 'InterProv Exports' , 'To PE' , 0],
+[ 'InterProv Exports' , 'To QC' , 74],
+[ 'InterProv Exports' , 'To SK' , 4],
+[ 'InterProv Exports' , 'To YNT' , 12],
+
+[ 'Exports: <0.5Mt' , 'InterProv Exports' , 140],
+[ 'Exports: <0.5Mt' , 'International Exports' , 9],
+[ 'NU' , 'Exports: <0.5Mt' , 148],
+[ 'NU' , 'Consumption: 1Mt' , 1249],
+
+[ 'Consumption: 1Mt' , 'Households' , 274],
+[ 'Consumption: 1Mt' , 'Investment' , 590],
+[ 'Consumption: 1Mt' , 'Government' , 385],
+
+[ 'Personal Transportation: <0.5Mt' , 'Households' ,27],
+];
+
+
+
+<!-- Ontario -->  
+dataON = [
+[ 'From AB' , 'InterProv Imports' , 18149],
+[ 'From BC' , 'InterProv Imports' , 5653],
+[ 'From MB' , 'InterProv Imports' , 4093],
+[ 'From NB' , 'InterProv Imports' , 1422],
+[ 'From NL' , 'InterProv Imports' , 477],
+[ 'From NS' , 'InterProv Imports' , 1548],
+[ 'From NU' , 'InterProv Imports' , 24],
+[ 'From PE' , 'InterProv Imports' , 288],
+[ 'From QC' , 'InterProv Imports' , 20470],
+[ 'From SK' , 'InterProv Imports' , 5937],
+[ 'From YNT' , 'InterProv Imports' , 613],
+
+[ 'InterProv Imports' , 'Imports: 241Mt'  , 58673],
+[ 'International Imports' , 'Imports: 241Mt'  , 182263],
+
+[ 'Production: 117Mt' , 'ON' , 117285],
+[ 'Imports: 241Mt' , 'ON' , 240935],
+
+
+[ 'InterProv Exports' , 'To AB' , 11029],
+[ 'InterProv Exports' , 'To BC' , 6827],
+[ 'InterProv Exports' , 'To MB' , 3749],
+[ 'InterProv Exports' , 'To NB' , 1797],
+[ 'InterProv Exports' , 'To NL' , 1097],
+[ 'InterProv Exports' , 'To NS' , 1962],
+[ 'InterProv Exports' , 'To NU' , 390],
+[ 'InterProv Exports' , 'To PE' , 334],
+[ 'InterProv Exports' , 'To QC' , 18680],
+[ 'InterProv Exports' , 'To SK' , 2317],
+[ 'InterProv Exports' , 'To YNT' , 616],
+
+[ 'Exports: 177Mt' , 'InterProv Exports' , 48798],
+[ 'Exports: 177Mt' , 'International Exports' , 128698],
+[ 'ON' , 'Exports: 177Mt' , 177496],
+[ 'ON' , 'Consumption: 181Mt' , 180674],
+
+[ 'Consumption: 181Mt' , 'Households' , 110632],
+[ 'Consumption: 181Mt' , 'Investment' , 46888],
+[ 'Consumption: 181Mt' , 'Government' , 23154],
+
+[ 'Household Heating: 21Mt' , 'Households' ,21000],
+[ 'Personal Transportation: 31Mt' , 'Households' ,31120],
+];
+
+
+
+
+<!-- Prince Edward Island -->  
+dataPE = [
+[ 'From AB' , 'InterProv Imports' , 71],
+[ 'From BC' , 'InterProv Imports' , 45],
+[ 'From MB' , 'InterProv Imports' , 23],
+[ 'From NB' , 'InterProv Imports' , 662],
+[ 'From NL' , 'InterProv Imports' , 39],
+[ 'From NS' , 'InterProv Imports' , 267],
+[ 'From NU' , 'InterProv Imports' , 0],
+[ 'From ON' , 'InterProv Imports' , 334],
+[ 'From QC' , 'InterProv Imports' , 180],
+[ 'From SK' , 'InterProv Imports' , 28],
+[ 'From YNT' , 'InterProv Imports' , 1],
+
+[ 'InterProv Imports' , 'Imports: 3Mt'  , 1651],
+[ 'International Imports' , 'Imports: 3Mt'  , 1083],
+
+[ 'Production: 1Mt' , 'PE' , 1249],
+[ 'Imports: 3Mt' , 'PE' , 2734],
+
+
+[ 'InterProv Exports' , 'To AB' , 44],
+[ 'InterProv Exports' , 'To BC' , 23],
+[ 'InterProv Exports' , 'To MB' , 15],
+[ 'InterProv Exports' , 'To NB' , 224],
+[ 'InterProv Exports' , 'To NL' , 60],
+[ 'InterProv Exports' , 'To NS' , 175],
+[ 'InterProv Exports' , 'To NU' , 0],
+[ 'InterProv Exports' , 'To ON' , 288],
+[ 'InterProv Exports' , 'To QC' , 126],
+[ 'InterProv Exports' , 'To SK' , 12],
+[ 'InterProv Exports' , 'To YNT' , 0],
+
+[ 'Exports: 2Mt' , 'InterProv Exports' , 967],
+[ 'Exports: 2Mt' , 'International Exports' , 856],
+[ 'PE' , 'Exports: 2Mt' , 1823],
+[ 'PE' , 'Consumption: 2Mt' , 2160],
+
+[ 'Consumption: 2Mt' , 'Households' , 1343],
+[ 'Consumption: 2Mt' , 'Investment' , 463],
+[ 'Consumption: 2Mt' , 'Government' , 355],
+
+[ 'Household Heating: <0.5Mt' , 'Households' ,484],
+[ 'Personal Transportation: <0.5Mt' , 'Households' ,360],
+];
+
+
+
+<!-- Quebec -->  
+dataQC = [
+[ 'From AB' , 'InterProv Imports' , 4111],
+[ 'From BC' , 'InterProv Imports' , 2012],
+[ 'From MB' , 'InterProv Imports' , 1310],
+[ 'From NB' , 'InterProv Imports' , 3437],
+[ 'From NL' , 'InterProv Imports' , 528],
+[ 'From NS' , 'InterProv Imports' , 1285],
+[ 'From NU' , 'InterProv Imports' , 74],
+[ 'From ON' , 'InterProv Imports' , 18680],
+[ 'From PE' , 'InterProv Imports' , 126],
+[ 'From SK' , 'InterProv Imports' , 1299],
+[ 'From YNT' , 'InterProv Imports' , 61],
+
+[ 'InterProv Imports' , 'Imports: 125Mt'  , 32923],
+[ 'International Imports' , 'Imports: 125Mt'  , 92545],
+
+[ 'Production: 60Mt' , 'QC' , 59752],
+[ 'Imports: 125Mt' , 'QC' , 125468],
+
+
+[ 'InterProv Exports' , 'To AB' , 3974],
+[ 'InterProv Exports' , 'To BC' , 2841],
+[ 'InterProv Exports' , 'To MB' , 1194],
+[ 'InterProv Exports' , 'To NB' , 1553],
+[ 'InterProv Exports' , 'To NL' , 805],
+[ 'InterProv Exports' , 'To NS' , 1203],
+[ 'InterProv Exports' , 'To NU' , 168],
+[ 'InterProv Exports' , 'To ON' , 20470],
+[ 'InterProv Exports' , 'To PE' , 180],
+[ 'InterProv Exports' , 'To SK' , 819],
+[ 'InterProv Exports' , 'To YNT' , 246],
+
+[ 'Exports: 87Mt' , 'InterProv Exports' , 33452],
+[ 'Exports: 87Mt' , 'International Exports' , 53962],
+[ 'QC' , 'Exports: 87Mt' , 87414],
+[ 'QC' , 'Consumption: 98Mt' , 97805],
+
+[ 'Consumption: 98Mt' , 'Households' , 58840],
+[ 'Consumption: 98Mt' , 'Investment' , 26671],
+[ 'Consumption: 98Mt' , 'Government' , 12294],
+
+[ 'Household Heating: 6Mt' , 'Households' ,5630],
+[ 'Personal Transportation: 17Mt' , 'Households' ,16582],
+];
+
+
+
+
+<!-- Saskatchewan -->  
+dataSK = [
+[ 'From AB' , 'InterProv Imports' , 11211],
+[ 'From BC' , 'InterProv Imports' , 1157],
+[ 'From MB' , 'InterProv Imports' , 1353],
+[ 'From NB' , 'InterProv Imports' , 68],
+[ 'From NL' , 'InterProv Imports' , 37],
+[ 'From NS' , 'InterProv Imports' , 111],
+[ 'From NU' , 'InterProv Imports' , 4],
+[ 'From ON' , 'InterProv Imports' , 2317],
+[ 'From PE' , 'InterProv Imports' , 12],
+[ 'From QC' , 'InterProv Imports' , 819],
+[ 'From YNT' , 'InterProv Imports' , 21],
+
+[ 'InterProv Imports' , 'Imports: 28Mt'  , 17110],
+[ 'International Imports' , 'Imports: 28Mt'  , 10424],
+
+[ 'Production: 65Mt' , 'SK' , 64527],
+[ 'Imports: 28Mt' , 'SK' , 27533],
+
+
+[ 'InterProv Exports' , 'To AB' , 6351],
+[ 'InterProv Exports' , 'To BC' , 1535],
+[ 'InterProv Exports' , 'To MB' , 2615],
+[ 'InterProv Exports' , 'To NB' , 151],
+[ 'InterProv Exports' , 'To NL' , 37],
+[ 'InterProv Exports' , 'To NS' , 119],
+[ 'InterProv Exports' , 'To NU' , 23],
+[ 'InterProv Exports' , 'To ON' , 5937],
+[ 'InterProv Exports' , 'To PE' , 28],
+[ 'InterProv Exports' , 'To QC' , 1299],
+[ 'InterProv Exports' , 'To YNT' , 48],
+
+[ 'Exports: 59Mt' , 'InterProv Exports' , 18143],
+[ 'Exports: 59Mt' , 'International Exports' , 40657],
+[ 'SK' , 'Exports: 59Mt' , 58800],
+[ 'SK' , 'Consumption: 33Mt' , 33260],
+
+[ 'Consumption: 33Mt' , 'Households' , 16396],
+[ 'Consumption: 33Mt' , 'Investment' , 11575],
+[ 'Consumption: 33Mt' , 'Government' , 5289],
+
+[ 'Household Heating: 2Mt' , 'Households' ,1820],
+[ 'Personal Transportation: 2Mt' , 'Households' ,2480],
+];
+
+
+
+<!-- Yukon and Northwest Territories -->  
+dataYNT = [
+[ 'From AB' , 'InterProv Imports' , 639],
+[ 'From BC' , 'InterProv Imports' , 527],
+[ 'From MB' , 'InterProv Imports' , 54],
+[ 'From NB' , 'InterProv Imports' , 45],
+[ 'From NL' , 'InterProv Imports' , 10],
+[ 'From NS' , 'InterProv Imports' , 33],
+[ 'From NU' , 'InterProv Imports' , 12],
+[ 'From ON' , 'InterProv Imports' , 616],
+[ 'From PE' , 'InterProv Imports' , 0],
+[ 'From QC' , 'InterProv Imports' , 246],
+[ 'From SK' , 'InterProv Imports' , 48],
+
+[ 'InterProv Imports' , 'Imports: 3Mt'  , 2229],
+[ 'International Imports' , 'Imports: 3Mt'  , 939],
+
+[ 'Production: 2Mt' , 'YNT' , 1579],
+[ 'Imports: 3Mt' , 'YNT' , 3169],
+
+
+[ 'InterProv Exports' , 'To AB' , 194],
+[ 'InterProv Exports' , 'To BC' , 126],
+[ 'InterProv Exports' , 'To MB' , 17],
+[ 'InterProv Exports' , 'To NB' , 5],
+[ 'InterProv Exports' , 'To NL' , 8],
+[ 'InterProv Exports' , 'To NS' , 7],
+[ 'InterProv Exports' , 'To NU' , 36],
+[ 'InterProv Exports' , 'To ON' , 613],
+[ 'InterProv Exports' , 'To PE' , 1],
+[ 'InterProv Exports' , 'To QC' , 61],
+[ 'InterProv Exports' , 'To SK' , 21],
+
+[ 'Exports: 2Mt' , 'InterProv Exports' , 1090],
+[ 'Exports: 2Mt' , 'International Exports' , 1015],
+[ 'YNT' , 'Exports: 2Mt' , 2105],
+[ 'YNT' , 'Consumption: 3Mt' , 2643],
+
+[ 'Consumption: 3Mt' , 'Households' , 863],
+[ 'Consumption: 3Mt' , 'Investment' , 1122],
+[ 'Consumption: 3Mt' , 'Government' , 657],
+
+[ 'Household Heating: <0.5Mt' , 'Households' ,124],
+[ 'Personal Transportation: <0.5Mt' , 'Households' ,131],
+];
+
+
+
+<!-- Canada Aggregate -->  
+dataCAN = [
+[ 'International Imports' , ' 429Mt' , 429472],
+[ ' 429Mt' , 'Canada 995Mt' , 429472],
+
+[ 'Production 565Mt' , '565Mt' , 565366],
+
+[ '565Mt' , 'Canada 995Mt' , 565366],
+
+[ 'Canada 995Mt' , '416Mt' , 415840],
+
+[ '416Mt' , 'International Exports' , 415840],
+
+[ 'Canada 995Mt' , '579Mt' , 578997],
+
+[ '579Mt' , 'Households 453Mt' , 328626],
+[ '579Mt' , 'Government 71Mt' , 71416],
+[ '579Mt' , 'Investment 179Mt' , 178956],
+
+[ 'Household Heating' , '48Mt' ,47764],
+[ 'Personal Transportation' , '76Mt' ,76206],
+
+[ '48Mt' , 'Households 453Mt' ,47764],
+[ '76Mt' , 'Households 453Mt' ,76206],
+];
+
+
+<!-- Canada by Province -->  
+dataCDN = [
+[ 'International Imports' , '429Mt' , 429472],
+[ '429Mt' , 'Canada' , 429472],
+
+[ 'AB 237Mt' , 'Domestic Production 689Mt' , 237060],
+[ 'BC 60Mt'  , 'Domestic Production 689Mt' , 59880],
+[ 'MB 19Mt'  , 'Domestic Production 689Mt' , 18841],
+[ 'NB 18Mt'  , 'Domestic Production 689Mt' , 18149],
+[ 'NL 10Mt'  , 'Domestic Production 689Mt' , 9766],
+[ 'NS 21Mt'  , 'Domestic Production 689Mt' , 21291],
+[ 'NU 0Mt'   , 'Domestic Production 689Mt' , 226],
+[ 'ON 169Mt' , 'Domestic Production 689Mt' , 169405],
+[ 'PE 2Mt'   , 'Domestic Production 689Mt' , 2093],
+[ 'QC 82Mt'  , 'Domestic Production 689Mt' , 81964],
+[ 'SK 69Mt'  , 'Domestic Production 689Mt' , 68827],
+[ 'YNT 2Mt'  , 'Domestic Production 689Mt' , 1834],
+
+[ 'Domestic Production 689Mt'   , 'Canada' , 689336],
+
+[ 'Canada' , '416Mt' , 415840],
+[ '416Mt' , 'International Exports' , 415840],
+
+[ 'Domestic Consumption 703Mt' , 'AB 150Mt' , 149606],
+[ 'Domestic Consumption 703Mt' , 'BC 81Mt'  , 81150],
+[ 'Domestic Consumption 703Mt' , 'MB 21Mt'  , 21141],
+[ 'Domestic Consumption 703Mt' , 'NB 17Mt'  , 16915],
+[ 'Domestic Consumption 703Mt' , 'NL 11Mt'  , 10975],
+[ 'Domestic Consumption 703Mt' , 'NS 25Mt'  , 25364],
+[ 'Domestic Consumption 703Mt' , 'NU 1Mt'   , 1276],
+[ 'Domestic Consumption 703Mt' , 'ON 233Mt' , 232794],
+[ 'Domestic Consumption 703Mt' , 'PE 3Mt'   , 3004],
+[ 'Domestic Consumption 703Mt' , 'QC 120Mt' , 120017],
+[ 'Domestic Consumption 703Mt' , 'SK 38Mt'  , 37560],
+[ 'Domestic Consumption 703Mt' , 'YNT 3Mt'  , 2898],
+
+[ 'Canada' , 'Domestic Consumption 703Mt'  , 702700],
+];
+
+
+        var AB = new google.visualization.DataTable();
+        AB.addColumn('string', 'From');
+        AB.addColumn('string', 'To');
+        AB.addColumn('number', 'Kt of CO2e');
+        AB.addRows(dataAB);
+
+        var BC = new google.visualization.DataTable();
+        BC.addColumn('string', 'From');
+        BC.addColumn('string', 'To');
+        BC.addColumn('number', 'Kt of CO2e');
+        BC.addRows(dataBC);
+
+        var MB = new google.visualization.DataTable();
+        MB.addColumn('string', 'From');
+        MB.addColumn('string', 'To');
+        MB.addColumn('number', 'Kt of CO2e');
+        MB.addRows(dataMB);
+
+        var NB = new google.visualization.DataTable();
+        NB.addColumn('string', 'From');
+        NB.addColumn('string', 'To');
+        NB.addColumn('number', 'Kt of CO2e');
+        NB.addRows(dataNB);
+
+        var NL = new google.visualization.DataTable();
+        NL.addColumn('string', 'From');
+        NL.addColumn('string', 'To');
+        NL.addColumn('number', 'Kt of CO2e');
+        NL.addRows(dataNL);
+
+        var NS = new google.visualization.DataTable();
+        NS.addColumn('string', 'From');
+        NS.addColumn('string', 'To');
+        NS.addColumn('number', 'Kt of CO2e');
+        NS.addRows(dataNS);
+
+        var NU = new google.visualization.DataTable();
+        NU.addColumn('string', 'From');
+        NU.addColumn('string', 'To');
+        NU.addColumn('number', 'Kt of CO2e');
+        NU.addRows(dataNU);
+
+        var ON = new google.visualization.DataTable();
+        ON.addColumn('string', 'From');
+        ON.addColumn('string', 'To');
+        ON.addColumn('number', 'Kt of CO2e');
+        ON.addRows(dataON);
+
+        var PE = new google.visualization.DataTable();
+        PE.addColumn('string', 'From');
+        PE.addColumn('string', 'To');
+        PE.addColumn('number', 'Kt of CO2e');
+        PE.addRows(dataPE);
+
+        var QC = new google.visualization.DataTable();
+        QC.addColumn('string', 'From');
+        QC.addColumn('string', 'To');
+        QC.addColumn('number', 'Kt of CO2e');
+        QC.addRows(dataQC);
+
+        var SK = new google.visualization.DataTable();
+        SK.addColumn('string', 'From');
+        SK.addColumn('string', 'To');
+        SK.addColumn('number', 'Kt of CO2e');
+        SK.addRows(dataSK);
+
+        var YNT = new google.visualization.DataTable();
+        YNT.addColumn('string', 'From');
+        YNT.addColumn('string', 'To');
+        YNT.addColumn('number', 'Kt of CO2e');
+        YNT.addRows(dataYNT);
+
+        var CAN = new google.visualization.DataTable();
+        CAN.addColumn('string', 'From');
+        CAN.addColumn('string', 'To');
+        CAN.addColumn('number', 'Kt of CO2e');
+        CAN.addRows(dataCAN);
+
+        var CDN = new google.visualization.DataTable();
+        CDN.addColumn('string', 'From');
+        CDN.addColumn('string', 'To');
+        CDN.addColumn('number', 'Kt of CO2e');
+        CDN.addRows(dataCDN);
+
+        // Sets chart options.
+    var colors = ["#D00000", "#751F1F", "#D06E00", "#755F1F", "#D0C700", "#60751F", "#88D000", "#1F752B", "#00D02C", "#1F7561", "#00D08B", "#1F5D75", "#00D0C3", "#1F2B75", "#009AD0", "#3E1F75", "#003FD0", "#6F1F75", "#3F00D0", "#9E00D0", "#751F49", "#D000AD", "#D0005F"];
+
+    var options = {
+      height: 550,
+      width:  820,
+      sankey: {
+      iterations:0,
+        node: {
+            nodePadding: 16,
+            interactivity: true, // Allows you to select nodes.
+            label: {
+  				fontName: 'Gotham-Book',
+      				fontSize: 13,
+      				color: '#000',
+      				bold: true,
+      				italic: false
+    					},
+          colorMode: 'unique',
+          colors: colors
+        },
+        link: {
+          interactivity: false, // Allows you to select nodes.
+          colorMode: 'gradient',
+          colors: colors
+        }
+      }
+    };
+
+      var chart_div = document.getElementById('chart_div');
+      
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+if (selValue == 'AB') { x = AB;}
+if (selValue == 'BC') { x = BC;}
+if (selValue == 'MB') { x = MB;}
+if (selValue == 'NB') { x = NB;}
+if (selValue == 'NL') { x = NL;}
+if (selValue == 'NS') { x = NS;}
+if (selValue == 'NU') { x = NU;}
+if (selValue == 'ON') { x = ON;}
+if (selValue == 'PE') { x = PE;}
+if (selValue == 'QC') { x = QC;}
+if (selValue == 'SK') { x = SK;}
+if (selValue == 'YNT') { x = YNT;}
+if (selValue == 'CAN') { x = CAN;}
+if (selValue == 'CDN') { x = CDN;}
+        chart.draw(x, options);
+
+}
+
+
+}
+//]]> 
+
+   </script>
+ </head>
+
+ <body>
+  <div class="chartWithOverlay">
+
+   <div class="overlay">
+    <div style="font-family:'Gotham-Book'; font-size: 14px;"><b>Direction of Embodied Emissions Flows</b></div>
+    <div style="font-family:'Gotham-Book'; font-size: 46px;">&#x2192 &#x2192 &#x2192 &#x2192</div>
+  </div>
+
+ </div>
+
+</body>
+
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "kv876zox"
+    }], "*")
+  }
+  </script>
+</article>
+  </div>
+
+</body>
+
+<footer class="footer">
+		<p>Copyright &copy; 2019 <a href="">GK Fellows</a></p>
+	</footer>
+
+</html>
