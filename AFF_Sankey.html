@@ -1,0 +1,1639 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Embodied Emissions Flows Through the Provincial Economies</title>
+<link rel="stylesheet" href="styles.css">
+
+<div class="body">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster">
+
+	<header class="header">
+		<nav>
+      
+      <ul>
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><a href="Charts_Index.html">Charts and Diagrams</a></li>
+			<li><a href="CV.html" target="_self">CV</a></li>
+			<li><a href="Publications.html" target="_self">Academic Publications</a></li>
+			<li><a href="OPED.html" target="_self">Blogs, Op-Eds and Podcasts</a></li>
+			<li><a href="Contact.html" target="_self">Contact</a></li>
+		</ul></nav>
+				<nav>
+      <ul>
+	<li class="active"><a href="Charts_Index.html">Charts:</a></li>
+	<li><a href="GHG_Sankey.html">Embodied Emissions Sankey</a></li>
+	<li><a href="MOCG_Sankey.html">Mining and Oil and Gas Sankey</a></li>
+	<li class="active"><a href="AFF_Sankey.html">Agriculture Sankey</a></li>
+		</ul></nav>
+	</header>
+		
+	<div class="mainContent">
+
+<!-- Comment -->  
+<article class="content-1">
+
+</head><b>Supply Use Sankey Diagrams for Agricultural Industries (2015) </b><hr></head>
+<p> Data Source: <a href="https://www150.statcan.gc.ca/n1/pub/15-602-x/15-602-x2017001-eng.htm">Statistics Canada Supply Use-Tables (2015)</a></p>
+<br>
+
+
+  <th>
+Choose a province from the drop down menu    <select id="chart" name='select1' onchange="change()">
+  <option selected disabled>Choose</option> 
+  <option value="AB">Alberta</option>
+  <option value="BC">British Columbia</option>
+  <option value="MB">Manitoba</option>
+  <option value="NB">New Brunswick</option>
+  <option value="NL">Newfoundland & Labrador</option>
+  <option value="NS">Nova Scotia</option>
+  <option value="NU">Nunavut</option>
+  <option value="ON">Ontario</option>
+  <option value="PE">Prince Edward Island</option>
+  <option value="QC">Quebec</option>
+  <option value="SK">Saskatchewan</option>
+  <option value="NT">Northwest Territories</option>
+  <option value="YK">Yukon</option>
+  <option value="CAN">Canada Detailed</option>
+</select></th>
+
+<br>
+<br>
+
+
+<head>
+   <style>
+    .chartWithOverlay {
+           position: relative;
+           width: 1200px;
+    }
+    .overlay {
+           width: 1200px;
+           height: 50px;
+           position: absolute;
+           top:   -50px;   /* chartArea top  */
+           left: 550px; /* chartArea left */
+    }
+   </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <div id="sankey_basic" style="width: 1200px; height: 1500px;"></div>
+
+<script type='text/javascript'>//<![CDATA[
+
+  function change() {
+    var listbox = document.getElementById("chart");
+    var selIndex = listbox.selectedIndex;
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    console.log(selValue);
+
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+
+<!-- Alberta -->  
+dataAB = [
+[ 'Gross operating surplus $2,133M' , 'Crop production  $7,837M' , 1424572,'$1,424.57 M'],
+[ 'Gross operating surplus $2,133M' , 'Meat product manufacturing $6,806M' , 399919,'$399.92 M'],
+[ 'Gross operating surplus $2,133M' , 'Sawmills and wood preservation $1,808M' , 208261,'$208.26 M'],
+[ 'Gross operating surplus $2,133M' , 'Dairy product manufacturing $753M' , 85882,'$85.88 M'],
+[ 'Gross operating surplus $2,133M' , 'Greenhouse, nursery and floriculture etc. $206M' , 14374,'$14.37 M'],
+[ 'Gross operating surplus $2,133M' , 'Seafood product preparation and etc. $1M' , 122,'$0.12 M'],
+[ 'Wages and salaries $1,303M' , 'Crop production  $7,837M' , 367311,'$367.31 M'],
+[ 'Wages and salaries $1,303M' , 'Meat product manufacturing $6,806M' , 492664,'$492.66 M'],
+[ 'Wages and salaries $1,303M' , 'Sawmills and wood preservation $1,808M' , 318973,'$318.97 M'],
+[ 'Employers\' social contributions $82M' , 'Sawmills and wood preservation $1,808M' , 81919,'$81.92 M'],
+[ 'Wages and salaries $1,303M' , 'Dairy product manufacturing $753M' , 61426,'$61.43 M'],
+[ 'Wages and salaries $1,303M' , 'Greenhouse, nursery and floriculture etc. $206M' , 62424,'$62.42 M'],
+[ 'Taxes on production $452M' , 'Crop production  $7,837M' , 452022,'$452.02 M'],
+[ 'Crop production  $7,837M' , 'Canola  $2,802M' , 2670918,'$2,670.92 M'],
+[ 'Crop production  $7,837M' , 'Wheat $1,700M' , 1697209,'$1,697.21 M'],
+[ 'Crop production  $7,837M' , 'Imputed feed  $1,657M' , 1656685,'$1,656.68 M'],
+[ 'Gross mixed income $1,375M' , 'Crop production  $7,837M' , 1375463,'$1,375.46 M'],
+[ 'Ammonia and chemical fertilizers $988M' , 'Crop production  $7,837M' , 978077,'$978.08 M'],
+[ 'Pesticides ... $447M' , 'Crop production  $7,837M' , 446630,'$446.63 M'],
+[ 'Support services for crop production $401M' , 'Crop production  $7,837M' , 394563,'$394.56 M'],
+[ 'Wholesale margins - miscellaneous etc. $300M' , 'Crop production  $7,837M' , 300316,'$300.32 M'],
+[ 'Meat product manufacturing $6,806M' , 'Fresh and frozen beef and veal $4,762M' , 4654269,'$4,654.27 M'],
+[ 'Cattle and calves $4,044M' , 'Meat product manufacturing $6,806M' , 4043605,'$4,043.61 M'],
+[ 'Meat product manufacturing $6,806M' , 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 953095,'$953.10 M'],
+[ 'Wheat $1,700M' , 'International exports $5,760M' , 1700495,'$1,700.49 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'International exports $5,760M' , 1654754,'$1,654.75 M'],
+[ 'Canola  $2,802M' , 'International exports $5,760M' , 1419870,'$1,419.87 M'],
+[ 'Softwood lumber $1,391M' , 'International exports $5,760M' , 505892,'$505.89 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'International exports $5,760M' , 479022,'$479.02 M'],
+[ 'Sawmills and wood preservation $1,808M' , 'Softwood lumber $1,391M' , 1286774,'$1,286.77 M'],
+[ 'Custom work services for forestry $573M' , 'Sawmills and wood preservation $1,808M' , 572812,'$572.81 M'],
+[ 'Logs and bolts $97M' , 'Sawmills and wood preservation $1,808M' , 97148,'$97.15 M'],
+[ 'Imputed feed  $1,657M' , 'Animal production  $1,657M' , 1656685,'$1,656.68 M'],
+[ 'Canola  $2,802M' , 'Grain and oilseed milling $1,183M' , 1182816,'$1,182.82 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'Quebec $931M' , 802941,'$802.94 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'Quebec $931M' , 93224,'$93.22 M'],
+[ 'Processed fluid milk and milk products $811M' , 'Quebec $931M' , 35237,'$35.24 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'British Columbia $893M' , 629406,'$629.41 M'],
+[ 'Softwood lumber $1,391M' , 'British Columbia $893M' , 208635,'$208.63 M'],
+[ 'Processed fluid milk and milk products $811M' , 'British Columbia $893M' , 55217,'$55.22 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'Food services and drinking places $792M' , 425992,'$425.99 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'Food services and drinking places $792M' , 190214,'$190.21 M'],
+[ 'Processed fluid milk and milk products $811M' , 'Food services and drinking places $792M' , 175689,'$175.69 M'],
+[ 'Unprocessed fluid milk $428M' , 'Dairy product manufacturing $753M' , 428246,'$428.25 M'],
+[ 'Dairy product manufacturing $753M' , 'Processed fluid milk and milk products $811M' , 407027,'$407.03 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'Ontario $574M' , 479814,'$479.81 M'],
+[ 'Processed fluid milk and milk products $811M' , 'Ontario $574M' , 94394,'$94.39 M'],
+[ 'From Other Provinces $567M' , 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 286464,'$286.46 M'],
+[ 'From Other Provinces $567M' , 'Processed fluid milk and milk products $811M' , 212447,'$212.45 M'],
+[ 'From Other Provinces $567M' , 'Fresh and frozen beef and veal $4,762M' , 34391,'$34.39 M'],
+[ 'From Other Provinces $567M' , 'Canola  $2,802M' , 19144,'$19.14 M'],
+[ 'From Other Provinces $567M' , 'Softwood lumber $1,391M' , 14192,'$14.19 M'],
+[ 'From Other Provinces $567M' , 'Wheat $1,700M' , 34,'$0.03 M'],
+[ 'Ontario $322M' , 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 262685,'$262.69 M'],
+[ 'Ontario $322M' , 'Fresh and frozen beef and veal $4,762M' , 59794,'$59.79 M'],
+[ 'Softwood lumber $1,391M' , 'Residential building construction $281M' , 281268,'$281.27 M'],
+[ 'International imports $281M' , 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 206044,'$206.04 M'],
+[ 'International imports $281M' , 'Canola  $2,802M' , 75015,'$75.02 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'Animal food manufacturing $238M' , 238445,'$238.44 M'],
+[ 'Quebec $210M' , 'Processed fluid milk and milk products $811M' , 186526,'$186.53 M'],
+[ 'Quebec $210M' , 'Softwood lumber $1,391M' , 23155,'$23.16 M'],
+[ 'Fresh vegetables  $18M' , 'Greenhouse, nursery and floriculture etc. $206M' , 18126,'$18.13 M'],
+[ 'Ammonia and chemical fertilizers $988M' , 'Greenhouse, nursery and floriculture etc. $206M' , 10211,'$10.21 M'],
+[ 'Support services for crop production $401M' , 'Greenhouse, nursery and floriculture etc. $206M' , 6431,'$6.43 M'],
+[ 'Truck transportation services for specialized etc. $6M' , 'Greenhouse, nursery and floriculture etc. $206M' , 6426,'$6.43 M'],
+[ 'Softwood lumber $1,391M' , 'Other Industries $92M' , 190734,'$190.73 M'],
+[ 'Processed fluid milk and milk products $811M' , 'Other Industries $92M' , 45516,'$45.52 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'Other Industries $92M' , 45145,'$45.15 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'Other Industries $92M' , 36061,'$36.06 M'],
+[ 'Canola  $2,802M' , 'Other Industries $92M' , 12258,'$12.26 M'],
+[ 'British Columbia $45M' , 'Softwood lumber $1,391M' , 45140,'$45.14 M'],
+[ 'Saskatchewan $38M' , 'Canola  $2,802M' , 35944,'$35.94 M'],
+[ 'Saskatchewan $38M' , 'Wheat $1,700M' , 2472,'$2.47 M'],
+[ 'Fish, crustaceans, shellfish ... $<0.5M' , 'Seafood product preparation and etc. $1M' , 312,'$0.31 M'],
+[ 'Fresh and frozen beef and veal $4,762M' , 'To Other Provinces $901M' , 294305,'$294.31 M'],
+[ 'Wheat $1,700M' , 'To Other Provinces $901M' , 189388,'$189.39 M'],
+[ 'Softwood lumber $1,391M' , 'To Other Provinces $901M' , 154968,'$154.97 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $1,731M' , 'To Other Provinces $901M' , 134629,'$134.63 M'],
+[ 'Canola  $2,802M' , 'To Other Provinces $901M' , 78747,'$78.75 M'],
+[ 'Processed fluid milk and milk products $811M' , 'To Other Provinces $901M' , 48552,'$48.55 M'],
+[ 'Other Input Products $4,762M' , 'Crop production  $7,837M' , 2098242,'$2,098.24 M'],
+[ 'Crop production  $7,837M' , 'Other Output Products $4,069M' , 1804692,'$1,804.69 M'],
+[ 'Other Input Products $4,762M' , 'Meat product manufacturing $6,806M' , 1869899,'$1,869.90 M'],
+[ 'Meat product manufacturing $6,806M' , 'Other Output Products $4,069M' , 1197285,'$1,197.29 M'],
+[ 'Other Input Products $4,762M' , 'Sawmills and wood preservation $1,808M' , 528390,'$528.39 M'],
+[ 'Sawmills and wood preservation $1,808M' , 'Other Output Products $4,069M' , 514708,'$514.71 M'],
+[ 'Dairy product manufacturing $753M' , 'Other Output Products $4,069M' , 345311,'$345.31 M'],
+[ 'Other Input Products $4,762M' , 'Dairy product manufacturing $753M' , 177061,'$177.06 M'],
+[ 'Greenhouse, nursery and floriculture etc. $206M' , 'Other Output Products $4,069M' , 205999,'$206.00 M'],
+[ 'Other Input Products $4,762M' , 'Greenhouse, nursery and floriculture etc. $206M' , 88145,'$88.14 M'],
+[ 'Seafood product preparation and etc. $1M' , 'Other Output Products $4,069M' , 649,'$0.65 M'],
+[ 'Other Input Products $4,762M' , 'Seafood product preparation and etc. $1M' , 215,'$0.21 M'],
+];
+
+<!-- British Columbia -->  
+dataBC = [
+[ 'Gross operating surplus $1,214M' , 'Sawmills and wood preservation $7,052M' , 553815,'$553.82 M'],
+[ 'Gross operating surplus $1,214M' , 'Meat product manufacturing $1,796M' , 128557,'$128.56 M'],
+[ 'Gross operating surplus $1,214M' , 'Dairy product manufacturing $1,227M' , 117064,'$117.06 M'],
+[ 'Gross operating surplus $1,214M' , 'Crop production  $965M' , 219412,'$219.41 M'],
+[ 'Gross operating surplus $1,214M' , 'Greenhouse, nursery and floriculture etc. $948M' , 131140,'$131.14 M'],
+[ 'Gross operating surplus $1,214M' , 'Seafood product preparation and etc. $743M' , 64296,'$64.30 M'],
+[ 'Wages and salaries $1,868M' , 'Sawmills and wood preservation $7,052M' , 979400,'$979.40 M'],
+[ 'Employers\' social contributions $452M' , 'Sawmills and wood preservation $7,052M' , 373204,'$373.20 M'],
+[ 'Wages and salaries $1,868M' , 'Meat product manufacturing $1,796M' , 246203,'$246.20 M'],
+[ 'Employers\' social contributions $452M' , 'Meat product manufacturing $1,796M' , 79017,'$79.02 M'],
+[ 'Wages and salaries $1,868M' , 'Dairy product manufacturing $1,227M' , 108789,'$108.79 M'],
+[ 'Wages and salaries $1,868M' , 'Crop production  $965M' , 180502,'$180.50 M'],
+[ 'Wages and salaries $1,868M' , 'Greenhouse, nursery and floriculture etc. $948M' , 251343,'$251.34 M'],
+[ 'Wages and salaries $1,868M' , 'Seafood product preparation and etc. $743M' , 101379,'$101.38 M'],
+[ 'Sawmills and wood preservation $7,052M' , 'Softwood lumber $5,745M' , 5165701,'$5,165.70 M'],
+[ 'Custom work services for forestry $2,271M' , 'Sawmills and wood preservation $7,052M' , 2271031,'$2,271.03 M'],
+[ 'Logs and bolts $1,126M' , 'Sawmills and wood preservation $7,052M' , 1125504,'$1,125.50 M'],
+[ 'Softwood lumber $5,745M' , 'International exports $4,838M' , 4837842,'$4,837.84 M'],
+[ 'Meat product manufacturing $1,796M' , 'Fresh and frozen poultry of all etc. $1,537M' , 1057394,'$1,057.39 M'],
+[ 'Poultry $398M' , 'Meat product manufacturing $1,796M' , 398412,'$398.41 M'],
+[ 'Fresh and frozen poultry of all etc. $348M' , 'Meat product manufacturing $1,796M' , 348493,'$348.49 M'],
+[ 'Fresh and frozen beef and veal $110M' , 'Meat product manufacturing $1,796M' , 109925,'$109.92 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $71M' , 'Meat product manufacturing $1,796M' , 70626,'$70.63 M'],
+[ 'Dairy product manufacturing $1,227M' , 'Processed fluid milk and milk products $1,247M' , 725030,'$725.03 M'],
+[ 'Unprocessed fluid milk $706M' , 'Dairy product manufacturing $1,227M' , 706117,'$706.12 M'],
+[ 'Dairy product manufacturing $1,227M' , 'Cheese and cheese products $807M' , 267611,'$267.61 M'],
+[ 'Softwood lumber $5,745M' , 'Other Industries $981M' , 686933,'$686.93 M'],
+[ 'Nursery and floriculture products $838M' , 'Other Industries $981M' , 153820,'$153.82 M'],
+[ 'Processed fluid milk and milk products $1,247M' , 'Other Industries $981M' , 60714,'$60.71 M'],
+[ 'Fresh and frozen poultry of all etc. $1,537M' , 'Other Industries $981M' , 55472,'$55.47 M'],
+[ 'Cheese and cheese products $807M' , 'Other Industries $981M' , 24122,'$24.12 M'],
+[ 'Crop production  $965M' , 'Imputed feed  $289M' , 288935,'$288.94 M'],
+[ 'Support services for crop production $141M' , 'Crop production  $965M' , 102295,'$102.30 M'],
+[ 'Gross mixed income $167M' , 'Crop production  $965M' , 60001,'$60.00 M'],
+[ 'Ammonia and chemical fertilizers $83M' , 'Crop production  $965M' , 41257,'$41.26 M'],
+[ 'Imputed fertilizer  $35M' , 'Crop production  $965M' , 34705,'$34.70 M'],
+[ 'Greenhouse, nursery and floriculture etc. $948M' , 'Nursery and floriculture products $838M' , 519029,'$519.03 M'],
+[ 'Gross mixed income $167M' , 'Greenhouse, nursery and floriculture etc. $948M' , 106594,'$106.59 M'],
+[ 'Fresh vegetables  $57M' , 'Greenhouse, nursery and floriculture etc. $948M' , 56778,'$56.78 M'],
+[ 'Ammonia and chemical fertilizers $83M' , 'Greenhouse, nursery and floriculture etc. $948M' , 41513,'$41.51 M'],
+[ 'Support services for crop production $141M' , 'Greenhouse, nursery and floriculture etc. $948M' , 39190,'$39.19 M'],
+[ 'Truck transportation services for specialized etc. $31M' , 'Greenhouse, nursery and floriculture etc. $948M' , 30555,'$30.55 M'],
+[ 'Fish, crustaceans, shellfish ... $340M' , 'Seafood product preparation and etc. $743M' , 339537,'$339.54 M'],
+[ 'Wholesale margins - food, beverages  etc. $39M' , 'Seafood product preparation and etc. $743M' , 38839,'$38.84 M'],
+[ 'Nursery and floriculture products $838M' , 'Alberta $677M' , 396048,'$396.05 M'],
+[ 'Fresh and frozen poultry of all etc. $1,537M' , 'Alberta $677M' , 228269,'$228.27 M'],
+[ 'Cheese and cheese products $807M' , 'Alberta $677M' , 53155,'$53.16 M'],
+[ 'From Other Provinces $489M' , 'Fresh and frozen poultry of all etc. $1,537M' , 219819,'$219.82 M'],
+[ 'From Other Provinces $489M' , 'Processed fluid milk and milk products $1,247M' , 102089,'$102.09 M'],
+[ 'From Other Provinces $489M' , 'Cheese and cheese products $807M' , 86798,'$86.80 M'],
+[ 'From Other Provinces $489M' , 'Nursery and floriculture products $838M' , 48964,'$48.96 M'],
+[ 'From Other Provinces $489M' , 'Softwood lumber $5,745M' , 31491,'$31.49 M'],
+[ 'Processed fluid milk and milk products $1,247M' , 'Ontario $453M' , 245055,'$245.06 M'],
+[ 'Cheese and cheese products $807M' , 'Ontario $453M' , 109221,'$109.22 M'],
+[ 'Fresh and frozen poultry of all etc. $1,537M' , 'Ontario $453M' , 98886,'$98.89 M'],
+[ 'Processed fluid milk and milk products $1,247M' , 'Food services and drinking places $449M' , 221234,'$221.23 M'],
+[ 'Fresh and frozen poultry of all etc. $1,537M' , 'Food services and drinking places $449M' , 151705,'$151.71 M'],
+[ 'Cheese and cheese products $807M' , 'Food services and drinking places $449M' , 76326,'$76.33 M'],
+[ 'Quebec $397M' , 'Processed fluid milk and milk products $1,247M' , 224739,'$224.74 M'],
+[ 'Quebec $397M' , 'Cheese and cheese products $807M' , 172503,'$172.50 M'],
+[ 'Ontario $372M' , 'Cheese and cheese products $807M' , 149240,'$149.24 M'],
+[ 'Ontario $372M' , 'Processed fluid milk and milk products $1,247M' , 124217,'$124.22 M'],
+[ 'Ontario $372M' , 'Nursery and floriculture products $838M' , 98661,'$98.66 M'],
+[ 'Alberta $365M' , 'Softwood lumber $5,745M' , 208635,'$208.63 M'],
+[ 'Alberta $365M' , 'Fresh and frozen poultry of all etc. $1,537M' , 155912,'$155.91 M'],
+[ 'Imputed feed  $289M' , 'Animal production  $289M' , 288935,'$288.94 M'],
+[ 'International imports $235M' , 'Nursery and floriculture products $838M' , 131325,'$131.32 M'],
+[ 'International imports $235M' , 'Fresh and frozen poultry of all etc. $1,537M' , 103397,'$103.40 M'],
+[ 'Processed fluid milk and milk products $1,247M' , 'Quebec $228M' , 203530,'$203.53 M'],
+[ 'Cheese and cheese products $807M' , 'Quebec $228M' , 24096,'$24.10 M'],
+[ 'Nursery and floriculture products $838M' , 'Non-residential building construction $179M' , 179100,'$179.10 M'],
+[ 'Fresh and frozen poultry of all etc. $1,537M' , 'To Other Provinces $361M' , 121764,'$121.76 M'],
+[ 'Processed fluid milk and milk products $1,247M' , 'To Other Provinces $361M' , 112549,'$112.55 M'],
+[ 'Softwood lumber $5,745M' , 'To Other Provinces $361M' , 85276,'$85.28 M'],
+[ 'Cheese and cheese products $807M' , 'To Other Provinces $361M' , 41143,'$41.14 M'],
+[ 'Nursery and floriculture products $838M' , 'To Other Provinces $361M' , 524,'$0.52 M'],
+[ 'Sawmills and wood preservation $7,052M' , 'Other Output Products $4,697M' , 1878467,'$1,878.47 M'],
+[ 'Other Input Products $3,276M' , 'Sawmills and wood preservation $7,052M' , 1748681,'$1,748.68 M'],
+[ 'Meat product manufacturing $1,796M' , 'Other Output Products $4,697M' , 738071,'$738.07 M'],
+[ 'Other Input Products $3,276M' , 'Meat product manufacturing $1,796M' , 415206,'$415.21 M'],
+[ 'Other Input Products $3,276M' , 'Dairy product manufacturing $1,227M' , 295319,'$295.32 M'],
+[ 'Dairy product manufacturing $1,227M' , 'Other Output Products $4,697M' , 233628,'$233.63 M'],
+[ 'Crop production  $965M' , 'Other Output Products $4,697M' , 675526,'$675.53 M'],
+[ 'Other Input Products $3,276M' , 'Crop production  $965M' , 327118,'$327.12 M'],
+[ 'Greenhouse, nursery and floriculture etc. $948M' , 'Other Output Products $4,697M' , 429054,'$429.05 M'],
+[ 'Other Input Products $3,276M' , 'Greenhouse, nursery and floriculture etc. $948M' , 291328,'$291.33 M'],
+[ 'Seafood product preparation and etc. $743M' , 'Other Output Products $4,697M' , 742455,'$742.46 M'],
+[ 'Other Input Products $3,276M' , 'Seafood product preparation and etc. $743M' , 198676,'$198.68 M'],
+];
+
+<!-- Canada -->  
+dataCAN = [
+[ 'Gross operating surplus $12,082M' , 'Crop production  $35,151M' , 7147305,'$7,147.31 M'],
+[ 'Gross operating surplus $12,082M' , 'Meat product manufacturing $27,790M' , 1770596,'$1,770.60 M'],
+[ 'Gross operating surplus $12,082M' , 'Sawmills and wood preservation $14,989M' , 1123907,'$1,123.91 M'],
+[ 'Gross operating surplus $12,082M' , 'Dairy product manufacturing $13,668M' , 1147371,'$1,147.37 M'],
+[ 'Gross operating surplus $12,082M' , 'Seafood product preparation and etc. $5,548M' , 437178,'$437.18 M'],
+[ 'Gross operating surplus $12,082M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 455254,'$455.25 M'],
+[ 'Wages and salaries $10,427M' , 'Crop production  $35,151M' , 2350775,'$2,350.78 M'],
+[ 'Wages and salaries $10,427M' , 'Meat product manufacturing $27,790M' , 2801645,'$2,801.64 M'],
+[ 'Employers\' social contributions $2,121M' , 'Meat product manufacturing $27,790M' , 887199,'$887.20 M'],
+[ 'Wages and salaries $10,427M' , 'Sawmills and wood preservation $14,989M' , 2198614,'$2,198.61 M'],
+[ 'Employers\' social contributions $2,121M' , 'Sawmills and wood preservation $14,989M' , 668416,'$668.42 M'],
+[ 'Wages and salaries $10,427M' , 'Dairy product manufacturing $13,668M' , 1264859,'$1,264.86 M'],
+[ 'Employers\' social contributions $2,121M' , 'Dairy product manufacturing $13,668M' , 564966,'$564.97 M'],
+[ 'Wages and salaries $10,427M' , 'Seafood product preparation and etc. $5,548M' , 744407,'$744.41 M'],
+[ 'Wages and salaries $10,427M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 1067044,'$1,067.04 M'],
+[ 'Taxes on production $1,429M' , 'Crop production  $35,151M' , 1429069,'$1,429.07 M'],
+[ 'Crop production  $35,151M' , 'Canola  $8,764M' , 8453453,'$8,453.45 M'],
+[ 'Gross mixed income $6,262M' , 'Crop production  $35,151M' , 6009892,'$6,009.89 M'],
+[ 'Crop production  $35,151M' , 'Wheat $5,621M' , 5565313,'$5,565.31 M'],
+[ 'Crop production  $35,151M' , 'Imputed feed  $5,128M' , 5128180,'$5,128.18 M'],
+[ 'Crop production  $35,151M' , 'Grains  $4,621M' , 4010561,'$4,010.56 M'],
+[ 'Crop production  $35,151M' , 'Fresh vegetables  $7,845M' , 3936144,'$3,936.14 M'],
+[ 'Ammonia and chemical fertilizers $3,833M' , 'Crop production  $35,151M' , 3706088,'$3,706.09 M'],
+[ 'Pesticides ... $1,963M' , 'Crop production  $35,151M' , 1963476,'$1,963.48 M'],
+[ 'Support services for crop production $1,664M' , 'Crop production  $35,151M' , 1558687,'$1,558.69 M'],
+[ 'Wholesale margins - miscellaneous etc. $1,213M' , 'Crop production  $35,151M' , 1212542,'$1,212.54 M'],
+[ 'Softwood lumber $10,608M' , 'International exports $33,800M' , 7054793,'$7,054.79 M'],
+[ 'Wheat $5,621M' , 'International exports $33,800M' , 5414555,'$5,414.56 M'],
+[ 'Fresh vegetables  $7,845M' , 'International exports $33,800M' , 5238099,'$5,238.10 M'],
+[ 'Canola  $8,764M' , 'International exports $33,800M' , 4095299,'$4,095.30 M'],
+[ 'Prepared and packaged seafood products $6,279M' , 'International exports $33,800M' , 3489109,'$3,489.11 M'],
+[ 'Fresh and frozen pork $6,492M' , 'International exports $33,800M' , 2859674,'$2,859.67 M'],
+[ 'Fresh and frozen beef and veal $8,804M' , 'International exports $33,800M' , 2144789,'$2,144.79 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 'International exports $33,800M' , 1425923,'$1,425.92 M'],
+[ 'Grains  $4,621M' , 'International exports $33,800M' , 1189268,'$1,189.27 M'],
+[ 'Nursery and floriculture products $2,650M' , 'International exports $33,800M' , 390030,'$390.03 M'],
+[ 'Fresh and frozen poultry of all etc. $7,482M' , 'International exports $33,800M' , 320690,'$320.69 M'],
+[ 'Butter and dry and canned dairy etc. $2,524M' , 'International exports $33,800M' , 109208,'$109.21 M'],
+[ 'Cheese and cheese products $5,023M' , 'International exports $33,800M' , 68162,'$68.16 M'],
+[ 'Meat product manufacturing $27,790M' , 'Fresh and frozen beef and veal $8,804M' , 7392177,'$7,392.18 M'],
+[ 'Meat product manufacturing $27,790M' , 'Fresh and frozen poultry of all etc. $7,482M' , 6807558,'$6,807.56 M'],
+[ 'Cattle and calves $6,657M' , 'Meat product manufacturing $27,790M' , 6656958,'$6,656.96 M'],
+[ 'Meat product manufacturing $27,790M' , 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 6422866,'$6,422.87 M'],
+[ 'Meat product manufacturing $27,790M' , 'Fresh and frozen pork $6,492M' , 5903576,'$5,903.58 M'],
+[ 'Hogs $3,807M' , 'Meat product manufacturing $27,790M' , 3806597,'$3,806.60 M'],
+[ 'Poultry $2,709M' , 'Meat product manufacturing $27,790M' , 2708560,'$2,708.56 M'],
+[ 'Fresh and frozen poultry of all etc. $2,051M' , 'Meat product manufacturing $27,790M' , 2050945,'$2,050.95 M'],
+[ 'Fresh and frozen beef and veal $983M' , 'Meat product manufacturing $27,790M' , 982544,'$982.54 M'],
+[ 'Sawmills and wood preservation $14,989M' , 'Softwood lumber $10,608M' , 9803752,'$9,803.75 M'],
+[ 'Custom work services for forestry $4,463M' , 'Sawmills and wood preservation $14,989M' , 4463400,'$4,463.40 M'],
+[ 'Logs and bolts $2,176M' , 'Sawmills and wood preservation $14,989M' , 2175628,'$2,175.63 M'],
+[ 'Sawmills and wood preservation $14,989M' , 'Wood chips $2,047M' , 1675660,'$1,675.66 M'],
+[ 'International imports $14,369M' , 'Fresh vegetables  $7,845M' , 3907962,'$3,907.96 M'],
+[ 'International imports $14,369M' , 'Prepared and packaged seafood products $6,279M' , 2537053,'$2,537.05 M'],
+[ 'International imports $14,369M' , 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 2129792,'$2,129.79 M'],
+[ 'International imports $14,369M' , 'Fresh and frozen beef and veal $8,804M' , 1409808,'$1,409.81 M'],
+[ 'International imports $14,369M' , 'Butter and dry and canned dairy etc. $2,524M' , 816122,'$816.12 M'],
+[ 'International imports $14,369M' , 'Fresh and frozen poultry of all etc. $7,482M' , 661960,'$661.96 M'],
+[ 'International imports $14,369M' , 'Grains  $4,621M' , 603336,'$603.34 M'],
+[ 'International imports $14,369M' , 'Fresh and frozen pork $6,492M' , 586703,'$586.70 M'],
+[ 'International imports $14,369M' , 'Nursery and floriculture products $2,650M' , 500823,'$500.82 M'],
+[ 'International imports $14,369M' , 'Cheese and cheese products $5,023M' , 370148,'$370.15 M'],
+[ 'International imports $14,369M' , 'Processed fluid milk and milk products $5,740M' , 275058,'$275.06 M'],
+[ 'International imports $14,369M' , 'Softwood lumber $10,608M' , 268558,'$268.56 M'],
+[ 'International imports $14,369M' , 'Canola  $8,764M' , 128918,'$128.92 M'],
+[ 'International imports $14,369M' , 'Wood chips $2,047M' , 119873,'$119.87 M'],
+[ 'International imports $14,369M' , 'Wheat $5,621M' , 52398,'$52.40 M'],
+[ 'Unprocessed fluid milk $6,028M' , 'Dairy product manufacturing $13,668M' , 6028306,'$6,028.31 M'],
+[ 'Dairy product manufacturing $13,668M' , 'Processed fluid milk and milk products $5,740M' , 5464493,'$5,464.49 M'],
+[ 'Dairy product manufacturing $13,668M' , 'Cheese and cheese products $5,023M' , 4541430,'$4,541.43 M'],
+[ 'Dairy product manufacturing $13,668M' , 'Butter and dry and canned dairy etc. $2,524M' , 1615509,'$1,615.51 M'],
+[ 'Processed fluid milk and milk products $613M' , 'Dairy product manufacturing $13,668M' , 612999,'$613.00 M'],
+[ 'Fresh and frozen beef and veal $8,804M' , 'Food services and drinking places $9,765M' , 2978114,'$2,978.11 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 'Food services and drinking places $9,765M' , 1388821,'$1,388.82 M'],
+[ 'Processed fluid milk and milk products $5,740M' , 'Food services and drinking places $9,765M' , 1319796,'$1,319.80 M'],
+[ 'Fresh and frozen pork $6,492M' , 'Food services and drinking places $9,765M' , 1152440,'$1,152.44 M'],
+[ 'Fresh and frozen poultry of all etc. $7,482M' , 'Food services and drinking places $9,765M' , 934829,'$934.83 M'],
+[ 'Prepared and packaged seafood products $6,279M' , 'Food services and drinking places $9,765M' , 859917,'$859.92 M'],
+[ 'Butter and dry and canned dairy etc. $2,524M' , 'Food services and drinking places $9,765M' , 677349,'$677.35 M'],
+[ 'Cheese and cheese products $5,023M' , 'Food services and drinking places $9,765M' , 453402,'$453.40 M'],
+[ 'Softwood lumber $10,608M' , 'Other Industries $7,971M' , 3088184,'$3,088.18 M'],
+[ 'Fresh vegetables  $7,845M' , 'Other Industries $7,971M' , 1404335,'$1,404.34 M'],
+[ 'Grains  $4,621M' , 'Other Industries $7,971M' , 1177357,'$1,177.36 M'],
+[ 'Canola  $8,764M' , 'Other Industries $7,971M' , 456465,'$456.46 M'],
+[ 'Processed fluid milk and milk products $5,740M' , 'Other Industries $7,971M' , 416300,'$416.30 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 'Other Industries $7,971M' , 347684,'$347.68 M'],
+[ 'Butter and dry and canned dairy etc. $2,524M' , 'Other Industries $7,971M' , 301110,'$301.11 M'],
+[ 'Prepared and packaged seafood products $6,279M' , 'Other Industries $7,971M' , 233291,'$233.29 M'],
+[ 'Fresh and frozen beef and veal $8,804M' , 'Other Industries $7,971M' , 222032,'$222.03 M'],
+[ 'Cheese and cheese products $5,023M' , 'Other Industries $7,971M' , 212138,'$212.14 M'],
+[ 'Fresh and frozen poultry of all etc. $7,482M' , 'Other Industries $7,971M' , 152057,'$152.06 M'],
+[ 'Wood chips $2,047M' , 'Other Industries $7,971M' , 30528,'$30.53 M'],
+[ 'Seafood product preparation and etc. $5,548M' , 'Prepared and packaged seafood products $6,279M' , 3706115,'$3,706.11 M'],
+[ 'Fish, crustaceans, shellfish ... $2,622M' , 'Seafood product preparation and etc. $5,548M' , 2622010,'$2,622.01 M'],
+[ 'Wholesale margins - food, beverages  etc. $311M' , 'Seafood product preparation and etc. $5,548M' , 311289,'$311.29 M'],
+[ 'Prepared and packaged seafood products $299M' , 'Seafood product preparation and etc. $5,548M' , 299403,'$299.40 M'],
+[ 'Imputed feed  $5,128M' , 'Animal production  $5,128M' , 5128180,'$5,128.18 M'],
+[ 'Canola  $8,764M' , 'Grain and oilseed milling $4,587M' , 3832574,'$3,832.57 M'],
+[ 'Grains  $4,621M' , 'Grain and oilseed milling $4,587M' , 754123,'$754.12 M'],
+[ 'Greenhouse, nursery and floriculture etc. $3,797M' , 'Nursery and floriculture products $2,650M' , 2014760,'$2,014.76 M'],
+[ 'Gross mixed income $6,262M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 251978,'$251.98 M'],
+[ 'Fresh vegetables  $244M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 244261,'$244.26 M'],
+[ 'Ammonia and chemical fertilizers $3,833M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 126855,'$126.86 M'],
+[ 'Textile products, n.e.c. $123M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 123432,'$123.43 M'],
+[ 'Support services for crop production $1,664M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 105750,'$105.75 M'],
+[ 'Wood chips $2,047M' , 'Pulp, paper and paperboard mills $2,016M' , 2016475,'$2,016.47 M'],
+[ 'Grains  $4,621M' , 'Animal food manufacturing $1,936M' , 1114391,'$1,114.39 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $8,688M' , 'Animal food manufacturing $1,936M' , 821149,'$821.15 M'],
+[ 'Nursery and floriculture products $2,650M' , 'Non-residential building construction $1,099M' , 1099216,'$1,099.22 M'],
+[ 'Nursery and floriculture products $2,650M' , 'Residential building construction $410M' , 409865,'$409.87 M'],
+[ 'Other Input Products $26,863M' , 'Crop production  $35,151M' , 9773133,'$9,773.13 M'],
+[ 'Crop production  $35,151M' , 'Other Output Products $18,410M' , 8015354,'$8,015.35 M'],
+[ 'Other Input Products $26,863M' , 'Meat product manufacturing $27,790M' , 6125047,'$6,125.05 M'],
+[ 'Meat product manufacturing $27,790M' , 'Other Output Products $18,410M' , 1250478,'$1,250.48 M'],
+[ 'Other Input Products $26,863M' , 'Sawmills and wood preservation $14,989M' , 4359206,'$4,359.21 M'],
+[ 'Sawmills and wood preservation $14,989M' , 'Other Output Products $18,410M' , 3490147,'$3,490.15 M'],
+[ 'Other Input Products $26,863M' , 'Dairy product manufacturing $13,668M' , 4049709,'$4,049.71 M'],
+[ 'Dairy product manufacturing $13,668M' , 'Other Output Products $18,410M' , 2036461,'$2,036.46 M'],
+[ 'Seafood product preparation and etc. $5,548M' , 'Other Output Products $18,410M' , 1837120,'$1,837.12 M'],
+[ 'Other Input Products $26,863M' , 'Seafood product preparation and etc. $5,548M' , 1133670,'$1,133.67 M'],
+[ 'Greenhouse, nursery and floriculture etc. $3,797M' , 'Other Output Products $18,410M' , 1780806,'$1,780.81 M'],
+[ 'Other Input Products $26,863M' , 'Greenhouse, nursery and floriculture etc. $3,797M' , 1422674,'$1,422.67 M'],
+];
+
+<!-- Manitoba -->  
+dataMB = [
+[ 'Gross operating surplus $882M' , 'Crop production  $3,951M' , 764147,'$764.15 M'],
+[ 'Gross operating surplus $882M' , 'Meat product manufacturing $1,726M' , 97123,'$97.12 M'],
+[ 'Gross operating surplus $882M' , 'Sawmills and wood preservation $119M' , 13974,'$13.97 M'],
+[ 'Gross operating surplus $882M' , 'Greenhouse, nursery and floriculture etc. $70M' , 6494,'$6.49 M'],
+[ 'Wages and salaries $550M' , 'Crop production  $3,951M' , 212727,'$212.73 M'],
+[ 'Wages and salaries $550M' , 'Meat product manufacturing $1,726M' , 287735,'$287.74 M'],
+[ 'Employers\' social contributions $80M' , 'Meat product manufacturing $1,726M' , 73882,'$73.88 M'],
+[ 'Wages and salaries $550M' , 'Sawmills and wood preservation $119M' , 10847,'$10.85 M'],
+[ 'Wages and salaries $550M' , 'Seafood product preparation and etc. $80M' , 16708,'$16.71 M'],
+[ 'Employers\' social contributions $80M' , 'Seafood product preparation and etc. $80M' , 6520,'$6.52 M'],
+[ 'Wages and salaries $550M' , 'Greenhouse, nursery and floriculture etc. $70M' , 21976,'$21.98 M'],
+[ 'Taxes on production $227M' , 'Crop production  $3,951M' , 226819,'$226.82 M'],
+[ 'Crop production  $3,951M' , 'Canola  $1,489M' , 1250714,'$1,250.71 M'],
+[ 'Crop production  $3,951M' , 'Wheat $905M' , 902637,'$902.64 M'],
+[ 'Crop production  $3,951M' , 'Oilseeds  $541M' , 525238,'$525.24 M'],
+[ 'Ammonia and chemical fertilizers $512M' , 'Crop production  $3,951M' , 511540,'$511.54 M'],
+[ 'Gross mixed income $398M' , 'Crop production  $3,951M' , 398417,'$398.42 M'],
+[ 'Pesticides ... $274M' , 'Crop production  $3,951M' , 274341,'$274.34 M'],
+[ 'Support services for crop production $170M' , 'Crop production  $3,951M' , 169996,'$170.00 M'],
+[ 'Wholesale margins - miscellaneous etc. $165M' , 'Crop production  $3,951M' , 164793,'$164.79 M'],
+[ 'Diesel and biodiesel fuels $105M' , 'Crop production  $3,951M' , 104541,'$104.54 M'],
+[ 'Wheat $905M' , 'International exports $2,433M' , 734247,'$734.25 M'],
+[ 'Fresh and frozen pork $1,441M' , 'International exports $2,433M' , 699394,'$699.39 M'],
+[ 'Canola  $1,489M' , 'International exports $2,433M' , 585816,'$585.82 M'],
+[ 'Oilseeds  $541M' , 'International exports $2,433M' , 360542,'$360.54 M'],
+[ 'Prepared and packaged seafood products $123M' , 'International exports $2,433M' , 53389,'$53.39 M'],
+[ 'Meat product manufacturing $1,726M' , 'Fresh and frozen pork $1,441M' , 1360793,'$1,360.79 M'],
+[ 'Hogs $700M' , 'Meat product manufacturing $1,726M' , 700219,'$700.22 M'],
+[ 'Meat product manufacturing $1,726M' , 'Fresh and frozen poultry of all etc. $290M' , 177104,'$177.10 M'],
+[ 'Poultry $107M' , 'Meat product manufacturing $1,726M' , 106680,'$106.68 M'],
+[ 'Fresh and frozen beef and veal $89M' , 'Meat product manufacturing $1,726M' , 89256,'$89.26 M'],
+[ 'Canola  $1,489M' , 'Grain and oilseed milling $506M' , 506380,'$506.38 M'],
+[ 'Fresh and frozen pork $1,441M' , 'Ontario $366M' , 267188,'$267.19 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'Ontario $366M' , 59935,'$59.94 M'],
+[ 'Processed fluid milk and milk products $254M' , 'Ontario $366M' , 23525,'$23.52 M'],
+[ 'Cheese and cheese products $190M' , 'Ontario $366M' , 15156,'$15.16 M'],
+[ 'Canola  $1,489M' , 'Other Industries $311M' , 132909,'$132.91 M'],
+[ 'Oilseeds  $541M' , 'Other Industries $311M' , 78171,'$78.17 M'],
+[ 'Wheat $905M' , 'Other Industries $311M' , 27727,'$27.73 M'],
+[ 'Fresh and frozen pork $1,441M' , 'Other Industries $311M' , 22285,'$22.29 M'],
+[ 'Processed fluid milk and milk products $254M' , 'Other Industries $311M' , 17700,'$17.70 M'],
+[ 'Other sawmill products and treated wood etc. $77M' , 'Other Industries $311M' , 15797,'$15.80 M'],
+[ 'Prepared and packaged seafood products $123M' , 'Other Industries $311M' , 10937,'$10.94 M'],
+[ 'Cheese and cheese products $190M' , 'Other Industries $311M' , 2477,'$2.48 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'Other Industries $311M' , 2383,'$2.38 M'],
+[ 'Wood chips $58M' , 'Other Industries $311M' , 176,'$0.18 M'],
+[ 'Unprocessed fluid milk $169M' , 'Dairy product manufacturing $268M' , 168729,'$168.73 M'],
+[ 'Dairy product manufacturing $268M' , 'Processed fluid milk and milk products $254M' , 143814,'$143.81 M'],
+[ 'Dairy product manufacturing $268M' , 'Cheese and cheese products $190M' , 74673,'$74.67 M'],
+[ 'Saskatchewan $216M' , 'Canola  $1,489M' , 205200,'$205.20 M'],
+[ 'Saskatchewan $216M' , 'Oilseeds  $541M' , 10508,'$10.51 M'],
+[ 'Ontario $151M' , 'Fresh and frozen pork $1,441M' , 61242,'$61.24 M'],
+[ 'Ontario $151M' , 'Fresh and frozen poultry of all etc. $290M' , 36469,'$36.47 M'],
+[ 'Ontario $151M' , 'Cheese and cheese products $190M' , 27145,'$27.14 M'],
+[ 'Ontario $151M' , 'Processed fluid milk and milk products $254M' , 26176,'$26.18 M'],
+[ 'Sawmills and wood preservation $119M' , 'Wood chips $58M' , 53060,'$53.06 M'],
+[ 'Sawmills and wood preservation $119M' , 'Other sawmill products and treated wood etc. $77M' , 46625,'$46.63 M'],
+[ 'Custom work services for forestry $25M' , 'Sawmills and wood preservation $119M' , 24604,'$24.60 M'],
+[ 'Softwood lumber $12M' , 'Sawmills and wood preservation $119M' , 11757,'$11.76 M'],
+[ 'Logs and bolts $9M' , 'Sawmills and wood preservation $119M' , 9278,'$9.28 M'],
+[ 'Support services for forestry $7M' , 'Sawmills and wood preservation $119M' , 7010,'$7.01 M'],
+[ 'Truck transportation services for specialized etc. $6M' , 'Sawmills and wood preservation $119M' , 6116,'$6.12 M'],
+[ 'Rail freight transportation services $6M' , 'Sawmills and wood preservation $119M' , 5526,'$5.53 M'],
+[ 'Processed fluid milk and milk products $254M' , 'Alberta $111M' , 62862,'$62.86 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'Alberta $111M' , 26232,'$26.23 M'],
+[ 'Cheese and cheese products $190M' , 'Alberta $111M' , 11946,'$11.95 M'],
+[ 'Other sawmill products and treated wood etc. $77M' , 'Alberta $111M' , 9964,'$9.96 M'],
+[ 'From Other Provinces $110M' , 'Processed fluid milk and milk products $254M' , 34352,'$34.35 M'],
+[ 'From Other Provinces $110M' , 'Fresh and frozen poultry of all etc. $290M' , 31757,'$31.76 M'],
+[ 'From Other Provinces $110M' , 'Cheese and cheese products $190M' , 25956,'$25.96 M'],
+[ 'From Other Provinces $110M' , 'Fresh and frozen pork $1,441M' , 15033,'$15.03 M'],
+[ 'From Other Provinces $110M' , 'Other sawmill products and treated wood etc. $77M' , 2558,'$2.56 M'],
+[ 'From Other Provinces $110M' , 'Prepared and packaged seafood products $123M' , 598,'$0.60 M'],
+[ 'From Other Provinces $110M' , 'Wheat $905M' , 97,'$0.10 M'],
+[ 'From Other Provinces $110M' , 'Wood chips $58M' , 16,'$0.02 M'],
+[ 'Processed fluid milk and milk products $254M' , 'Food services and drinking places $104M' , 37638,'$37.64 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'Food services and drinking places $104M' , 26884,'$26.88 M'],
+[ 'Prepared and packaged seafood products $123M' , 'Food services and drinking places $104M' , 26130,'$26.13 M'],
+[ 'Cheese and cheese products $190M' , 'Food services and drinking places $104M' , 13084,'$13.08 M'],
+[ 'Quebec $99M' , 'Cheese and cheese products $190M' , 53060,'$53.06 M'],
+[ 'Quebec $99M' , 'Processed fluid milk and milk products $254M' , 46339,'$46.34 M'],
+[ 'International imports $85M' , 'Prepared and packaged seafood products $123M' , 51140,'$51.14 M'],
+[ 'International imports $85M' , 'Other sawmill products and treated wood etc. $77M' , 27525,'$27.52 M'],
+[ 'International imports $85M' , 'Oilseeds  $541M' , 4800,'$4.80 M'],
+[ 'International imports $85M' , 'Wheat $905M' , 1077,'$1.08 M'],
+[ 'Seafood product preparation and etc. $80M' , 'Prepared and packaged seafood products $123M' , 71703,'$71.70 M'],
+[ 'Fish, crustaceans, shellfish ... $27M' , 'Seafood product preparation and etc. $80M' , 27079,'$27.08 M'],
+[ 'Fresh vegetables  $13M' , 'Greenhouse, nursery and floriculture etc. $70M' , 12735,'$12.73 M'],
+[ 'Wood chips $58M' , 'Pulp, paper and paperboard mills $45M' , 45118,'$45.12 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'British Columbia $42M' , 24589,'$24.59 M'],
+[ 'Cheese and cheese products $190M' , 'British Columbia $42M' , 17287,'$17.29 M'],
+[ 'British Columbia $30M' , 'Fresh and frozen poultry of all etc. $290M' , 30387,'$30.39 M'],
+[ 'Other sawmill products and treated wood etc. $77M' , 'Residential building construction $29M' , 29124,'$29.12 M'],
+[ 'Other sawmill products and treated wood etc. $77M' , 'Saskatchewan $13M' , 12565,'$12.56 M'],
+[ 'Cheese and cheese products $190M' , 'Fruit and vegetable preserving  etc. $7M' , 7392,'$7.39 M'],
+[ 'Alberta $1M' , 'Wheat $905M' , 1117,'$1.12 M'],
+[ 'Fresh and frozen pork $1,441M' , 'To Other Provinces $752M' , 341971,'$341.97 M'],
+[ 'Canola  $1,489M' , 'To Other Provinces $752M' , 162310,'$162.31 M'],
+[ 'Wheat $905M' , 'To Other Provinces $752M' , 95485,'$95.48 M'],
+[ 'Oilseeds  $541M' , 'To Other Provinces $752M' , 71763,'$71.76 M'],
+[ 'Fresh and frozen poultry of all etc. $290M' , 'To Other Provinces $752M' , 34397,'$34.40 M'],
+[ 'Processed fluid milk and milk products $254M' , 'To Other Provinces $752M' , 15573,'$15.57 M'],
+[ 'Wood chips $58M' , 'To Other Provinces $752M' , 12857,'$12.86 M'],
+[ 'Cheese and cheese products $190M' , 'To Other Provinces $752M' , 9339,'$9.34 M'],
+[ 'Other sawmill products and treated wood etc. $77M' , 'To Other Provinces $752M' , 5016,'$5.02 M'],
+[ 'Prepared and packaged seafood products $123M' , 'To Other Provinces $752M' , 3716,'$3.72 M'],
+[ 'Crop production  $3,951M' , 'Other Output Products $1,604M' , 1268787,'$1,268.79 M'],
+[ 'Other Input Products $1,683M' , 'Crop production  $3,951M' , 1123303,'$1,123.30 M'],
+[ 'Other Input Products $1,683M' , 'Meat product manufacturing $1,726M' , 371144,'$371.14 M'],
+[ 'Meat product manufacturing $1,726M' , 'Other Output Products $1,604M' , 187642,'$187.64 M'],
+[ 'Other Input Products $1,683M' , 'Dairy product manufacturing $268M' , 99542,'$99.54 M'],
+[ 'Dairy product manufacturing $268M' , 'Other Output Products $1,604M' , 49682,'$49.68 M'],
+[ 'Other Input Products $1,683M' , 'Sawmills and wood preservation $119M' , 30346,'$30.35 M'],
+[ 'Sawmills and wood preservation $119M' , 'Other Output Products $1,604M' , 19755,'$19.75 M'],
+[ 'Other Input Products $1,683M' , 'Seafood product preparation and etc. $80M' , 29442,'$29.44 M'],
+[ 'Seafood product preparation and etc. $80M' , 'Other Output Products $1,604M' , 7988,'$7.99 M'],
+[ 'Greenhouse, nursery and floriculture etc. $70M' , 'Other Output Products $1,604M' , 70164,'$70.16 M'],
+[ 'Other Input Products $1,683M' , 'Greenhouse, nursery and floriculture etc. $70M' , 28976,'$28.98 M'],
+];
+
+<!-- New Brunswick -->  
+dataNB = [
+[ 'Gross operating surplus $214M' , 'Seafood product preparation and etc. $1,343M' , 74610,'$74.61 M'],
+[ 'Gross operating surplus $214M' , 'Sawmills and wood preservation $857M' , 62514,'$62.51 M'],
+[ 'Gross operating surplus $214M' , 'Crop production  $307M' , 66879,'$66.88 M'],
+[ 'Gross operating surplus $214M' , 'Greenhouse, nursery and floriculture etc. $55M' , 10408,'$10.41 M'],
+[ 'Wages and salaries $453M' , 'Seafood product preparation and etc. $1,343M' , 184841,'$184.84 M'],
+[ 'Wages and salaries $453M' , 'Sawmills and wood preservation $857M' , 140707,'$140.71 M'],
+[ 'Wages and salaries $453M' , 'Crop production  $307M' , 54812,'$54.81 M'],
+[ 'Wages and salaries $453M' , 'Meat product manufacturing $278M' , 50007,'$50.01 M'],
+[ 'Employers\' social contributions $16M' , 'Meat product manufacturing $278M' , 16297,'$16.30 M'],
+[ 'Wages and salaries $453M' , 'Dairy product manufacturing $77M' , 8033,'$8.03 M'],
+[ 'Wages and salaries $453M' , 'Greenhouse, nursery and floriculture etc. $55M' , 15097,'$15.10 M'],
+[ 'Prepared and packaged seafood products $1,180M' , 'International exports $1,389M' , 959001,'$959.00 M'],
+[ 'Softwood lumber $524M' , 'International exports $1,389M' , 342083,'$342.08 M'],
+[ 'Fresh potatoes $169M' , 'International exports $1,389M' , 41289,'$41.29 M'],
+[ 'Nursery and floriculture products $106M' , 'International exports $1,389M' , 25228,'$25.23 M'],
+[ 'Other miscellaneous crop products $61M' , 'International exports $1,389M' , 21640,'$21.64 M'],
+[ 'Seafood product preparation and etc. $1,343M' , 'Prepared and packaged seafood products $1,180M' , 1056239,'$1,056.24 M'],
+[ 'Fish, crustaceans, shellfish ... $709M' , 'Seafood product preparation and etc. $1,343M' , 709003,'$709.00 M'],
+[ 'Prepared and packaged seafood products $85M' , 'Seafood product preparation and etc. $1,343M' , 85368,'$85.37 M'],
+[ 'Wholesale margins - food, beverages  etc. $84M' , 'Seafood product preparation and etc. $1,343M' , 83965,'$83.97 M'],
+[ 'Sawmills and wood preservation $857M' , 'Softwood lumber $524M' , 482486,'$482.49 M'],
+[ 'Custom work services for forestry $220M' , 'Sawmills and wood preservation $857M' , 219716,'$219.72 M'],
+[ 'Logs and bolts $164M' , 'Sawmills and wood preservation $857M' , 163659,'$163.66 M'],
+[ 'Sawmills and wood preservation $857M' , 'Wood chips $194M' , 110592,'$110.59 M'],
+[ 'Crop production  $307M' , 'Fresh potatoes $169M' , 157522,'$157.52 M'],
+[ 'Gross mixed income $39M' , 'Crop production  $307M' , 34767,'$34.77 M'],
+[ 'Crop production  $307M' , 'Imputed feed  $32M' , 31811,'$31.81 M'],
+[ 'Crop production  $307M' , 'Other miscellaneous crop products $61M' , 31796,'$31.80 M'],
+[ 'Ammonia and chemical fertilizers $19M' , 'Crop production  $307M' , 19311,'$19.31 M'],
+[ 'Support services for crop production $16M' , 'Crop production  $307M' , 16444,'$16.44 M'],
+[ 'Pesticides ... $13M' , 'Crop production  $307M' , 12630,'$12.63 M'],
+[ 'Meat product manufacturing $278M' , 'Fresh and frozen poultry of all etc. $330M' , 270975,'$270.98 M'],
+[ 'Poultry $176M' , 'Meat product manufacturing $278M' , 176418,'$176.42 M'],
+[ 'Fresh and frozen poultry of all etc. $330M' , 'Quebec $207M' , 185125,'$185.13 M'],
+[ 'Cheese and cheese products $129M' , 'Quebec $207M' , 15394,'$15.39 M'],
+[ 'Butter and dry and canned dairy etc. $65M' , 'Quebec $207M' , 6596,'$6.60 M'],
+[ 'Softwood lumber $524M' , 'Other Industries $174M' , 66406,'$66.41 M'],
+[ 'Fresh potatoes $169M' , 'Other Industries $174M' , 29930,'$29.93 M'],
+[ 'Prepared and packaged seafood products $1,180M' , 'Other Industries $174M' , 21585,'$21.59 M'],
+[ 'Fresh and frozen poultry of all etc. $330M' , 'Other Industries $174M' , 17619,'$17.62 M'],
+[ 'Wood chips $194M' , 'Other Industries $174M' , 13545,'$13.54 M'],
+[ 'Other miscellaneous crop products $61M' , 'Other Industries $174M' , 11070,'$11.07 M'],
+[ 'Nursery and floriculture products $106M' , 'Other Industries $174M' , 6835,'$6.83 M'],
+[ 'Butter and dry and canned dairy etc. $65M' , 'Other Industries $174M' , 5133,'$5.13 M'],
+[ 'Cheese and cheese products $129M' , 'Other Industries $174M' , 2345,'$2.35 M'],
+[ 'International imports $158M' , 'Prepared and packaged seafood products $1,180M' , 104033,'$104.03 M'],
+[ 'International imports $158M' , 'Other miscellaneous crop products $61M' , 17382,'$17.38 M'],
+[ 'International imports $158M' , 'Softwood lumber $524M' , 14360,'$14.36 M'],
+[ 'International imports $158M' , 'Butter and dry and canned dairy etc. $65M' , 14180,'$14.18 M'],
+[ 'International imports $158M' , 'Fresh potatoes $169M' , 8281,'$8.28 M'],
+[ 'Wood chips $194M' , 'Pulp, paper and paperboard mills $143M' , 142570,'$142.57 M'],
+[ 'Quebec $106M' , 'Nursery and floriculture products $106M' , 35929,'$35.93 M'],
+[ 'Quebec $106M' , 'Cheese and cheese products $129M' , 35132,'$35.13 M'],
+[ 'Quebec $106M' , 'Fresh and frozen poultry of all etc. $330M' , 17760,'$17.76 M'],
+[ 'Quebec $106M' , 'Butter and dry and canned dairy etc. $65M' , 13942,'$13.94 M'],
+[ 'Quebec $106M' , 'Fresh potatoes $169M' , 2871,'$2.87 M'],
+[ 'From Other Provinces $100M' , 'Cheese and cheese products $129M' , 25623,'$25.62 M'],
+[ 'From Other Provinces $100M' , 'Prepared and packaged seafood products $1,180M' , 19926,'$19.93 M'],
+[ 'From Other Provinces $100M' , 'Fresh and frozen poultry of all etc. $330M' , 18226,'$18.23 M'],
+[ 'From Other Provinces $100M' , 'Butter and dry and canned dairy etc. $65M' , 17202,'$17.20 M'],
+[ 'From Other Provinces $100M' , 'Softwood lumber $524M' , 6878,'$6.88 M'],
+[ 'From Other Provinces $100M' , 'Other miscellaneous crop products $61M' , 5684,'$5.68 M'],
+[ 'From Other Provinces $100M' , 'Nursery and floriculture products $106M' , 5682,'$5.68 M'],
+[ 'From Other Provinces $100M' , 'Wood chips $194M' , 646,'$0.65 M'],
+[ 'From Other Provinces $100M' , 'Fresh potatoes $169M' , 431,'$0.43 M'],
+[ 'Dairy product manufacturing $77M' , 'Cheese and cheese products $129M' , 48596,'$48.60 M'],
+[ 'Unprocessed fluid milk $44M' , 'Dairy product manufacturing $77M' , 43867,'$43.87 M'],
+[ 'Dairy product manufacturing $77M' , 'Butter and dry and canned dairy etc. $65M' , 19445,'$19.45 M'],
+[ 'Fresh and frozen poultry of all etc. $330M' , 'Ontario $70M' , 44195,'$44.20 M'],
+[ 'Cheese and cheese products $129M' , 'Ontario $70M' , 15719,'$15.72 M'],
+[ 'Butter and dry and canned dairy etc. $65M' , 'Ontario $70M' , 10372,'$10.37 M'],
+[ 'Greenhouse, nursery and floriculture etc. $55M' , 'Nursery and floriculture products $106M' , 53477,'$53.48 M'],
+[ 'Fresh vegetables  $6M' , 'Greenhouse, nursery and floriculture etc. $55M' , 5641,'$5.64 M'],
+[ 'Gross mixed income $39M' , 'Greenhouse, nursery and floriculture etc. $55M' , 3925,'$3.92 M'],
+[ 'Truck transportation services for specialized etc. $3M' , 'Greenhouse, nursery and floriculture etc. $55M' , 3157,'$3.16 M'],
+[ 'Fresh potatoes $169M' , 'Fruit and vegetable preserving  etc. $37M' , 29924,'$29.92 M'],
+[ 'Cheese and cheese products $129M' , 'Fruit and vegetable preserving  etc. $37M' , 7155,'$7.16 M'],
+[ 'Ontario $34M' , 'Cheese and cheese products $129M' , 18816,'$18.82 M'],
+[ 'Ontario $34M' , 'Fresh and frozen poultry of all etc. $330M' , 14905,'$14.90 M'],
+[ 'Nursery and floriculture products $106M' , 'Nova Scotia $32M' , 31982,'$31.98 M'],
+[ 'Imputed feed  $32M' , 'Animal production  $32M' , 31811,'$31.81 M'],
+[ 'Other miscellaneous crop products $61M' , 'Other food manufacturing $22M' , 21841,'$21.84 M'],
+[ 'Butter and dry and canned dairy etc. $65M' , 'Food services and drinking places $21M' , 12286,'$12.29 M'],
+[ 'Cheese and cheese products $129M' , 'Food services and drinking places $21M' , 8245,'$8.24 M'],
+[ 'Nursery and floriculture products $106M' , 'Non-residential building construction $19M' , 18934,'$18.93 M'],
+[ 'Nova Scotia $11M' , 'Softwood lumber $524M' , 10800,'$10.80 M'],
+[ 'Saskatchewan $6M' , 'Other miscellaneous crop products $61M' , 6076,'$6.08 M'],
+[ 'Softwood lumber $524M' , 'To Other Provinces $298M' , 94099,'$94.10 M'],
+[ 'Prepared and packaged seafood products $1,180M' , 'To Other Provinces $298M' , 85973,'$85.97 M'],
+[ 'Fresh potatoes $169M' , 'To Other Provinces $298M' , 53848,'$53.85 M'],
+[ 'Wood chips $194M' , 'To Other Provinces $298M' , 37841,'$37.84 M'],
+[ 'Fresh and frozen poultry of all etc. $330M' , 'To Other Provinces $298M' , 14333,'$14.33 M'],
+[ 'Cheese and cheese products $129M' , 'To Other Provinces $298M' , 8656,'$8.66 M'],
+[ 'Other miscellaneous crop products $61M' , 'To Other Provinces $298M' , 1547,'$1.55 M'],
+[ 'Butter and dry and canned dairy etc. $65M' , 'To Other Provinces $298M' , 1534,'$1.53 M'],
+[ 'Seafood product preparation and etc. $1,343M' , 'Other Output Products $652M' , 286227,'$286.23 M'],
+[ 'Other Input Products $655M' , 'Seafood product preparation and etc. $1,343M' , 205057,'$205.06 M'],
+[ 'Other Input Products $655M' , 'Sawmills and wood preservation $857M' , 270258,'$270.26 M'],
+[ 'Sawmills and wood preservation $857M' , 'Other Output Products $652M' , 262596,'$262.60 M'],
+[ 'Other Input Products $655M' , 'Crop production  $307M' , 102122,'$102.12 M'],
+[ 'Crop production  $307M' , 'Other Output Products $652M' , 85274,'$85.27 M'],
+[ 'Other Input Products $655M' , 'Meat product manufacturing $278M' , 35632,'$35.63 M'],
+[ 'Meat product manufacturing $278M' , 'Other Output Products $652M' , 7163,'$7.16 M'],
+[ 'Other Input Products $655M' , 'Dairy product manufacturing $77M' , 25261,'$25.26 M'],
+[ 'Dairy product manufacturing $77M' , 'Other Output Products $652M' , 9100,'$9.10 M'],
+[ 'Other Input Products $655M' , 'Greenhouse, nursery and floriculture etc. $55M' , 16579,'$16.58 M'],
+[ 'Greenhouse, nursery and floriculture etc. $55M' , 'Other Output Products $652M' , 1276,'$1.28 M'],
+];
+
+<!-- Newfoundland and Labrador -->  
+dataNL = [
+[ 'Gross operating surplus $173M' , 'Seafood product preparation and etc. $1,214M' , 164562,'$164.56 M'],
+[ 'Gross operating surplus $173M' , 'Sawmills and wood preservation $34M' , 4007,'$4.01 M'],
+[ 'Gross operating surplus $173M' , 'Crop production  $18M' , 4429,'$4.43 M'],
+[ 'Wages and salaries $173M' , 'Seafood product preparation and etc. $1,214M' , 130694,'$130.69 M'],
+[ 'Wages and salaries $173M' , 'Dairy product manufacturing $82M' , 12421,'$12.42 M'],
+[ 'Employers\' social contributions $9M' , 'Dairy product manufacturing $82M' , 4186,'$4.19 M'],
+[ 'Wages and salaries $173M' , 'Meat product manufacturing $69M' , 15749,'$15.75 M'],
+[ 'Employers\' social contributions $9M' , 'Meat product manufacturing $69M' , 4668,'$4.67 M'],
+[ 'Wages and salaries $173M' , 'Sawmills and wood preservation $34M' , 4456,'$4.46 M'],
+[ 'Wages and salaries $173M' , 'Crop production  $18M' , 5580,'$5.58 M'],
+[ 'Wages and salaries $173M' , 'Greenhouse, nursery and floriculture etc. $10M' , 4294,'$4.29 M'],
+[ 'Seafood product preparation and etc. $1,214M' , 'Prepared and packaged seafood products $1,008M' , 937501,'$937.50 M'],
+[ 'Fish, crustaceans, shellfish ... $529M' , 'Seafood product preparation and etc. $1,214M' , 529411,'$529.41 M'],
+[ 'Prepared and packaged seafood products $70M' , 'Seafood product preparation and etc. $1,214M' , 70123,'$70.12 M'],
+[ 'Wholesale margins - food, beverages  etc. $63M' , 'Seafood product preparation and etc. $1,214M' , 62975,'$62.98 M'],
+[ 'Prepared and packaged seafood products $1,008M' , 'International exports $905M' , 905249,'$905.25 M'],
+[ 'International imports $84M' , 'Prepared and packaged seafood products $1,008M' , 65252,'$65.25 M'],
+[ 'International imports $84M' , 'Softwood lumber $40M' , 9879,'$9.88 M'],
+[ 'International imports $84M' , 'Fresh and frozen poultry of all etc. $89M' , 8698,'$8.70 M'],
+[ 'Dairy product manufacturing $82M' , 'Processed fluid milk and milk products $101M' , 46654,'$46.65 M'],
+[ 'Unprocessed fluid milk $35M' , 'Dairy product manufacturing $82M' , 35378,'$35.38 M'],
+[ 'Dairy product manufacturing $82M' , 'Ice cream, sherbet and similar frozen etc. $23M' , 22221,'$22.22 M'],
+[ 'Meat product manufacturing $69M' , 'Fresh and frozen poultry of all etc. $89M' , 54610,'$54.61 M'],
+[ 'Other animal feed $14M' , 'Meat product manufacturing $69M' , 14061,'$14.06 M'],
+[ 'Poultry $11M' , 'Meat product manufacturing $69M' , 10702,'$10.70 M'],
+[ 'Quebec $48M' , 'Processed fluid milk and milk products $101M' , 32504,'$32.50 M'],
+[ 'Quebec $48M' , 'Fresh and frozen poultry of all etc. $89M' , 15275,'$15.28 M'],
+[ 'From Other Provinces $37M' , 'Processed fluid milk and milk products $101M' , 20698,'$20.70 M'],
+[ 'From Other Provinces $37M' , 'Fresh and frozen poultry of all etc. $89M' , 10024,'$10.02 M'],
+[ 'From Other Provinces $37M' , 'Prepared and packaged seafood products $1,008M' , 4881,'$4.88 M'],
+[ 'From Other Provinces $37M' , 'Softwood lumber $40M' , 1597,'$1.60 M'],
+[ 'From Other Provinces $37M' , 'Ice cream, sherbet and similar frozen etc. $23M' , 44,'$0.04 M'],
+[ 'Sawmills and wood preservation $34M' , 'Softwood lumber $40M' , 21267,'$21.27 M'],
+[ 'Custom work services for forestry $12M' , 'Sawmills and wood preservation $34M' , 11900,'$11.90 M'],
+[ 'Logs and bolts $6M' , 'Sawmills and wood preservation $34M' , 5899,'$5.90 M'],
+[ 'Sawmills and wood preservation $34M' , 'Wood chips $5M' , 4504,'$4.50 M'],
+[ 'Processed fluid milk and milk products $101M' , 'Food services and drinking places $30M' , 15653,'$15.65 M'],
+[ 'Fresh and frozen poultry of all etc. $89M' , 'Food services and drinking places $30M' , 11378,'$11.38 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'Food services and drinking places $30M' , 2981,'$2.98 M'],
+[ 'Softwood lumber $40M' , 'Other Industries $19M' , 11679,'$11.68 M'],
+[ 'Processed fluid milk and milk products $101M' , 'Other Industries $19M' , 6508,'$6.51 M'],
+[ 'Fresh and frozen poultry of all etc. $89M' , 'Other Industries $19M' , 2459,'$2.46 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'Other Industries $19M' , 1458,'$1.46 M'],
+[ 'Wood chips $5M' , 'Other Industries $19M' , 40,'$0.04 M'],
+[ 'Crop production  $18M' , 'Imputed feed  $11M' , 10797,'$10.80 M'],
+[ 'Imputed fertilizer  $2M' , 'Crop production  $18M' , 1790,'$1.79 M'],
+[ 'Support services for crop production $2M' , 'Crop production  $18M' , 1553,'$1.55 M'],
+[ 'Ammonia and chemical fertilizers $1M' , 'Crop production  $18M' , 1460,'$1.46 M'],
+[ 'Softwood lumber $40M' , 'Residential building construction $18M' , 18379,'$18.38 M'],
+[ 'Processed fluid milk and milk products $101M' , 'Quebec $13M' , 9460,'$9.46 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'Quebec $13M' , 3917,'$3.92 M'],
+[ 'Processed fluid milk and milk products $101M' , 'Ontario $12M' , 7215,'$7.21 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'Ontario $12M' , 4784,'$4.78 M'],
+[ 'Imputed feed  $11M' , 'Animal production  $11M' , 10797,'$10.80 M'],
+[ 'Fresh vegetables  $1M' , 'Greenhouse, nursery and floriculture etc. $10M' , 1093,'$1.09 M'],
+[ 'Softwood lumber $40M' , 'Repair construction $8M' , 7907,'$7.91 M'],
+[ 'Nova Scotia $8M' , 'Softwood lumber $40M' , 7685,'$7.68 M'],
+[ 'Nova Scotia $8M' , 'Ice cream, sherbet and similar frozen etc. $23M' , 127,'$0.13 M'],
+[ 'Wood chips $5M' , 'Pulp, paper and paperboard mills $4M' , 4064,'$4.06 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'British Columbia $2M' , 2305,'$2.31 M'],
+[ 'Prepared and packaged seafood products $1,008M' , 'To Other Provinces $37M' , 19648,'$19.65 M'],
+[ 'Processed fluid milk and milk products $101M' , 'To Other Provinces $37M' , 9276,'$9.28 M'],
+[ 'Fresh and frozen poultry of all etc. $89M' , 'To Other Provinces $37M' , 3884,'$3.88 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $23M' , 'To Other Provinces $37M' , 1801,'$1.80 M'],
+[ 'Softwood lumber $40M' , 'To Other Provinces $37M' , 1754,'$1.75 M'],
+[ 'Wood chips $5M' , 'To Other Provinces $37M' , 400,'$0.40 M'],
+[ 'Seafood product preparation and etc. $1,214M' , 'Other Output Products $326M' , 273107,'$273.11 M'],
+[ 'Other Input Products $325M' , 'Seafood product preparation and etc. $1,214M' , 255749,'$255.75 M'],
+[ 'Other Input Products $325M' , 'Dairy product manufacturing $82M' , 29563,'$29.56 M'],
+[ 'Dairy product manufacturing $82M' , 'Other Output Products $326M' , 12626,'$12.63 M'],
+[ 'Other Input Products $325M' , 'Meat product manufacturing $69M' , 23873,'$23.87 M'],
+[ 'Meat product manufacturing $69M' , 'Other Output Products $326M' , 14387,'$14.39 M'],
+[ 'Sawmills and wood preservation $34M' , 'Other Output Products $326M' , 8282,'$8.28 M'],
+[ 'Other Input Products $325M' , 'Sawmills and wood preservation $34M' , 7840,'$7.84 M'],
+[ 'Crop production  $18M' , 'Other Output Products $326M' , 7599,'$7.60 M'],
+[ 'Other Input Products $325M' , 'Crop production  $18M' , 3613,'$3.61 M'],
+[ 'Greenhouse, nursery and floriculture etc. $10M' , 'Other Output Products $326M' , 9994,'$9.99 M'],
+[ 'Other Input Products $325M' , 'Greenhouse, nursery and floriculture etc. $10M' , 4617,'$4.62 M'],
+];
+
+<!-- Northwest Territories -->  
+dataNT = [
+[ 'Wages and salaries $<0.5M' , 'Sawmills and wood preservation $1M' , 220,'$0.22 M'],
+[ 'Logs and bolts $<0.5M' , 'Sawmills and wood preservation $1M' , 60,'$0.06 M'],
+[ 'Sawmills and wood preservation $1M' , 'Other Output Products $1M' , 637,'$0.64 M'],
+[ 'Other Input Products $1M' , 'Sawmills and wood preservation $1M' , 357,'$0.36 M'],
+];
+
+<!-- Nova Scotia -->  
+dataNS = [
+[ 'Gross operating surplus $77M' , 'Seafood product preparation and etc. $1,068M' , 58668,'$58.67 M'],
+[ 'Gross operating surplus $77M' , 'Crop production  $183M' , 14619,'$14.62 M'],
+[ 'Gross operating surplus $77M' , 'Greenhouse, nursery and floriculture etc. $52M' , 3625,'$3.63 M'],
+[ 'Wages and salaries $324M' , 'Seafood product preparation and etc. $1,068M' , 176929,'$176.93 M'],
+[ 'Wages and salaries $324M' , 'Sawmills and wood preservation $284M' , 40807,'$40.81 M'],
+[ 'Wages and salaries $324M' , 'Dairy product manufacturing $246M' , 29997,'$30.00 M'],
+[ 'Wages and salaries $324M' , 'Crop production  $183M' , 37355,'$37.35 M'],
+[ 'Wages and salaries $324M' , 'Meat product manufacturing $160M' , 17934,'$17.93 M'],
+[ 'Wages and salaries $324M' , 'Greenhouse, nursery and floriculture etc. $52M' , 20985,'$20.98 M'],
+[ 'Seafood product preparation and etc. $1,068M' , 'Prepared and packaged seafood products $749M' , 638602,'$638.60 M'],
+[ 'Fish, crustaceans, shellfish ... $491M' , 'Seafood product preparation and etc. $1,068M' , 491200,'$491.20 M'],
+[ 'Wholesale margins - food, beverages  etc. $60M' , 'Seafood product preparation and etc. $1,068M' , 59713,'$59.71 M'],
+[ 'Prepared and packaged seafood products $43M' , 'Seafood product preparation and etc. $1,068M' , 43140,'$43.14 M'],
+[ 'Prepared and packaged seafood products $749M' , 'International exports $697M' , 607071,'$607.07 M'],
+[ 'Softwood lumber $199M' , 'International exports $697M' , 72248,'$72.25 M'],
+[ 'Nursery and floriculture products $98M' , 'International exports $697M' , 17750,'$17.75 M'],
+[ 'Sawmills and wood preservation $284M' , 'Softwood lumber $199M' , 159412,'$159.41 M'],
+[ 'Custom work services for forestry $70M' , 'Sawmills and wood preservation $284M' , 69757,'$69.76 M'],
+[ 'Sawmills and wood preservation $284M' , 'Wood chips $96M' , 46674,'$46.67 M'],
+[ 'Sawmills and wood preservation $284M' , 'Other sawmill products and treated wood etc. $87M' , 38520,'$38.52 M'],
+[ 'Logs and bolts $30M' , 'Sawmills and wood preservation $284M' , 29741,'$29.74 M'],
+[ 'Support services for forestry $23M' , 'Sawmills and wood preservation $284M' , 22654,'$22.65 M'],
+[ 'Head office services  $15M' , 'Sawmills and wood preservation $284M' , 15065,'$15.06 M'],
+[ 'Softwood lumber $15M' , 'Sawmills and wood preservation $284M' , 15033,'$15.03 M'],
+[ 'Unprocessed fluid milk $114M' , 'Dairy product manufacturing $246M' , 114010,'$114.01 M'],
+[ 'Dairy product manufacturing $246M' , 'Processed fluid milk and milk products $231M' , 108962,'$108.96 M'],
+[ 'Dairy product manufacturing $246M' , 'Cheese and cheese products $143M' , 54467,'$54.47 M'],
+[ 'Dairy product manufacturing $246M' , 'Ice cream, sherbet and similar frozen etc. $51M' , 46700,'$46.70 M'],
+[ 'Processed fluid milk and milk products $25M' , 'Dairy product manufacturing $246M' , 25238,'$25.24 M'],
+[ 'Crop production  $183M' , 'Imputed feed  $30M' , 30228,'$30.23 M'],
+[ 'Support services for crop production $15M' , 'Crop production  $183M' , 15244,'$15.24 M'],
+[ 'Ammonia and chemical fertilizers $12M' , 'Crop production  $183M' , 12257,'$12.26 M'],
+[ 'Pesticides ... $9M' , 'Crop production  $183M' , 8635,'$8.63 M'],
+[ 'Imputed fertilizer  $8M' , 'Crop production  $183M' , 7691,'$7.69 M'],
+[ 'Truck transportation services for specialized etc. $6M' , 'Crop production  $183M' , 6207,'$6.21 M'],
+[ 'Gross mixed income $6M' , 'Crop production  $183M' , 5553,'$5.55 M'],
+[ 'Diesel and biodiesel fuels $5M' , 'Crop production  $183M' , 5175,'$5.17 M'],
+[ 'Wholesale margins - miscellaneous etc. $5M' , 'Crop production  $183M' , 4753,'$4.75 M'],
+[ 'Meat product manufacturing $160M' , 'Fresh and frozen poultry of all etc. $217M' , 119695,'$119.69 M'],
+[ 'Poultry $83M' , 'Meat product manufacturing $160M' , 82609,'$82.61 M'],
+[ 'From Other Provinces $118M' , 'Processed fluid milk and milk products $231M' , 39090,'$39.09 M'],
+[ 'From Other Provinces $118M' , 'Prepared and packaged seafood products $749M' , 22076,'$22.08 M'],
+[ 'From Other Provinces $118M' , 'Cheese and cheese products $143M' , 18579,'$18.58 M'],
+[ 'From Other Provinces $118M' , 'Fresh and frozen poultry of all etc. $217M' , 16664,'$16.66 M'],
+[ 'From Other Provinces $118M' , 'Softwood lumber $199M' , 8123,'$8.12 M'],
+[ 'From Other Provinces $118M' , 'Wood chips $96M' , 6588,'$6.59 M'],
+[ 'From Other Provinces $118M' , 'Other sawmill products and treated wood etc. $87M' , 5161,'$5.16 M'],
+[ 'From Other Provinces $118M' , 'Ice cream, sherbet and similar frozen etc. $51M' , 1844,'$1.84 M'],
+[ 'From Other Provinces $118M' , 'Nursery and floriculture products $98M' , 12,'$0.01 M'],
+[ 'Fresh and frozen poultry of all etc. $217M' , 'Ontario $117M' , 61258,'$61.26 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $51M' , 'Ontario $117M' , 17817,'$17.82 M'],
+[ 'Cheese and cheese products $143M' , 'Ontario $117M' , 17766,'$17.77 M'],
+[ 'Processed fluid milk and milk products $231M' , 'Ontario $117M' , 12538,'$12.54 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'Ontario $117M' , 7604,'$7.60 M'],
+[ 'Quebec $114M' , 'Processed fluid milk and milk products $231M' , 51117,'$51.12 M'],
+[ 'Quebec $114M' , 'Cheese and cheese products $143M' , 34847,'$34.85 M'],
+[ 'Quebec $114M' , 'Fresh and frozen poultry of all etc. $217M' , 27714,'$27.71 M'],
+[ 'Ontario $110M' , 'Processed fluid milk and milk products $231M' , 30207,'$30.21 M'],
+[ 'Ontario $110M' , 'Cheese and cheese products $143M' , 30089,'$30.09 M'],
+[ 'Ontario $110M' , 'Fresh and frozen poultry of all etc. $217M' , 20162,'$20.16 M'],
+[ 'Ontario $110M' , 'Nursery and floriculture products $98M' , 15038,'$15.04 M'],
+[ 'Ontario $110M' , 'Wood chips $96M' , 11541,'$11.54 M'],
+[ 'Ontario $110M' , 'Ice cream, sherbet and similar frozen etc. $51M' , 2536,'$2.54 M'],
+[ 'New Brunswick $99M' , 'Nursery and floriculture products $98M' , 31982,'$31.98 M'],
+[ 'New Brunswick $99M' , 'Wood chips $96M' , 31069,'$31.07 M'],
+[ 'New Brunswick $99M' , 'Softwood lumber $199M' , 18711,'$18.71 M'],
+[ 'New Brunswick $99M' , 'Other sawmill products and treated wood etc. $87M' , 16950,'$16.95 M'],
+[ 'Fresh and frozen poultry of all etc. $217M' , 'Quebec $99M' , 43405,'$43.41 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'Quebec $99M' , 21047,'$21.05 M'],
+[ 'Processed fluid milk and milk products $231M' , 'Quebec $99M' , 18791,'$18.79 M'],
+[ 'Cheese and cheese products $143M' , 'Quebec $99M' , 9979,'$9.98 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $51M' , 'Quebec $99M' , 5418,'$5.42 M'],
+[ 'International imports $98M' , 'Prepared and packaged seafood products $749M' , 87871,'$87.87 M'],
+[ 'International imports $98M' , 'Softwood lumber $199M' , 10317,'$10.32 M'],
+[ 'Wood chips $96M' , 'Pulp, paper and paperboard mills $94M' , 93956,'$93.96 M'],
+[ 'Prepared and packaged seafood products $749M' , 'Other Industries $74M' , 25840,'$25.84 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'Other Industries $74M' , 19454,'$19.45 M'],
+[ 'Softwood lumber $199M' , 'Other Industries $74M' , 16867,'$16.87 M'],
+[ 'Nursery and floriculture products $98M' , 'Other Industries $74M' , 10824,'$10.82 M'],
+[ 'Processed fluid milk and milk products $231M' , 'Other Industries $74M' , 5446,'$5.45 M'],
+[ 'Cheese and cheese products $143M' , 'Other Industries $74M' , 3448,'$3.45 M'],
+[ 'Wood chips $96M' , 'Other Industries $74M' , 1605,'$1.60 M'],
+[ 'Processed fluid milk and milk products $231M' , 'Food services and drinking places $65M' , 29163,'$29.16 M'],
+[ 'Fresh and frozen poultry of all etc. $217M' , 'Food services and drinking places $65M' , 20664,'$20.66 M'],
+[ 'Cheese and cheese products $143M' , 'Food services and drinking places $65M' , 10066,'$10.07 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $51M' , 'Food services and drinking places $65M' , 5434,'$5.43 M'],
+[ 'Softwood lumber $199M' , 'Residential building construction $58M' , 40146,'$40.15 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'Residential building construction $58M' , 17498,'$17.50 M'],
+[ 'Greenhouse, nursery and floriculture etc. $52M' , 'Nursery and floriculture products $98M' , 42737,'$42.74 M'],
+[ 'Fresh vegetables  $3M' , 'Greenhouse, nursery and floriculture etc. $52M' , 3110,'$3.11 M'],
+[ 'Imputed feed  $30M' , 'Animal production  $30M' , 30228,'$30.23 M'],
+[ 'Nursery and floriculture products $98M' , 'Newfoundland and Labrador $29M' , 21195,'$21.20 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'Newfoundland and Labrador $29M' , 8079,'$8.08 M'],
+[ 'Nursery and floriculture products $98M' , 'Non-residential building construction $28M' , 28442,'$28.44 M'],
+[ 'British Columbia $21M' , 'Fresh and frozen poultry of all etc. $217M' , 21233,'$21.23 M'],
+[ 'Processed fluid milk and milk products $231M' , 'British Columbia $15M' , 9417,'$9.42 M'],
+[ 'Cheese and cheese products $143M' , 'British Columbia $15M' , 5912,'$5.91 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $51M' , 'New Brunswick $7M' , 7014,'$7.01 M'],
+[ 'Cheese and cheese products $143M' , 'Alberta $7M' , 6853,'$6.85 M'],
+[ 'Softwood lumber $199M' , 'To Other Provinces $146M' , 53729,'$53.73 M'],
+[ 'Prepared and packaged seafood products $749M' , 'To Other Provinces $146M' , 40576,'$40.58 M'],
+[ 'Processed fluid milk and milk products $231M' , 'To Other Provinces $146M' , 13997,'$14.00 M'],
+[ 'Fresh and frozen poultry of all etc. $217M' , 'To Other Provinces $146M' , 13328,'$13.33 M'],
+[ 'Cheese and cheese products $143M' , 'To Other Provinces $146M' , 9356,'$9.36 M'],
+[ 'Other sawmill products and treated wood etc. $87M' , 'To Other Provinces $146M' , 8883,'$8.88 M'],
+[ 'Ice cream, sherbet and similar frozen etc. $51M' , 'To Other Provinces $146M' , 5429,'$5.43 M'],
+[ 'Wood chips $96M' , 'To Other Provinces $146M' , 400,'$0.40 M'],
+[ 'Nursery and floriculture products $98M' , 'To Other Provinces $146M' , 343,'$0.34 M'],
+[ 'Seafood product preparation and etc. $1,068M' , 'Other Output Products $706M' , 429106,'$429.11 M'],
+[ 'Other Input Products $556M' , 'Seafood product preparation and etc. $1,068M' , 238474,'$238.47 M'],
+[ 'Other Input Products $556M' , 'Sawmills and wood preservation $284M' , 91203,'$91.20 M'],
+[ 'Sawmills and wood preservation $284M' , 'Other Output Products $706M' , 39546,'$39.55 M'],
+[ 'Other Input Products $556M' , 'Dairy product manufacturing $246M' , 76544,'$76.54 M'],
+[ 'Dairy product manufacturing $246M' , 'Other Output Products $706M' , 34903,'$34.90 M'],
+[ 'Crop production  $183M' , 'Other Output Products $706M' , 152696,'$152.70 M'],
+[ 'Other Input Products $556M' , 'Crop production  $183M' , 65761,'$65.76 M'],
+[ 'Other Input Products $556M' , 'Meat product manufacturing $160M' , 59892,'$59.89 M'],
+[ 'Meat product manufacturing $160M' , 'Other Output Products $706M' , 40706,'$40.71 M'],
+[ 'Other Input Products $556M' , 'Greenhouse, nursery and floriculture etc. $52M' , 24208,'$24.21 M'],
+[ 'Greenhouse, nursery and floriculture etc. $52M' , 'Other Output Products $706M' , 9139,'$9.14 M'],
+];
+
+<!-- Nunavut -->  
+dataNU = [
+[ 'Gross operating surplus $1M' , 'Seafood product preparation and etc. $14M' , 1189,'$1.19 M'],
+[ 'Wages and salaries $3M' , 'Seafood product preparation and etc. $14M' , 3481,'$3.48 M'],
+[ 'Employers\' social contributions $1M' , 'Seafood product preparation and etc. $14M' , 940,'$0.94 M'],
+[ 'Seafood product preparation and etc. $14M' , 'Prepared and packaged seafood products $10M' , 10286,'$10.29 M'],
+[ 'Fish, crustaceans, shellfish ... $2M' , 'Seafood product preparation and etc. $14M' , 1614,'$1.61 M'],
+[ 'Retail margins - food and beverages $1M' , 'Seafood product preparation and etc. $14M' , 1458,'$1.46 M'],
+[ 'Air freight transportation services $1M' , 'Seafood product preparation and etc. $14M' , 1151,'$1.15 M'],
+[ 'Prepared and packaged seafood products $10M' , 'British Columbia $4M' , 4428,'$4.43 M'],
+[ 'Prepared and packaged seafood products $10M' , 'Alberta $4M' , 3995,'$4.00 M'],
+[ 'Prepared and packaged seafood products $10M' , 'Other Industries $1M' , 793,'$0.79 M'],
+[ 'Other Input Products $4M' , 'Seafood product preparation and etc. $14M' , 4471,'$4.47 M'],
+[ 'Seafood product preparation and etc. $14M' , 'Other Output Products $4M' , 3996,'$4.00 M'],
+];
+
+<!-- Ontario -->  
+dataON = [
+[ 'Gross operating surplus $2,764M' , 'Meat product manufacturing $10,299M' , 1062815,'$1,062.82 M'],
+[ 'Gross operating surplus $2,764M' , 'Crop production  $6,160M' , 984317,'$984.32 M'],
+[ 'Gross operating surplus $2,764M' , 'Dairy product manufacturing $5,047M' , 363937,'$363.94 M'],
+[ 'Gross operating surplus $2,764M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 260526,'$260.53 M'],
+[ 'Gross operating surplus $2,764M' , 'Sawmills and wood preservation $1,241M' , 78450,'$78.45 M'],
+[ 'Gross operating surplus $2,764M' , 'Seafood product preparation and etc. $197M' , 14274,'$14.27 M'],
+[ 'Wages and salaries $2,854M' , 'Meat product manufacturing $10,299M' , 986357,'$986.36 M'],
+[ 'Employers\' social contributions $518M' , 'Meat product manufacturing $10,299M' , 260594,'$260.59 M'],
+[ 'Wages and salaries $2,854M' , 'Crop production  $6,160M' , 629935,'$629.93 M'],
+[ 'Wages and salaries $2,854M' , 'Dairy product manufacturing $5,047M' , 471565,'$471.56 M'],
+[ 'Employers\' social contributions $518M' , 'Dairy product manufacturing $5,047M' , 203526,'$203.53 M'],
+[ 'Wages and salaries $2,854M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 538433,'$538.43 M'],
+[ 'Wages and salaries $2,854M' , 'Sawmills and wood preservation $1,241M' , 198628,'$198.63 M'],
+[ 'Employers\' social contributions $518M' , 'Sawmills and wood preservation $1,241M' , 53951,'$53.95 M'],
+[ 'Wages and salaries $2,854M' , 'Seafood product preparation and etc. $197M' , 28787,'$28.79 M'],
+[ 'Taxes on production $184M' , 'Crop production  $6,160M' , 183979,'$183.98 M'],
+[ 'Meat product manufacturing $10,299M' , 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 2922483,'$2,922.48 M'],
+[ 'Meat product manufacturing $10,299M' , 'Fresh and frozen poultry of all etc. $3,994M' , 2595988,'$2,595.99 M'],
+[ 'Meat product manufacturing $10,299M' , 'Fresh and frozen beef and veal $3,617M' , 2200210,'$2,200.21 M'],
+[ 'Cattle and calves $2,112M' , 'Meat product manufacturing $10,299M' , 2112220,'$2,112.22 M'],
+[ 'Meat product manufacturing $10,299M' , 'Fresh and frozen pork $2,658M' , 1891426,'$1,891.43 M'],
+[ 'Fresh and frozen poultry of all etc. $1,200M' , 'Meat product manufacturing $10,299M' , 1200007,'$1,200.01 M'],
+[ 'Hogs $1,044M' , 'Meat product manufacturing $10,299M' , 1044261,'$1,044.26 M'],
+[ 'Poultry $751M' , 'Meat product manufacturing $10,299M' , 751419,'$751.42 M'],
+[ 'Fresh and frozen beef and veal $443M' , 'Meat product manufacturing $10,299M' , 442906,'$442.91 M'],
+[ 'Fresh and frozen pork $268M' , 'Meat product manufacturing $10,299M' , 268359,'$268.36 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $254M' , 'Meat product manufacturing $10,299M' , 253594,'$253.59 M'],
+[ 'Crop production  $6,160M' , 'Grains  $2,156M' , 1631332,'$1,631.33 M'],
+[ 'Crop production  $6,160M' , 'Oilseeds  $1,836M' , 1482400,'$1,482.40 M'],
+[ 'Gross mixed income $1,188M' , 'Crop production  $6,160M' , 1056669,'$1,056.67 M'],
+[ 'Crop production  $6,160M' , 'Imputed feed  $1,005M' , 1004547,'$1,004.55 M'],
+[ 'Ammonia and chemical fertilizers $506M' , 'Crop production  $6,160M' , 450209,'$450.21 M'],
+[ 'Support services for crop production $418M' , 'Crop production  $6,160M' , 417717,'$417.72 M'],
+[ 'Pesticides ... $236M' , 'Crop production  $6,160M' , 236146,'$236.15 M'],
+[ 'Potash $202M' , 'Crop production  $6,160M' , 201779,'$201.78 M'],
+[ 'Wholesale margins - miscellaneous etc. $167M' , 'Crop production  $6,160M' , 167494,'$167.49 M'],
+[ 'Unprocessed fluid milk $2,164M' , 'Dairy product manufacturing $5,047M' , 2163587,'$2,163.59 M'],
+[ 'Dairy product manufacturing $5,047M' , 'Cheese and cheese products $3,039M' , 1818704,'$1,818.70 M'],
+[ 'Dairy product manufacturing $5,047M' , 'Processed fluid milk and milk products $2,963M' , 1564200,'$1,564.20 M'],
+[ 'Dairy product manufacturing $5,047M' , 'Butter and dry and canned dairy etc. $1,296M' , 747982,'$747.98 M'],
+[ 'Processed fluid milk and milk products $294M' , 'Dairy product manufacturing $5,047M' , 294343,'$294.34 M'],
+[ 'Cheese and cheese products $212M' , 'Dairy product manufacturing $5,047M' , 212127,'$212.13 M'],
+[ 'Fresh and frozen beef and veal $3,617M' , 'Food services and drinking places $3,728M' , 1219219,'$1,219.22 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'Food services and drinking places $3,728M' , 574282,'$574.28 M'],
+[ 'Processed fluid milk and milk products $2,963M' , 'Food services and drinking places $3,728M' , 545330,'$545.33 M'],
+[ 'Fresh and frozen pork $2,658M' , 'Food services and drinking places $3,728M' , 529011,'$529.01 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'Food services and drinking places $3,728M' , 392171,'$392.17 M'],
+[ 'Butter and dry and canned dairy etc. $1,296M' , 'Food services and drinking places $3,728M' , 283642,'$283.64 M'],
+[ 'Cheese and cheese products $3,039M' , 'Food services and drinking places $3,728M' , 184607,'$184.61 M'],
+[ 'Quebec $3,448M' , 'Processed fluid milk and milk products $2,963M' , 779098,'$779.10 M'],
+[ 'Quebec $3,448M' , 'Fresh and frozen poultry of all etc. $3,994M' , 721457,'$721.46 M'],
+[ 'Quebec $3,448M' , 'Cheese and cheese products $3,039M' , 644278,'$644.28 M'],
+[ 'Quebec $3,448M' , 'Softwood lumber $1,276M' , 386107,'$386.11 M'],
+[ 'Quebec $3,448M' , 'Fresh and frozen pork $2,658M' , 305176,'$305.18 M'],
+[ 'Quebec $3,448M' , 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 264587,'$264.59 M'],
+[ 'Quebec $3,448M' , 'Butter and dry and canned dairy etc. $1,296M' , 194919,'$194.92 M'],
+[ 'Quebec $3,448M' , 'Grains  $2,156M' , 151929,'$151.93 M'],
+[ 'International imports $2,968M' , 'Fresh and frozen beef and veal $3,617M' , 893084,'$893.08 M'],
+[ 'International imports $2,968M' , 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 567720,'$567.72 M'],
+[ 'International imports $2,968M' , 'Grains  $2,156M' , 372260,'$372.26 M'],
+[ 'International imports $2,968M' , 'Fresh and frozen poultry of all etc. $3,994M' , 313401,'$313.40 M'],
+[ 'International imports $2,968M' , 'Oilseeds  $1,836M' , 277249,'$277.25 M'],
+[ 'International imports $2,968M' , 'Nursery and floriculture products $1,193M' , 259079,'$259.08 M'],
+[ 'International imports $2,968M' , 'Butter and dry and canned dairy etc. $1,296M' , 195576,'$195.58 M'],
+[ 'International imports $2,968M' , 'Other sawmill products and treated wood etc. $457M' , 89962,'$89.96 M'],
+[ 'Oilseeds  $1,836M' , 'International exports $2,965M' , 1044355,'$1,044.36 M'],
+[ 'Fresh and frozen pork $2,658M' , 'International exports $2,965M' , 470129,'$470.13 M'],
+[ 'Fresh and frozen beef and veal $3,617M' , 'International exports $2,965M' , 412852,'$412.85 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'International exports $2,965M' , 369619,'$369.62 M'],
+[ 'Softwood lumber $1,276M' , 'International exports $2,965M' , 335731,'$335.73 M'],
+[ 'Nursery and floriculture products $1,193M' , 'International exports $2,965M' , 223223,'$223.22 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'International exports $2,965M' , 108974,'$108.97 M'],
+[ 'Greenhouse, nursery and floriculture etc. $2,011M' , 'Nursery and floriculture products $1,193M' , 881643,'$881.64 M'],
+[ 'Gross mixed income $1,188M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 131812,'$131.81 M'],
+[ 'Fresh vegetables  $111M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 110790,'$110.79 M'],
+[ 'Textile products, n.e.c. $76M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 76382,'$76.38 M'],
+[ 'Paperboard containers $70M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 69857,'$69.86 M'],
+[ 'Ammonia and chemical fertilizers $506M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 55576,'$55.58 M'],
+[ 'From Other Provinces $1,720M' , 'Processed fluid milk and milk products $2,963M' , 487278,'$487.28 M'],
+[ 'From Other Provinces $1,720M' , 'Fresh and frozen poultry of all etc. $3,994M' , 350446,'$350.45 M'],
+[ 'From Other Provinces $1,720M' , 'Cheese and cheese products $3,039M' , 308361,'$308.36 M'],
+[ 'From Other Provinces $1,720M' , 'Softwood lumber $1,276M' , 152871,'$152.87 M'],
+[ 'From Other Provinces $1,720M' , 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 150089,'$150.09 M'],
+[ 'From Other Provinces $1,720M' , 'Butter and dry and canned dairy etc. $1,296M' , 91503,'$91.50 M'],
+[ 'From Other Provinces $1,720M' , 'Fresh and frozen pork $2,658M' , 66219,'$66.22 M'],
+[ 'From Other Provinces $1,720M' , 'Other sawmill products and treated wood etc. $457M' , 61365,'$61.37 M'],
+[ 'From Other Provinces $1,720M' , 'Fresh and frozen beef and veal $3,617M' , 44019,'$44.02 M'],
+[ 'From Other Provinces $1,720M' , 'Wood chips $211M' , 4127,'$4.13 M'],
+[ 'From Other Provinces $1,720M' , 'Nursery and floriculture products $1,193M' , 4076,'$4.08 M'],
+[ 'From Other Provinces $1,720M' , 'Grains  $2,156M' , 10,'$0.01 M'],
+[ 'Cheese and cheese products $3,039M' , 'Quebec $1,485M' , 554634,'$554.63 M'],
+[ 'Processed fluid milk and milk products $2,963M' , 'Quebec $1,485M' , 263168,'$263.17 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'Quebec $1,485M' , 203247,'$203.25 M'],
+[ 'Fresh and frozen pork $2,658M' , 'Quebec $1,485M' , 187516,'$187.52 M'],
+[ 'Butter and dry and canned dairy etc. $1,296M' , 'Quebec $1,485M' , 167731,'$167.73 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'Quebec $1,485M' , 81088,'$81.09 M'],
+[ 'Other sawmill products and treated wood etc. $457M' , 'Quebec $1,485M' , 27999,'$28.00 M'],
+[ 'Sawmills and wood preservation $1,241M' , 'Softwood lumber $1,276M' , 553611,'$553.61 M'],
+[ 'Custom work services for forestry $347M' , 'Sawmills and wood preservation $1,241M' , 347326,'$347.33 M'],
+[ 'Sawmills and wood preservation $1,241M' , 'Other sawmill products and treated wood etc. $457M' , 296683,'$296.68 M'],
+[ 'Sawmills and wood preservation $1,241M' , 'Wood chips $211M' , 138687,'$138.69 M'],
+[ 'Softwood lumber $100M' , 'Sawmills and wood preservation $1,241M' , 100258,'$100.26 M'],
+[ 'Logs and bolts $94M' , 'Sawmills and wood preservation $1,241M' , 94068,'$94.07 M'],
+[ 'Grains  $2,156M' , 'Other Industries $1,230M' , 305595,'$305.60 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'Other Industries $1,230M' , 171214,'$171.21 M'],
+[ 'Butter and dry and canned dairy etc. $1,296M' , 'Other Industries $1,230M' , 165631,'$165.63 M'],
+[ 'Processed fluid milk and milk products $2,963M' , 'Other Industries $1,230M' , 144190,'$144.19 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'Other Industries $1,230M' , 143561,'$143.56 M'],
+[ 'Softwood lumber $1,276M' , 'Other Industries $1,230M' , 127994,'$127.99 M'],
+[ 'Cheese and cheese products $3,039M' , 'Other Industries $1,230M' , 114899,'$114.90 M'],
+[ 'Other sawmill products and treated wood etc. $457M' , 'Other Industries $1,230M' , 106467,'$106.47 M'],
+[ 'Fresh and frozen beef and veal $3,617M' , 'Other Industries $1,230M' , 2634,'$2.63 M'],
+[ 'Wood chips $211M' , 'Other Industries $1,230M' , 80,'$0.08 M'],
+[ 'Imputed feed  $1,005M' , 'Animal production  $1,005M' , 1004547,'$1,004.55 M'],
+[ 'Oilseeds  $1,836M' , 'Grain and oilseed milling $932M' , 582343,'$582.34 M'],
+[ 'Grains  $2,156M' , 'Grain and oilseed milling $932M' , 349698,'$349.70 M'],
+[ 'Softwood lumber $1,276M' , 'Residential building construction $895M' , 445828,'$445.83 M'],
+[ 'Other sawmill products and treated wood etc. $457M' , 'Residential building construction $895M' , 282827,'$282.83 M'],
+[ 'Nursery and floriculture products $1,193M' , 'Residential building construction $895M' , 165936,'$165.94 M'],
+[ 'Grains  $2,156M' , 'Animal food manufacturing $699M' , 459574,'$459.57 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'Animal food manufacturing $699M' , 239273,'$239.27 M'],
+[ 'Cheese and cheese products $3,039M' , 'British Columbia $598M' , 149240,'$149.24 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'British Columbia $598M' , 135829,'$135.83 M'],
+[ 'Processed fluid milk and milk products $2,963M' , 'British Columbia $598M' , 124217,'$124.22 M'],
+[ 'Nursery and floriculture products $1,193M' , 'British Columbia $598M' , 98661,'$98.66 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'British Columbia $598M' , 89557,'$89.56 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'Alberta $549M' , 262685,'$262.69 M'],
+[ 'Cheese and cheese products $3,039M' , 'Alberta $549M' , 147647,'$147.65 M'],
+[ 'Fresh and frozen pork $2,658M' , 'Alberta $549M' , 139058,'$139.06 M'],
+[ 'Alberta $480M' , 'Fresh and frozen beef and veal $3,617M' , 479814,'$479.81 M'],
+[ 'Grains  $2,156M' , 'Basic chemical manufacturing $440M' , 440254,'$440.25 M'],
+[ 'Manitoba $339M' , 'Fresh and frozen pork $2,658M' , 267188,'$267.19 M'],
+[ 'Manitoba $339M' , 'Oilseeds  $1,836M' , 71763,'$71.76 M'],
+[ 'Nursery and floriculture products $1,193M' , 'Non-residential building construction $281M' , 281432,'$281.43 M'],
+[ 'Fish, crustaceans, shellfish ... $80M' , 'Seafood product preparation and etc. $197M' , 79815,'$79.81 M'],
+[ 'Wholesale margins - food, beverages  etc. $9M' , 'Seafood product preparation and etc. $197M' , 9066,'$9.07 M'],
+[ 'Softwood lumber $1,276M' , 'Other wood product manufacturing $186M' , 186038,'$186.04 M'],
+[ 'Wood chips $211M' , 'Pulp, paper and paperboard mills $158M' , 158243,'$158.24 M'],
+[ 'Fresh and frozen beef and veal $3,617M' , 'To Other Provinces $2,232M' , 504805,'$504.81 M'],
+[ 'Grains  $2,156M' , 'To Other Provinces $2,232M' , 465810,'$465.81 M'],
+[ 'Fresh and frozen pork $2,658M' , 'To Other Provinces $2,232M' , 249703,'$249.70 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $3,940M' , 'To Other Provinces $2,232M' , 187381,'$187.38 M'],
+[ 'Processed fluid milk and milk products $2,963M' , 'To Other Provinces $2,232M' , 175369,'$175.37 M'],
+[ 'Fresh and frozen poultry of all etc. $3,994M' , 'To Other Provinces $2,232M' , 152174,'$152.17 M'],
+[ 'Cheese and cheese products $3,039M' , 'To Other Provinces $2,232M' , 135095,'$135.09 M'],
+[ 'Nursery and floriculture products $1,193M' , 'To Other Provinces $2,232M' , 103030,'$103.03 M'],
+[ 'Butter and dry and canned dairy etc. $1,296M' , 'To Other Provinces $2,232M' , 79567,'$79.57 M'],
+[ 'Oilseeds  $1,836M' , 'To Other Provinces $2,232M' , 75773,'$75.77 M'],
+[ 'Wood chips $211M' , 'To Other Provinces $2,232M' , 52962,'$52.96 M'],
+[ 'Softwood lumber $1,276M' , 'To Other Provinces $2,232M' , 45168,'$45.17 M'],
+[ 'Other sawmill products and treated wood etc. $457M' , 'To Other Provinces $2,232M' , 5121,'$5.12 M'],
+[ 'Other Input Products $6,288M' , 'Meat product manufacturing $10,299M' , 1916514,'$1,916.51 M'],
+[ 'Meat product manufacturing $10,299M' , 'Other Output Products $5,213M' , 681716,'$681.72 M'],
+[ 'Crop production  $6,160M' , 'Other Output Products $5,213M' , 2037416,'$2,037.42 M'],
+[ 'Other Input Products $6,288M' , 'Crop production  $6,160M' , 1831689,'$1,831.69 M'],
+[ 'Other Input Products $6,288M' , 'Dairy product manufacturing $5,047M' , 1338414,'$1,338.41 M'],
+[ 'Dairy product manufacturing $5,047M' , 'Other Output Products $5,213M' , 917689,'$917.69 M'],
+[ 'Greenhouse, nursery and floriculture etc. $2,011M' , 'Other Output Products $5,213M' , 1128757,'$1,128.76 M'],
+[ 'Other Input Products $6,288M' , 'Greenhouse, nursery and floriculture etc. $2,011M' , 767729,'$767.73 M'],
+[ 'Other Input Products $6,288M' , 'Sawmills and wood preservation $1,241M' , 368573,'$368.57 M'],
+[ 'Sawmills and wood preservation $1,241M' , 'Other Output Products $5,213M' , 251307,'$251.31 M'],
+[ 'Seafood product preparation and etc. $197M' , 'Other Output Products $5,213M' , 196567,'$196.57 M'],
+[ 'Other Input Products $6,288M' , 'Seafood product preparation and etc. $197M' , 64900,'$64.90 M'],
+];
+
+<!-- Prince Edward Island -->  
+dataPE = [
+[ 'Gross operating surplus $95M' , 'Seafood product preparation and etc. $380M' , 29376,'$29.38 M'],
+[ 'Gross operating surplus $95M' , 'Crop production  $341M' , 35698,'$35.70 M'],
+[ 'Gross operating surplus $95M' , 'Dairy product manufacturing $136M' , 27287,'$27.29 M'],
+[ 'Gross operating surplus $95M' , 'Greenhouse, nursery and floriculture etc. $10M' , 2146,'$2.15 M'],
+[ 'Gross operating surplus $95M' , 'Sawmills and wood preservation $2M' , 753,'$0.75 M'],
+[ 'Wages and salaries $119M' , 'Seafood product preparation and etc. $380M' , 40602,'$40.60 M'],
+[ 'Wages and salaries $119M' , 'Crop production  $341M' , 61417,'$61.42 M'],
+[ 'Wages and salaries $119M' , 'Dairy product manufacturing $136M' , 14357,'$14.36 M'],
+[ 'Wages and salaries $119M' , 'Greenhouse, nursery and floriculture etc. $10M' , 2302,'$2.30 M'],
+[ 'Wages and salaries $119M' , 'Sawmills and wood preservation $2M' , 295,'$0.29 M'],
+[ 'Taxes on production $14M' , 'Crop production  $341M' , 14356,'$14.36 M'],
+[ 'Seafood product preparation and etc. $380M' , 'Prepared and packaged seafood products $338M' , 324183,'$324.18 M'],
+[ 'Fish, crustaceans, shellfish ... $223M' , 'Seafood product preparation and etc. $380M' , 223248,'$223.25 M'],
+[ 'Wholesale margins - food, beverages  etc. $26M' , 'Seafood product preparation and etc. $380M' , 25533,'$25.53 M'],
+[ 'Prepared and packaged seafood products $338M' , 'International exports $355M' , 293050,'$293.05 M'],
+[ 'Fresh potatoes $240M' , 'International exports $355M' , 59365,'$59.37 M'],
+[ 'Nursery and floriculture products $9M' , 'International exports $355M' , 2834,'$2.83 M'],
+[ 'Crop production  $341M' , 'Fresh potatoes $240M' , 237951,'$237.95 M'],
+[ 'Gross mixed income $42M' , 'Crop production  $341M' , 40401,'$40.40 M'],
+[ 'Ammonia and chemical fertilizers $34M' , 'Crop production  $341M' , 33572,'$33.57 M'],
+[ 'Support services for crop production $27M' , 'Crop production  $341M' , 26664,'$26.66 M'],
+[ 'Pesticides ... $20M' , 'Crop production  $341M' , 19701,'$19.70 M'],
+[ 'Wholesale margins - miscellaneous etc. $13M' , 'Crop production  $341M' , 12695,'$12.70 M'],
+[ 'Unprocessed fluid milk $79M' , 'Dairy product manufacturing $136M' , 78889,'$78.89 M'],
+[ 'Dairy product manufacturing $136M' , 'Cheese and cheese products $65M' , 59371,'$59.37 M'],
+[ 'Dairy product manufacturing $136M' , 'Processed fluid milk and milk products $55M' , 51119,'$51.12 M'],
+[ 'Dairy product manufacturing $136M' , 'Butter and dry and canned dairy etc. $24M' , 23598,'$23.60 M'],
+[ 'Fresh potatoes $240M' , 'Fruit and vegetable preserving  etc. $133M' , 132549,'$132.55 M'],
+[ 'Processed fluid milk and milk products $55M' , 'Ontario $60M' , 36760,'$36.76 M'],
+[ 'Cheese and cheese products $65M' , 'Ontario $60M' , 16266,'$16.27 M'],
+[ 'Fresh and frozen beef and veal $61M' , 'Ontario $60M' , 7239,'$7.24 M'],
+[ 'Meat product manufacturing $53M' , 'Fresh and frozen beef and veal $61M' , 50101,'$50.10 M'],
+[ 'Cattle and calves $44M' , 'Meat product manufacturing $53M' , 43857,'$43.86 M'],
+[ 'Fresh and frozen beef and veal $61M' , 'Nova Scotia $42M' , 25515,'$25.52 M'],
+[ 'Butter and dry and canned dairy etc. $24M' , 'Nova Scotia $42M' , 16222,'$16.22 M'],
+[ 'Waste and scrap of wood and wood etc. $<0.5M' , 'Nova Scotia $42M' , 112,'$0.11 M'],
+[ 'Fresh potatoes $240M' , 'Other Industries $17M' , 7642,'$7.64 M'],
+[ 'Processed fluid milk and milk products $55M' , 'Other Industries $17M' , 4229,'$4.23 M'],
+[ 'Butter and dry and canned dairy etc. $24M' , 'Other Industries $17M' , 2851,'$2.85 M'],
+[ 'Cheese and cheese products $65M' , 'Other Industries $17M' , 1685,'$1.69 M'],
+[ 'Nursery and floriculture products $9M' , 'Other Industries $17M' , 1295,'$1.29 M'],
+[ 'Fresh and frozen beef and veal $61M' , 'Other Industries $17M' , 485,'$0.48 M'],
+[ 'Ontario $10M' , 'Fresh and frozen beef and veal $61M' , 8908,'$8.91 M'],
+[ 'Ontario $10M' , 'Nursery and floriculture products $9M' , 1312,'$1.31 M'],
+[ 'Ontario $10M' , 'Butter and dry and canned dairy etc. $24M' , 40,'$0.04 M'],
+[ 'Greenhouse, nursery and floriculture etc. $10M' , 'Nursery and floriculture products $9M' , 7447,'$7.45 M'],
+[ 'Gross mixed income $42M' , 'Greenhouse, nursery and floriculture etc. $10M' , 1678,'$1.68 M'],
+[ 'Fresh vegetables  $1M' , 'Greenhouse, nursery and floriculture etc. $10M' , 797,'$0.80 M'],
+[ 'Fresh and frozen beef and veal $61M' , 'Food services and drinking places $10M' , 9704,'$9.70 M'],
+[ 'New Brunswick $10M' , 'Prepared and packaged seafood products $338M' , 7804,'$7.80 M'],
+[ 'New Brunswick $10M' , 'Fresh potatoes $240M' , 1870,'$1.87 M'],
+[ 'Cheese and cheese products $65M' , 'Newfoundland and Labrador $9M' , 8995,'$8.99 M'],
+[ 'From Other Provinces $8M' , 'Prepared and packaged seafood products $338M' , 3145,'$3.15 M'],
+[ 'From Other Provinces $8M' , 'Fresh and frozen beef and veal $61M' , 1845,'$1.84 M'],
+[ 'From Other Provinces $8M' , 'Cheese and cheese products $65M' , 1514,'$1.51 M'],
+[ 'From Other Provinces $8M' , 'Fresh potatoes $240M' , 628,'$0.63 M'],
+[ 'From Other Provinces $8M' , 'Processed fluid milk and milk products $55M' , 539,'$0.54 M'],
+[ 'From Other Provinces $8M' , 'Nursery and floriculture products $9M' , 343,'$0.34 M'],
+[ 'From Other Provinces $8M' , 'Waste and scrap of wood and wood etc. $<0.5M' , 16,'$0.02 M'],
+[ 'Nova Scotia $4M' , 'Cheese and cheese products $65M' , 4219,'$4.22 M'],
+[ 'Nova Scotia $4M' , 'Waste and scrap of wood and wood etc. $<0.5M' , 91,'$0.09 M'],
+[ 'International imports $3M' , 'Prepared and packaged seafood products $338M' , 3208,'$3.21 M'],
+[ 'Quebec $3M' , 'Processed fluid milk and milk products $55M' , 2753,'$2.75 M'],
+[ 'Logs and bolts $1M' , 'Sawmills and wood preservation $2M' , 653,'$0.65 M'],
+[ 'Sawmills and wood preservation $2M' , 'Waste and scrap of wood and wood etc. $<0.5M' , 266,'$0.27 M'],
+[ 'Nursery and floriculture products $9M' , 'Non-residential building construction $2M' , 1562,'$1.56 M'],
+[ 'Fresh potatoes $240M' , 'To Other Provinces $99M' , 35777,'$35.78 M'],
+[ 'Cheese and cheese products $65M' , 'To Other Provinces $99M' , 27092,'$27.09 M'],
+[ 'Prepared and packaged seafood products $338M' , 'To Other Provinces $99M' , 26044,'$26.04 M'],
+[ 'Fresh and frozen beef and veal $61M' , 'To Other Provinces $99M' , 9626,'$9.63 M'],
+[ 'Other Input Products $185M' , 'Seafood product preparation and etc. $380M' , 61195,'$61.20 M'],
+[ 'Seafood product preparation and etc. $380M' , 'Other Output Products $166M' , 55549,'$55.55 M'],
+[ 'Crop production  $341M' , 'Other Output Products $166M' , 101786,'$101.79 M'],
+[ 'Other Input Products $185M' , 'Crop production  $341M' , 96097,'$96.10 M'],
+[ 'Other Input Products $185M' , 'Dairy product manufacturing $136M' , 15114,'$15.11 M'],
+[ 'Dairy product manufacturing $136M' , 'Other Output Products $166M' , 1357,'$1.36 M'],
+[ 'Other Input Products $185M' , 'Meat product manufacturing $53M' , 8671,'$8.67 M'],
+[ 'Meat product manufacturing $53M' , 'Other Output Products $166M' , 2404,'$2.40 M'],
+[ 'Other Input Products $185M' , 'Greenhouse, nursery and floriculture etc. $10M' , 2796,'$2.80 M'],
+[ 'Greenhouse, nursery and floriculture etc. $10M' , 'Other Output Products $166M' , 2260,'$2.26 M'],
+[ 'Sawmills and wood preservation $2M' , 'Other Output Products $166M' , 2181,'$2.18 M'],
+[ 'Other Input Products $185M' , 'Sawmills and wood preservation $2M' , 756,'$0.76 M'],
+];
+
+<!-- Quebec -->  
+dataQC = [
+[ 'Gross operating surplus $1,350M' , 'Dairy product manufacturing $5,516M' , 448361,'$448.36 M'],
+[ 'Gross operating surplus $1,350M' , 'Crop production  $3,516M' , 658183,'$658.18 M'],
+[ 'Gross operating surplus $1,350M' , 'Sawmills and wood preservation $3,439M' , 184580,'$184.58 M'],
+[ 'Gross operating surplus $1,350M' , 'Seafood product preparation and etc. $509M' , 28939,'$28.94 M'],
+[ 'Gross operating surplus $1,350M' , 'Greenhouse, nursery and floriculture etc. $406M' , 30063,'$30.06 M'],
+[ 'Wages and salaries $2,296M' , 'Meat product manufacturing $6,148M' , 638697,'$638.70 M'],
+[ 'Employers\' social contributions $701M' , 'Meat product manufacturing $6,148M' , 286717,'$286.72 M'],
+[ 'Wages and salaries $2,296M' , 'Dairy product manufacturing $5,516M' , 538656,'$538.66 M'],
+[ 'Employers\' social contributions $701M' , 'Dairy product manufacturing $5,516M' , 263766,'$263.77 M'],
+[ 'Wages and salaries $2,296M' , 'Crop production  $3,516M' , 445667,'$445.67 M'],
+[ 'Wages and salaries $2,296M' , 'Sawmills and wood preservation $3,439M' , 471729,'$471.73 M'],
+[ 'Employers\' social contributions $701M' , 'Sawmills and wood preservation $3,439M' , 123086,'$123.09 M'],
+[ 'Wages and salaries $2,296M' , 'Seafood product preparation and etc. $509M' , 60939,'$60.94 M'],
+[ 'Employers\' social contributions $701M' , 'Seafood product preparation and etc. $509M' , 27159,'$27.16 M'],
+[ 'Wages and salaries $2,296M' , 'Greenhouse, nursery and floriculture etc. $406M' , 140478,'$140.48 M'],
+[ 'Taxes on production $106M' , 'Crop production  $3,516M' , 105502,'$105.50 M'],
+[ 'Meat product manufacturing $6,148M' , 'Fresh and frozen pork $2,551M' , 2188564,'$2,188.56 M'],
+[ 'Meat product manufacturing $6,148M' , 'Fresh and frozen poultry of all etc. $2,274M' , 1787825,'$1,787.83 M'],
+[ 'Meat product manufacturing $6,148M' , 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 1746947,'$1,746.95 M'],
+[ 'Hogs $1,740M' , 'Meat product manufacturing $6,148M' , 1739993,'$1,739.99 M'],
+[ 'Poultry $846M' , 'Meat product manufacturing $6,148M' , 846209,'$846.21 M'],
+[ 'Cattle and calves $443M' , 'Meat product manufacturing $6,148M' , 442612,'$442.61 M'],
+[ 'Fresh and frozen poultry of all etc. $335M' , 'Meat product manufacturing $6,148M' , 335234,'$335.23 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $228M' , 'Meat product manufacturing $6,148M' , 227561,'$227.56 M'],
+[ 'Fresh and frozen pork $209M' , 'Meat product manufacturing $6,148M' , 209093,'$209.09 M'],
+[ 'Fresh and frozen beef and veal $183M' , 'Meat product manufacturing $6,148M' , 182996,'$183.00 M'],
+[ 'Dairy product manufacturing $5,516M' , 'Processed fluid milk and milk products $2,836M' , 2251937,'$2,251.94 M'],
+[ 'Unprocessed fluid milk $2,133M' , 'Dairy product manufacturing $5,516M' , 2132862,'$2,132.86 M'],
+[ 'Dairy product manufacturing $5,516M' , 'Cheese and cheese products $2,559M' , 1874462,'$1,874.46 M'],
+[ 'Processed fluid milk and milk products $244M' , 'Dairy product manufacturing $5,516M' , 243834,'$243.83 M'],
+[ 'Crop production  $3,516M' , 'Grains  $872M' , 770212,'$770.21 M'],
+[ 'Crop production  $3,516M' , 'Imputed feed  $751M' , 751160,'$751.16 M'],
+[ 'Gross mixed income $539M' , 'Crop production  $3,516M' , 539334,'$539.33 M'],
+[ 'Crop production  $3,516M' , 'Oilseeds  $648M' , 461880,'$461.88 M'],
+[ 'Ammonia and chemical fertilizers $233M' , 'Crop production  $3,516M' , 219077,'$219.08 M'],
+[ 'Support services for crop production $151M' , 'Crop production  $3,516M' , 151275,'$151.28 M'],
+[ 'Imputed fertilizer  $116M' , 'Crop production  $3,516M' , 116199,'$116.20 M'],
+[ 'Sawmills and wood preservation $3,439M' , 'Softwood lumber $2,287M' , 2003813,'$2,003.81 M'],
+[ 'Custom work services for forestry $897M' , 'Sawmills and wood preservation $3,439M' , 896800,'$896.80 M'],
+[ 'Logs and bolts $646M' , 'Sawmills and wood preservation $3,439M' , 645913,'$645.91 M'],
+[ 'Sawmills and wood preservation $3,439M' , 'Wood chips $619M' , 591440,'$591.44 M'],
+[ 'Truck transportation services for specialized etc. $105M' , 'Sawmills and wood preservation $3,439M' , 105137,'$105.14 M'],
+[ 'Fresh and frozen pork $2,551M' , 'International exports $3,267M' , 1379327,'$1,379.33 M'],
+[ 'Softwood lumber $2,287M' , 'International exports $3,267M' , 897668,'$897.67 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'International exports $3,267M' , 475204,'$475.20 M'],
+[ 'Oilseeds  $648M' , 'International exports $3,267M' , 359323,'$359.32 M'],
+[ 'Fresh and frozen poultry of all etc. $2,274M' , 'International exports $3,267M' , 155969,'$155.97 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'Ontario $3,253M' , 779098,'$779.10 M'],
+[ 'Fresh and frozen poultry of all etc. $2,274M' , 'Ontario $3,253M' , 721457,'$721.46 M'],
+[ 'Cheese and cheese products $2,559M' , 'Ontario $3,253M' , 644278,'$644.28 M'],
+[ 'Softwood lumber $2,287M' , 'Ontario $3,253M' , 386107,'$386.11 M'],
+[ 'Fresh and frozen pork $2,551M' , 'Ontario $3,253M' , 305176,'$305.18 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'Ontario $3,253M' , 264587,'$264.59 M'],
+[ 'Grains  $872M' , 'Ontario $3,253M' , 151929,'$151.93 M'],
+[ 'Softwood lumber $2,287M' , 'Other Industries $1,480M' , 472689,'$472.69 M'],
+[ 'Grains  $872M' , 'Other Industries $1,480M' , 331116,'$331.12 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'Other Industries $1,480M' , 189265,'$189.26 M'],
+[ 'Cheese and cheese products $2,559M' , 'Other Industries $1,480M' , 169478,'$169.48 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'Other Industries $1,480M' , 106051,'$106.05 M'],
+[ 'Oilseeds  $648M' , 'Other Industries $1,480M' , 100661,'$100.66 M'],
+[ 'Fresh and frozen pork $2,551M' , 'Other Industries $1,480M' , 90159,'$90.16 M'],
+[ 'Nursery and floriculture products $348M' , 'Other Industries $1,480M' , 43649,'$43.65 M'],
+[ 'Wood chips $619M' , 'Other Industries $1,480M' , 8108,'$8.11 M'],
+[ 'Ontario $1,298M' , 'Cheese and cheese products $2,559M' , 554634,'$554.63 M'],
+[ 'Ontario $1,298M' , 'Processed fluid milk and milk products $2,836M' , 263168,'$263.17 M'],
+[ 'Ontario $1,298M' , 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 203247,'$203.25 M'],
+[ 'Ontario $1,298M' , 'Fresh and frozen pork $2,551M' , 187516,'$187.52 M'],
+[ 'Ontario $1,298M' , 'Oilseeds  $648M' , 75060,'$75.06 M'],
+[ 'Ontario $1,298M' , 'Nursery and floriculture products $348M' , 14483,'$14.48 M'],
+[ 'From Other Provinces $757M' , 'Fresh and frozen poultry of all etc. $2,274M' , 207731,'$207.73 M'],
+[ 'From Other Provinces $757M' , 'Fresh and frozen pork $2,551M' , 132653,'$132.65 M'],
+[ 'From Other Provinces $757M' , 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 113182,'$113.18 M'],
+[ 'From Other Provinces $757M' , 'Softwood lumber $2,287M' , 93822,'$93.82 M'],
+[ 'From Other Provinces $757M' , 'Cheese and cheese products $2,559M' , 89950,'$89.95 M'],
+[ 'From Other Provinces $757M' , 'Processed fluid milk and milk products $2,836M' , 87597,'$87.60 M'],
+[ 'From Other Provinces $757M' , 'Grains  $872M' , 18693,'$18.69 M'],
+[ 'From Other Provinces $757M' , 'Wood chips $619M' , 7860,'$7.86 M'],
+[ 'From Other Provinces $757M' , 'Oilseeds  $648M' , 5225,'$5.22 M'],
+[ 'From Other Provinces $757M' , 'Nursery and floriculture products $348M' , 3,'$0.00 M'],
+[ 'Imputed feed  $751M' , 'Animal production  $751M' , 751160,'$751.16 M'],
+[ 'International imports $745M' , 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 536422,'$536.42 M'],
+[ 'International imports $745M' , 'Softwood lumber $2,287M' , 99617,'$99.62 M'],
+[ 'International imports $745M' , 'Grains  $872M' , 77034,'$77.03 M'],
+[ 'International imports $745M' , 'Nursery and floriculture products $348M' , 31487,'$31.49 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'Food services and drinking places $612M' , 231693,'$231.69 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'Food services and drinking places $612M' , 225519,'$225.52 M'],
+[ 'Fresh and frozen poultry of all etc. $2,274M' , 'Food services and drinking places $612M' , 155280,'$155.28 M'],
+[ 'Wood chips $619M' , 'Pulp, paper and paperboard mills $549M' , 549157,'$549.16 M'],
+[ 'Cheese and cheese products $2,559M' , 'Alberta $532M' , 222837,'$222.84 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'Alberta $532M' , 186526,'$186.53 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'Alberta $532M' , 122412,'$122.41 M'],
+[ 'Fish, crustaceans, shellfish ... $221M' , 'Seafood product preparation and etc. $509M' , 220791,'$220.79 M'],
+[ 'Prepared and packaged seafood products $57M' , 'Seafood product preparation and etc. $509M' , 56817,'$56.82 M'],
+[ 'Wholesale margins - food, beverages  etc. $28M' , 'Seafood product preparation and etc. $509M' , 27807,'$27.81 M'],
+[ 'Softwood lumber $2,287M' , 'Residential building construction $446M' , 387005,'$387.00 M'],
+[ 'Nursery and floriculture products $348M' , 'Residential building construction $446M' , 58753,'$58.75 M'],
+[ 'Greenhouse, nursery and floriculture etc. $406M' , 'Nursery and floriculture products $348M' , 283371,'$283.37 M'],
+[ 'Fresh vegetables  $30M' , 'Greenhouse, nursery and floriculture etc. $406M' , 29683,'$29.68 M'],
+[ 'Electricity $22M' , 'Greenhouse, nursery and floriculture etc. $406M' , 21867,'$21.87 M'],
+[ 'Ammonia and chemical fertilizers $233M' , 'Greenhouse, nursery and floriculture etc. $406M' , 13912,'$13.91 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'British Columbia $397M' , 224739,'$224.74 M'],
+[ 'Cheese and cheese products $2,559M' , 'British Columbia $397M' , 172503,'$172.50 M'],
+[ 'Grains  $872M' , 'Animal food manufacturing $307M' , 307032,'$307.03 M'],
+[ 'British Columbia $204M' , 'Processed fluid milk and milk products $2,836M' , 203530,'$203.53 M'],
+[ 'New Brunswick $185M' , 'Fresh and frozen poultry of all etc. $2,274M' , 185125,'$185.13 M'],
+[ 'Oilseeds  $648M' , 'Grain and oilseed milling $151M' , 151336,'$151.34 M'],
+[ 'Nursery and floriculture products $348M' , 'Non-residential building construction $125M' , 125054,'$125.05 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'Saskatchewan $116M' , 115581,'$115.58 M'],
+[ 'Cheese and cheese products $2,559M' , 'To Other Provinces $1,063M' , 197487,'$197.49 M'],
+[ 'Processed fluid milk and milk products $2,836M' , 'To Other Provinces $1,063M' , 194059,'$194.06 M'],
+[ 'Fresh and frozen pork $2,551M' , 'To Other Provinces $1,063M' , 172995,'$173.00 M'],
+[ 'Fresh and frozen poultry of all etc. $2,274M' , 'To Other Provinces $1,063M' , 171056,'$171.06 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $2,668M' , 'To Other Provinces $1,063M' , 169436,'$169.44 M'],
+[ 'Wood chips $619M' , 'To Other Provinces $1,063M' , 61784,'$61.78 M'],
+[ 'Softwood lumber $2,287M' , 'To Other Provinces $1,063M' , 55754,'$55.75 M'],
+[ 'Nursery and floriculture products $348M' , 'To Other Provinces $1,063M' , 39998,'$40.00 M'],
+[ 'Grains  $872M' , 'To Other Provinces $1,063M' , 52,'$0.05 M'],
+[ 'Other Input Products $5,676M' , 'Meat product manufacturing $6,148M' , 1238497,'$1,238.50 M'],
+[ 'Meat product manufacturing $6,148M' , 'Other Output Products $4,803M' , 421565,'$421.56 M'],
+[ 'Other Input Products $5,676M' , 'Dairy product manufacturing $5,516M' , 1888728,'$1,888.73 M'],
+[ 'Dairy product manufacturing $5,516M' , 'Other Output Products $4,803M' , 1380976,'$1,380.98 M'],
+[ 'Crop production  $3,516M' , 'Other Output Products $4,803M' , 1528610,'$1,528.61 M'],
+[ 'Other Input Products $5,676M' , 'Crop production  $3,516M' , 1280491,'$1,280.49 M'],
+[ 'Other Input Products $5,676M' , 'Sawmills and wood preservation $3,439M' , 1011511,'$1,011.51 M'],
+[ 'Sawmills and wood preservation $3,439M' , 'Other Output Products $4,803M' , 839897,'$839.90 M'],
+[ 'Seafood product preparation and etc. $509M' , 'Other Output Products $4,803M' , 509077,'$509.08 M'],
+[ 'Other Input Products $5,676M' , 'Seafood product preparation and etc. $509M' , 86798,'$86.80 M'],
+[ 'Other Input Products $5,676M' , 'Greenhouse, nursery and floriculture etc. $406M' , 170392,'$170.39 M'],
+[ 'Greenhouse, nursery and floriculture etc. $406M' , 'Other Output Products $4,803M' , 122739,'$122.74 M'],
+];
+
+<!-- Saskatchewan -->  
+dataSK = [
+[ 'Gross operating surplus $3,163M' , 'Crop production  $11,871M' , 2974397,'$2,974.40 M'],
+[ 'Gross operating surplus $3,163M' , 'Meat product manufacturing $455M' , 87423,'$87.42 M'],
+[ 'Gross operating surplus $3,163M' , 'Dairy product manufacturing $316M' , 90520,'$90.52 M'],
+[ 'Gross operating surplus $3,163M' , 'Sawmills and wood preservation $152M' , 10620,'$10.62 M'],
+[ 'Wages and salaries $104M' , 'Meat product manufacturing $455M' , 62021,'$62.02 M'],
+[ 'Employers\' social contributions $18M' , 'Meat product manufacturing $455M' , 17901,'$17.90 M'],
+[ 'Wages and salaries $104M' , 'Sawmills and wood preservation $152M' , 32402,'$32.40 M'],
+[ 'Wages and salaries $104M' , 'Greenhouse, nursery and floriculture etc. $27M' , 9427,'$9.43 M'],
+[ 'Taxes on production $410M' , 'Crop production  $11,871M' , 409610,'$409.61 M'],
+[ 'Crop production  $11,871M' , 'Canola  $4,738M' , 4475611,'$4,475.61 M'],
+[ 'Crop production  $11,871M' , 'Wheat $2,685M' , 2682279,'$2,682.28 M'],
+[ 'Gross mixed income $2,498M' , 'Crop production  $11,871M' , 2497905,'$2,497.91 M'],
+[ 'Crop production  $11,871M' , 'Fresh vegetables  $2,327M' , 2181515,'$2,181.51 M'],
+[ 'Ammonia and chemical fertilizers $1,439M' , 'Crop production  $11,871M' , 1439150,'$1,439.15 M'],
+[ 'Pesticides ... $856M' , 'Crop production  $11,871M' , 856385,'$856.38 M'],
+[ 'Wholesale margins - miscellaneous etc. $469M' , 'Crop production  $11,871M' , 468966,'$468.97 M'],
+[ 'Wheat $2,685M' , 'International exports $7,707M' , 2961888,'$2,961.89 M'],
+[ 'Fresh vegetables  $2,327M' , 'International exports $7,707M' , 2604177,'$2,604.18 M'],
+[ 'Canola  $4,738M' , 'International exports $7,707M' , 2065506,'$2,065.51 M'],
+[ 'Softwood lumber $174M' , 'International exports $7,707M' , 56961,'$56.96 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'International exports $7,707M' , 18326,'$18.33 M'],
+[ 'Canola  $4,738M' , 'Grain and oilseed milling $1,871M' , 1870977,'$1,870.98 M'],
+[ 'Meat product manufacturing $455M' , 'Processed meat products, other miscellaneous meats  etc. $369M' , 263409,'$263.41 M'],
+[ 'Meat product manufacturing $455M' , 'Fresh and frozen poultry of all etc. $318M' , 169360,'$169.36 M'],
+[ 'Poultry $93M' , 'Meat product manufacturing $455M' , 92993,'$92.99 M'],
+[ 'Fresh and frozen pork $26M' , 'Meat product manufacturing $455M' , 26240,'$26.24 M'],
+[ 'Fresh and frozen poultry of all etc. $16M' , 'Meat product manufacturing $455M' , 15648,'$15.65 M'],
+[ 'Paperboard containers $16M' , 'Meat product manufacturing $455M' , 15561,'$15.56 M'],
+[ 'Fresh and frozen beef and veal $13M' , 'Meat product manufacturing $455M' , 13300,'$13.30 M'],
+[ 'Dairy product manufacturing $316M' , 'Processed fluid milk and milk products $330M' , 157585,'$157.59 M'],
+[ 'Unprocessed fluid milk $157M' , 'Dairy product manufacturing $316M' , 156621,'$156.62 M'],
+[ 'Dairy product manufacturing $316M' , 'Cheese and cheese products $276M' , 129068,'$129.07 M'],
+[ 'Processed fluid milk and milk products $18M' , 'Dairy product manufacturing $316M' , 17548,'$17.55 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'Alberta $210M' , 87176,'$87.18 M'],
+[ 'Fresh and frozen poultry of all etc. $318M' , 'Alberta $210M' , 72066,'$72.07 M'],
+[ 'Cheese and cheese products $276M' , 'Alberta $210M' , 25891,'$25.89 M'],
+[ 'Processed fluid milk and milk products $330M' , 'Alberta $210M' , 24885,'$24.89 M'],
+[ 'From Other Provinces $188M' , 'Fresh and frozen poultry of all etc. $318M' , 47711,'$47.71 M'],
+[ 'From Other Provinces $188M' , 'Processed fluid milk and milk products $330M' , 41898,'$41.90 M'],
+[ 'From Other Provinces $188M' , 'Cheese and cheese products $276M' , 41428,'$41.43 M'],
+[ 'From Other Provinces $188M' , 'Processed meat products, other miscellaneous meats  etc. $369M' , 34089,'$34.09 M'],
+[ 'From Other Provinces $188M' , 'Canola  $4,738M' , 11934,'$11.93 M'],
+[ 'From Other Provinces $188M' , 'Softwood lumber $174M' , 11298,'$11.30 M'],
+[ 'From Other Provinces $188M' , 'Wheat $2,685M' , 121,'$0.12 M'],
+[ 'From Other Provinces $188M' , 'Fresh vegetables  $2,327M' , 5,'$0.01 M'],
+[ 'International imports $185M' , 'Fresh vegetables  $2,327M' , 145785,'$145.78 M'],
+[ 'International imports $185M' , 'Processed meat products, other miscellaneous meats  etc. $369M' , 38288,'$38.29 M'],
+[ 'International imports $185M' , 'Wheat $2,685M' , 685,'$0.69 M'],
+[ 'Quebec $175M' , 'Processed fluid milk and milk products $330M' , 115581,'$115.58 M'],
+[ 'Quebec $175M' , 'Cheese and cheese products $276M' , 59631,'$59.63 M'],
+[ 'Alberta $166M' , 'Canola  $4,738M' , 55136,'$55.14 M'],
+[ 'Alberta $166M' , 'Softwood lumber $174M' , 47184,'$47.18 M'],
+[ 'Alberta $166M' , 'Fresh and frozen poultry of all etc. $318M' , 45027,'$45.03 M'],
+[ 'Alberta $166M' , 'Nursery and floriculture products $72M' , 17328,'$17.33 M'],
+[ 'Alberta $166M' , 'Wheat $2,685M' , 1473,'$1.47 M'],
+[ 'Sawmills and wood preservation $152M' , 'Softwood lumber $174M' , 114250,'$114.25 M'],
+[ 'Custom work services for forestry $49M' , 'Sawmills and wood preservation $152M' , 49454,'$49.45 M'],
+[ 'Support services for forestry $27M' , 'Sawmills and wood preservation $152M' , 26735,'$26.73 M'],
+[ 'Fresh and frozen poultry of all etc. $318M' , 'British Columbia $150M' , 70530,'$70.53 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'British Columbia $150M' , 30399,'$30.40 M'],
+[ 'Processed fluid milk and milk products $330M' , 'British Columbia $150M' , 25821,'$25.82 M'],
+[ 'Cheese and cheese products $276M' , 'British Columbia $150M' , 23103,'$23.10 M'],
+[ 'Processed fluid milk and milk products $330M' , 'Ontario $118M' , 65595,'$65.59 M'],
+[ 'Cheese and cheese products $276M' , 'Ontario $118M' , 52235,'$52.23 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'Food services and drinking places $102M' , 34338,'$34.34 M'],
+[ 'Processed fluid milk and milk products $330M' , 'Food services and drinking places $102M' , 32453,'$32.45 M'],
+[ 'Fresh and frozen poultry of all etc. $318M' , 'Food services and drinking places $102M' , 23506,'$23.51 M'],
+[ 'Cheese and cheese products $276M' , 'Food services and drinking places $102M' , 11444,'$11.44 M'],
+[ 'Ontario $99M' , 'Cheese and cheese products $276M' , 41604,'$41.60 M'],
+[ 'Ontario $99M' , 'Processed meat products, other miscellaneous meats  etc. $369M' , 33164,'$33.16 M'],
+[ 'Ontario $99M' , 'Nursery and floriculture products $72M' , 24099,'$24.10 M'],
+[ 'British Columbia $39M' , 'Fresh and frozen poultry of all etc. $318M' , 39317,'$39.32 M'],
+[ 'Nursery and floriculture products $72M' , 'Non-residential building construction $34M' , 34448,'$34.45 M'],
+[ 'Greenhouse, nursery and floriculture etc. $27M' , 'Nursery and floriculture products $72M' , 24830,'$24.83 M'],
+[ 'Fresh vegetables  $5M' , 'Greenhouse, nursery and floriculture etc. $27M' , 5425,'$5.42 M'],
+[ 'Processed fluid milk and milk products $330M' , 'Quebec $18M' , 18011,'$18.01 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'Manitoba $17M' , 16581,'$16.58 M'],
+[ 'Nursery and floriculture products $72M' , 'Residential building construction $16M' , 16186,'$16.19 M'],
+[ 'Canola  $4,738M' , 'To Other Provinces $666M' , 382637,'$382.64 M'],
+[ 'Wheat $2,685M' , 'To Other Provinces $666M' , 122651,'$122.65 M'],
+[ 'Softwood lumber $174M' , 'To Other Provinces $666M' , 44115,'$44.12 M'],
+[ 'Fresh vegetables  $2,327M' , 'To Other Provinces $666M' , 40471,'$40.47 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'To Other Provinces $666M' , 20192,'$20.19 M'],
+[ 'Cheese and cheese products $276M' , 'To Other Provinces $666M' , 20090,'$20.09 M'],
+[ 'Fresh and frozen poultry of all etc. $318M' , 'To Other Provinces $666M' , 18707,'$18.71 M'],
+[ 'Processed fluid milk and milk products $330M' , 'To Other Provinces $666M' , 16534,'$16.53 M'],
+[ 'Nursery and floriculture products $72M' , 'To Other Provinces $666M' , 215,'$0.21 M'],
+[ 'Canola  $4,738M' , 'Other Industries $-563M' , 256669,'$256.67 M'],
+[ 'Softwood lumber $174M' , 'Other Industries $-563M' , 68412,'$68.41 M'],
+[ 'Processed meat products, other miscellaneous meats  etc. $369M' , 'Other Industries $-563M' , 19594,'$19.59 M'],
+[ 'Processed fluid milk and milk products $330M' , 'Other Industries $-563M' , 19551,'$19.55 M'],
+[ 'Cheese and cheese products $276M' , 'Other Industries $-563M' , 4617,'$4.62 M'],
+[ 'Nursery and floriculture products $72M' , 'Other Industries $-563M' , 2011,'$2.01 M'],
+[ 'Other Input Products $3,444M' , 'Crop production  $11,871M' , 3224338,'$3,224.34 M'],
+[ 'Crop production  $11,871M' , 'Other Output Products $2,601M' , 2511070,'$2,511.07 M'],
+[ 'Other Input Products $3,444M' , 'Meat product manufacturing $455M' , 123414,'$123.41 M'],
+[ 'Meat product manufacturing $455M' , 'Other Output Products $2,601M' , 21468,'$21.47 M'],
+[ 'Other Input Products $3,444M' , 'Dairy product manufacturing $316M' , 51495,'$51.49 M'],
+[ 'Dairy product manufacturing $316M' , 'Other Output Products $2,601M' , 29395,'$29.39 M'],
+[ 'Sawmills and wood preservation $152M' , 'Other Output Products $2,601M' , 37337,'$37.34 M'],
+[ 'Other Input Products $3,444M' , 'Sawmills and wood preservation $152M' , 32563,'$32.56 M'],
+[ 'Other Input Products $3,444M' , 'Greenhouse, nursery and floriculture etc. $27M' , 11986,'$11.99 M'],
+[ 'Greenhouse, nursery and floriculture etc. $27M' , 'Other Output Products $2,601M' , 1969,'$1.97 M'],
+];
+
+<!--Yukon -->  
+dataYK = [
+[ 'Gross operating surplus $1M' , 'Crop production  $2M' , 610,'$0.61 M'],
+[ 'Gross operating surplus $1M' , 'Greenhouse, nursery and floriculture etc. $1M' , 252,'$0.25 M'],
+[ 'Wages and salaries $<0.5M' , 'Greenhouse, nursery and floriculture etc. $1M' , 247,'$0.25 M'],
+[ 'Crop production  $2M' , 'Other miscellaneous crop products $1M' , 1124,'$1.12 M'],
+[ 'Crop production  $2M' , 'Fresh potatoes $1M' , 362,'$0.36 M'],
+[ 'Gross mixed income $1M' , 'Crop production  $2M' , 351,'$0.35 M'],
+[ 'Ammonia and chemical fertilizers $<0.5M' , 'Crop production  $2M' , 175,'$0.17 M'],
+[ 'Gasoline $<0.5M' , 'Crop production  $2M' , 156,'$0.16 M'],
+[ 'Gross mixed income $1M' , 'Greenhouse, nursery and floriculture etc. $1M' , 346,'$0.35 M'],
+[ 'Other Input Products $1M' , 'Crop production  $2M' , 485,'$0.48 M'],
+[ 'Crop production  $2M' , 'Other Output Products $2M' , 275,'$0.28 M'],
+[ 'Greenhouse, nursery and floriculture etc. $1M' , 'Other Output Products $2M' , 1357,'$1.36 M'],
+[ 'Other Input Products $1M' , 'Greenhouse, nursery and floriculture etc. $1M' , 524,'$0.52 M'],
+];
+
+
+
+
+
+
+
+        var AB = new google.visualization.DataTable();
+        AB.addColumn('string', 'From');
+        AB.addColumn('string', 'To');
+        AB.addColumn('number', '$k');
+        AB.addColumn({type: 'string', role: 'tooltip'});
+        AB.addRows(dataAB);
+
+        var BC = new google.visualization.DataTable();
+        BC.addColumn('string', 'From');
+        BC.addColumn('string', 'To');
+        BC.addColumn('number', '$k');
+        BC.addColumn({type: 'string', role: 'tooltip'});
+        BC.addRows(dataBC);
+
+        var MB = new google.visualization.DataTable();
+        MB.addColumn('string', 'From');
+        MB.addColumn('string', 'To');
+        MB.addColumn('number', '$k');
+        MB.addColumn({type: 'string', role: 'tooltip'});
+        MB.addRows(dataMB);
+
+        var NB = new google.visualization.DataTable();
+        NB.addColumn('string', 'From');
+        NB.addColumn('string', 'To');
+        NB.addColumn('number', '$k');
+        NB.addColumn({type: 'string', role: 'tooltip'});
+        NB.addRows(dataNB);
+
+        var NL = new google.visualization.DataTable();
+        NL.addColumn('string', 'From');
+        NL.addColumn('string', 'To');
+        NL.addColumn('number', '$k');
+        NL.addColumn({type: 'string', role: 'tooltip'});
+        NL.addRows(dataNL);
+
+        var NS = new google.visualization.DataTable();
+        NS.addColumn('string', 'From');
+        NS.addColumn('string', 'To');
+        NS.addColumn('number', '$k');
+        NS.addColumn({type: 'string', role: 'tooltip'});
+        NS.addRows(dataNS);
+
+        var NU = new google.visualization.DataTable();
+        NU.addColumn('string', 'From');
+        NU.addColumn('string', 'To');
+        NU.addColumn('number', '$k');
+        NU.addColumn({type: 'string', role: 'tooltip'});
+        NU.addRows(dataNU);
+
+        var ON = new google.visualization.DataTable();
+        ON.addColumn('string', 'From');
+        ON.addColumn('string', 'To');
+        ON.addColumn('number', '$k');
+        ON.addColumn({type: 'string', role: 'tooltip'});
+        ON.addRows(dataON);
+
+        var PE = new google.visualization.DataTable();
+        PE.addColumn('string', 'From');
+        PE.addColumn('string', 'To');
+        PE.addColumn('number', '$k');
+        PE.addColumn({type: 'string', role: 'tooltip'});
+        PE.addRows(dataPE);
+
+        var QC = new google.visualization.DataTable();
+        QC.addColumn('string', 'From');
+        QC.addColumn('string', 'To');
+        QC.addColumn('number', '$k');
+        QC.addColumn({type: 'string', role: 'tooltip'});
+        QC.addRows(dataQC);
+
+        var SK = new google.visualization.DataTable();
+        SK.addColumn('string', 'From');
+        SK.addColumn('string', 'To');
+        SK.addColumn('number', '$k');
+        SK.addColumn({type: 'string', role: 'tooltip'});
+        SK.addRows(dataSK);
+
+        var NT = new google.visualization.DataTable();
+        NT.addColumn('string', 'From');
+        NT.addColumn('string', 'To');
+        NT.addColumn('number', '$k');
+        NT.addColumn({type: 'string', role: 'tooltip'});
+        NT.addRows(dataNT);
+
+        var YK = new google.visualization.DataTable();
+        YK.addColumn('string', 'From');
+        YK.addColumn('string', 'To');
+        YK.addColumn('number', '$k');
+        YK.addColumn({type: 'string', role: 'tooltip'});
+        YK.addRows(dataYK);
+
+        var CAN = new google.visualization.DataTable();
+        CAN.addColumn('string', 'From');
+        CAN.addColumn('string', 'To');
+        CAN.addColumn('number', '$k');
+        CAN.addColumn({type: 'string', role: 'tooltip'});
+        CAN.addRows(dataCAN);
+
+
+
+        // Sets chart options.
+    var colors = ["#D00000", "#751F1F", "#D06E00", "#755F1F", "#D0C700", "#60751F", "#88D000", "#1F752B", "#00D02C", "#1F7561", "#00D08B", "#1F5D75", "#00D0C3", "#1F2B75", "#009AD0", "#3E1F75", "#003FD0", "#6F1F75", "#3F00D0", "#9E00D0", "#751F49", "#D000AD", "#D0005F"];
+
+    var options = {
+      height: 1500,
+      width:  1200,
+      sankey: {
+      iterations:0,
+        node: {
+            nodePadding: 16,
+            width: 25,
+            interactivity: true, // Allows you to select nodes.
+            label: {
+  				fontName: 'Arial-Black',
+      				fontSize: 12,
+      				color: '#000000',
+      				bold: true,
+      				italic: false
+    					},
+          colorMode: 'unique',
+          colors:[
+'#CE7C7F',
+'#E6B79C',
+'#91C4B7',
+'#45999B',
+'#A8AF4B',
+'#F66D44',
+'#FEAE65',
+'#E6F69D',
+'#AADEA7',
+'#64C2A6',
+'#2D87BB'
+             ]
+            
+        },
+        link: {
+          interactivity: true, // Allows you to select nodes.
+          colorMode: 'gradient',
+          colors:[
+'#CE7C7F',
+'#E6B79C',
+'#91C4B7',
+'#45999B',
+'#A8AF4B',
+'#F66D44',
+'#FEAE65',
+'#E6F69D',
+'#AADEA7',
+'#64C2A6',
+'#2D87BB'
+             ]
+        },
+      }
+    };
+
+      var chart_div = document.getElementById('chart_div');
+      
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+if (selValue == 'AB') { x = AB;}
+if (selValue == 'BC') { x = BC;}
+if (selValue == 'MB') { x = MB;}
+if (selValue == 'NB') { x = NB;}
+if (selValue == 'NL') { x = NL;}
+if (selValue == 'NS') { x = NS;}
+if (selValue == 'NU') { x = NU;}
+if (selValue == 'ON') { x = ON;}
+if (selValue == 'PE') { x = PE;}
+if (selValue == 'QC') { x = QC;}
+if (selValue == 'SK') { x = SK;}
+if (selValue == 'NT') { x = NT;}
+if (selValue == 'YK') { x = YK;}
+if (selValue == 'CAN') { x = CAN;}
+        chart.draw(x, options);
+
+
+
+
+}
+
+
+}
+//]]> 
+
+   </script>
+ </head>
+
+ <body>
+  <div class="chartWithOverlay">
+
+   <div class="overlay">
+    <div style="font-family:'Gotham-Book'; font-size: 14px;"><b>Direction of Goods and Services Flows</b></div>
+    <div style="font-family:'Gotham-Book'; font-size: 46px;">&#x2192 &#x2192 &#x2192 &#x2192</div>
+  </div>
+
+ </div>
+
+</body>
+
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "kv876zox"
+    }], "*")
+  }
+</script>
+</article>
+  </div>
+
+</body>
+
+<footer class="footer">
+		<p>Copyright &copy; 2019 <a href="">GK Fellows</a></p>
+	</footer>
+
+</html>

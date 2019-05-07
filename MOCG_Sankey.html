@@ -1,0 +1,1508 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="/js/lib/dummy.js"></script>
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title>Embodied Emissions Flows Through the Provincial Economies</title>
+<link rel="stylesheet" href="styles.css">
+
+<div class="body">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster">
+
+	<header class="header">
+		<nav>
+      
+      <ul>
+			<li><a href="index.html">Home</a></li>
+			<li class="active"><a href="Charts_Index.html">Charts and Diagrams</a></li>
+			<li><a href="CV.html" target="_self">CV</a></li>
+			<li><a href="Publications.html" target="_self">Academic Publications</a></li>
+			<li><a href="OPED.html" target="_self">Blogs, Op-Eds and Podcasts</a></li>
+			<li><a href="Contact.html" target="_self">Contact</a></li>
+		</ul></nav>
+				<nav>
+      <ul>
+	<li class="active"><a href="Charts_Index.html">Charts:</a></li>
+	<li><a href="GHG_Sankey.html">Embodied Emissions Sankey</a></li>
+	<li class="active"><a href="MOCG_Sankey.html">Mining and Oil and Gas Sankey</a></li>
+	<li><a href="AFF_Sankey.html">Agriculture Sankey</a></li>
+		</ul></nav>
+	</header>
+		
+	<div class="mainContent">
+
+<!-- Comment -->  
+<article class="content-1">
+
+</head><b>Supply Use Sankey Diagrams for Mining and Oil and Gas Industries (2015) </b><hr></head>
+<p> Data Source: <a href="https://www150.statcan.gc.ca/n1/pub/15-602-x/15-602-x2017001-eng.htm">Statistics Canada Supply Use-Tables (2015)</a></p>
+<br>
+
+  <th>
+Choose a province from the drop down menu    <select id="chart" name='select1' onchange="change()">
+  <option selected disabled>Choose</option> 
+  <option value="AB">Alberta</option>
+  <option value="BC">British Columbia</option>
+  <option value="MB">Manitoba</option>
+  <option value="NB">New Brunswick</option>
+  <option value="NL">Newfoundland & Labrador</option>
+  <option value="NS">Nova Scotia</option>
+  <option value="NU">Nunavut</option>
+  <option value="ON">Ontario</option>
+  <option value="PE">Prince Edward Island</option>
+  <option value="QC">Quebec</option>
+  <option value="SK">Saskatchewan</option>
+  <option value="NT">Northwest Territories</option>
+  <option value="YK">Yukon</option>
+  <option value="CAN">Canada Detailed</option>
+</select></th>
+
+<br>
+<br>
+
+
+<head>
+   <style>
+    .chartWithOverlay {
+           position: relative;
+           width: 1200px;
+    }
+    .overlay {
+           width: 800px;
+           height: 50px;
+           position: absolute;
+           top:   -50px;   /* chartArea top  */
+           left: 600px; /* chartArea left */
+    }
+   </style>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+       <div id="sankey_basic" style="width: 1200px; height: 1700px;"></div>
+
+<script type='text/javascript'>//<![CDATA[
+
+  function change() {
+    var listbox = document.getElementById("chart");
+    var selIndex = listbox.selectedIndex;
+    var selValue = listbox.options[selIndex].value;
+    var selText = listbox.options[selIndex].text;
+    console.log(selValue);
+
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+<!-- Alberta -->  
+dataAB = [
+[ 'Gross operating surplus $21,594M' , 'Non-conventional oil extraction $46,400M' , 17645889,'$17,645.89 M'],
+[ 'Gross operating surplus $21,594M' , 'Conventional oil and gas extraction $32,852M' , 3468049,'$3,468.05 M'],
+[ 'Gross operating surplus $21,594M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 202729,'$202.73 M'],
+[ 'Gross operating surplus $21,594M' , 'Coal mining $704M' , 94798,'$94.80 M'],
+[ 'Gross operating surplus $21,594M' , 'Support activities for mining $635M' , 94272,'$94.27 M'],
+[ 'Gross operating surplus $21,594M' , 'Other non-metallic mineral mining  etc. $117M' , 59350,'$59.35 M'],
+[ 'Gross operating surplus $21,594M' , 'Stone mining and quarrying $72M' , 28021,'$28.02 M'],
+[ 'Gross operating surplus $21,594M' , 'Gold and silver ore mining $1M' , 571,'$0.57 M'],
+[ 'Wages and salaries $12,234M' , 'Non-conventional oil extraction $46,400M' , 4436062,'$4,436.06 M'],
+[ 'Wages and salaries $12,234M' , 'Conventional oil and gas extraction $32,852M' , 7157965,'$7,157.97 M'],
+[ 'Employers\' social contributions $1,600M' , 'Conventional oil and gas extraction $32,852M' , 1570114,'$1,570.11 M'],
+[ 'Wages and salaries $12,234M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 155349,'$155.35 M'],
+[ 'Employers\' social contributions $1,600M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 29456,'$29.46 M'],
+[ 'Wages and salaries $12,234M' , 'Coal mining $704M' , 202885,'$202.88 M'],
+[ 'Wages and salaries $12,234M' , 'Support activities for mining $635M' , 255693,'$255.69 M'],
+[ 'Wages and salaries $12,234M' , 'Other non-metallic mineral mining  etc. $117M' , 12309,'$12.31 M'],
+[ 'Wages and salaries $12,234M' , 'Stone mining and quarrying $72M' , 13444,'$13.44 M'],
+[ 'Taxes on production $938M' , 'Conventional oil and gas extraction $32,852M' , 937942,'$937.94 M'],
+[ 'Crude and diluted bitumen $22,617M' , 'International exports $50,439M' , 21977074,'$21,977.07 M'],
+[ 'Synthetic crude oil $21,513M' , 'International exports $50,439M' , 12696578,'$12,696.58 M'],
+[ 'Conventional crude oil $14,777M' , 'International exports $50,439M' , 9730516,'$9,730.52 M'],
+[ 'Natural gas $12,595M' , 'International exports $50,439M' , 5724201,'$5,724.20 M'],
+[ 'Coal $723M' , 'International exports $50,439M' , 310400,'$310.40 M'],
+[ 'Non-conventional oil extraction $46,400M' , 'Crude and diluted bitumen $22,617M' , 22617137,'$22,617.14 M'],
+[ 'Non-conventional oil extraction $46,400M' , 'Synthetic crude oil $21,513M' , 21512827,'$21,512.83 M'],
+[ 'Support services for oil and gas extraction etc. $7,360M' , 'Non-conventional oil extraction $46,400M' , 3025520,'$3,025.52 M'],
+[ 'Architectural, engineering ... $2,871M' , 'Non-conventional oil extraction $46,400M' , 1872813,'$1,872.81 M'],
+[ 'Holding company services ... $2,757M' , 'Non-conventional oil extraction $46,400M' , 1753951,'$1,753.95 M'],
+[ 'Conventional oil and gas extraction $32,852M' , 'Conventional crude oil $14,777M' , 14714990,'$14,714.99 M'],
+[ 'Conventional oil and gas extraction $32,852M' , 'Natural gas $12,595M' , 10057504,'$10,057.50 M'],
+[ 'Support services for oil and gas extraction etc. $7,360M' , 'Conventional oil and gas extraction $32,852M' , 4334355,'$4,334.35 M'],
+[ 'Head office services  $1,350M' , 'Conventional oil and gas extraction $32,852M' , 1349749,'$1,349.75 M'],
+[ 'Repair construction services $1,406M' , 'Conventional oil and gas extraction $32,852M' , 1230559,'$1,230.56 M'],
+[ 'Holding company services ... $2,757M' , 'Conventional oil and gas extraction $32,852M' , 1003022,'$1,003.02 M'],
+[ 'Architectural, engineering ... $2,871M' , 'Conventional oil and gas extraction $32,852M' , 875980,'$875.98 M'],
+[ 'Synthetic crude oil $21,513M' , 'Petroleum refineries $6,105M' , 6105018,'$6,105.02 M'],
+[ 'Natural gas $12,595M' , 'Other Industries $2,530M' , 1301486,'$1,301.49 M'],
+[ 'Conventional crude oil $14,777M' , 'Other Industries $2,530M' , 485827,'$485.83 M'],
+[ 'Crude and diluted bitumen $22,617M' , 'Other Industries $2,530M' , 457766,'$457.77 M'],
+[ 'Sand, gravel, clay, and refractory etc. $828M' , 'Other Industries $2,530M' , 168905,'$168.91 M'],
+[ 'Support services for mining and quarrying etc. $453M' , 'Other Industries $2,530M' , 91505,'$91.50 M'],
+[ 'Stone $211M' , 'Other Industries $2,530M' , 85872,'$85.87 M'],
+[ 'Coal $723M' , 'Other Industries $2,530M' , 3046,'$3.05 M'],
+[ 'Natural gas $12,595M' , 'Ontario $2,252M' , 2250318,'$2,250.32 M'],
+[ 'Gold and silver ores and concentrates $1M' , 'Ontario $2,252M' , 1431,'$1.43 M'],
+[ 'British Columbia $2,189M' , 'Natural gas $12,595M' , 2042323,'$2,042.32 M'],
+[ 'British Columbia $2,189M' , 'Stone $211M' , 49700,'$49.70 M'],
+[ 'British Columbia $2,189M' , 'Coal $723M' , 45535,'$45.53 M'],
+[ 'British Columbia $2,189M' , 'Conventional crude oil $14,777M' , 31938,'$31.94 M'],
+[ 'British Columbia $2,189M' , 'Support services for mining and quarrying etc. $453M' , 19980,'$19.98 M'],
+[ 'Natural gas $12,595M' , 'Saskatchewan $1,036M' , 697017,'$697.02 M'],
+[ 'Support services for mining and quarrying etc. $453M' , 'Saskatchewan $1,036M' , 339478,'$339.48 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $803M' , 'Sand, gravel, clay, and refractory etc. $828M' , 645469,'$645.47 M'],
+[ 'Support services for mining and quarrying etc. $123M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 110222,'$110.22 M'],
+[ 'Diesel and biodiesel fuels $51M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 51344,'$51.34 M'],
+[ 'Logging, mining and construction machinery  etc. $40M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 40364,'$40.36 M'],
+[ 'Natural gas $12,595M' , 'Quebec $729M' , 728562,'$728.56 M'],
+[ 'Coal mining $704M' , 'Coal $723M' , 675544,'$675.54 M'],
+[ 'Repair construction services $1,406M' , 'Coal mining $704M' , 175660,'$175.66 M'],
+[ 'Support activities for mining $635M' , 'Support services for mining and quarrying etc. $453M' , 432556,'$432.56 M'],
+[ 'Architectural, engineering ... $2,871M' , 'Support activities for mining $635M' , 122090,'$122.09 M'],
+[ 'Coal $723M' , 'Electric power generation, transmission  etc. $407M' , 407432,'$407.43 M'],
+[ 'Sand, gravel, clay, and refractory etc. $828M' , 'Transportation engineering construction $311M' , 264598,'$264.60 M'],
+[ 'Stone $211M' , 'Transportation engineering construction $311M' , 46065,'$46.06 M'],
+[ 'Sand, gravel, clay, and refractory etc. $828M' , 'Cement and concrete product manufacturing $194M' , 193760,'$193.76 M'],
+[ 'Sand, gravel, clay, and refractory etc. $828M' , 'British Columbia $148M' , 148339,'$148.34 M'],
+[ 'Stone mining and quarrying $72M' , 'Stone $211M' , 69507,'$69.51 M'],
+[ 'Support services for mining and quarrying etc. $123M' , 'Stone mining and quarrying $72M' , 12446,'$12.45 M'],
+[ 'Gross mixed income $7M' , 'Stone mining and quarrying $72M' , 7197,'$7.20 M'],
+[ 'From Other Provinces $53M' , 'Stone $211M' , 33938,'$33.94 M'],
+[ 'From Other Provinces $53M' , 'Sand, gravel, clay, and refractory etc. $828M' , 18795,'$18.80 M'],
+[ 'Stone $211M' , 'Repair construction $32M' , 31657,'$31.66 M'],
+[ 'Stone $211M' , 'Oil and gas engineering construction $27M' , 27095,'$27.09 M'],
+[ 'Saskatchewan $20M' , 'Conventional crude oil $14,777M' , 19730,'$19.73 M'],
+[ 'Gold and silver ore mining $1M' , 'Gold and silver ores and concentrates $1M' , 1431,'$1.43 M'],
+[ 'Rail transportation support, maintenance  etc. $1M' , 'Gold and silver ore mining $1M' , 510,'$0.51 M'],
+[ 'Conventional crude oil $14,777M' , 'To Other Provinces $7,972M' , 4560945,'$4,560.94 M'],
+[ 'Synthetic crude oil $21,513M' , 'To Other Provinces $7,972M' , 2775610,'$2,775.61 M'],
+[ 'Natural gas $12,595M' , 'To Other Provinces $7,972M' , 426110,'$426.11 M'],
+[ 'Crude and diluted bitumen $22,617M' , 'To Other Provinces $7,972M' , 182297,'$182.30 M'],
+[ 'Stone $211M' , 'To Other Provinces $7,972M' , 19113,'$19.11 M'],
+[ 'Sand, gravel, clay, and refractory etc. $828M' , 'To Other Provinces $7,972M' , 3476,'$3.48 M'],
+[ 'Support services for mining and quarrying etc. $453M' , 'To Other Provinces $7,972M' , 2766,'$2.77 M'],
+[ 'Coal $723M' , 'To Other Provinces $7,972M' , 1787,'$1.79 M'],
+[ 'Other Input Products $29,254M' , 'Non-conventional oil extraction $46,400M' , 17666057,'$17,666.06 M'],
+[ 'Non-conventional oil extraction $46,400M' , 'Other Output Products $10,289M' , 1886526,'$1,886.53 M'],
+[ 'Other Input Products $29,254M' , 'Conventional oil and gas extraction $32,852M' , 10924129,'$10,924.13 M'],
+[ 'Conventional oil and gas extraction $32,852M' , 'Other Output Products $10,289M' , 7810876,'$7,810.88 M'],
+[ 'Other Input Products $29,254M' , 'Sand, gravel, clay, and ceramic  etc. $803M' , 213871,'$213.87 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $803M' , 'Other Output Products $10,289M' , 151856,'$151.86 M'],
+[ 'Other Input Products $29,254M' , 'Coal mining $704M' , 230880,'$230.88 M'],
+[ 'Coal mining $704M' , 'Other Output Products $10,289M' , 15813,'$15.81 M'],
+[ 'Support activities for mining $635M' , 'Other Output Products $10,289M' , 198927,'$198.93 M'],
+[ 'Other Input Products $29,254M' , 'Support activities for mining $635M' , 162632,'$162.63 M'],
+[ 'Other non-metallic mineral mining  etc. $117M' , 'Other Output Products $10,289M' , 222890,'$222.89 M'],
+[ 'Other Input Products $29,254M' , 'Other non-metallic mineral mining  etc. $117M' , 44988,'$44.99 M'],
+[ 'Other Input Products $29,254M' , 'Stone mining and quarrying $72M' , 11086,'$11.09 M'],
+[ 'Stone mining and quarrying $72M' , 'Other Output Products $10,289M' , 2590,'$2.59 M'],
+[ 'Other Input Products $29,254M' , 'Gold and silver ore mining $1M' , 351,'$0.35 M'],
+];
+
+<!-- British Columbia -->  
+dataBC = [
+[ 'Gross operating surplus $3,851M' , 'Conventional oil and gas extraction $5,439M' , 1997086,'$1,997.09 M'],
+[ 'Gross operating surplus $3,851M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 739331,'$739.33 M'],
+[ 'Gross operating surplus $3,851M' , 'Coal mining $2,329M' , 629344,'$629.34 M'],
+[ 'Gross operating surplus $3,851M' , 'Support activities for mining $1,374M' , 404709,'$404.71 M'],
+[ 'Gross operating surplus $3,851M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 25604,'$25.60 M'],
+[ 'Gross operating surplus $3,851M' , 'Gold and silver ore mining $169M' , 22475,'$22.48 M'],
+[ 'Gross operating surplus $3,851M' , 'Stone mining and quarrying $115M' , 21989,'$21.99 M'],
+[ 'Gross operating surplus $3,851M' , 'Other non-metallic mineral mining  etc. $34M' , 8799,'$8.80 M'],
+[ 'Gross operating surplus $3,851M' , 'Other metal ore mining $17M' , 2046,'$2.05 M'],
+[ 'Wages and salaries $1,621M' , 'Conventional oil and gas extraction $5,439M' , 165988,'$165.99 M'],
+[ 'Wages and salaries $1,621M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 557130,'$557.13 M'],
+[ 'Employers\' social contributions $208M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 110741,'$110.74 M'],
+[ 'Wages and salaries $1,621M' , 'Coal mining $2,329M' , 427119,'$427.12 M'],
+[ 'Employers\' social contributions $208M' , 'Coal mining $2,329M' , 88888,'$88.89 M'],
+[ 'Wages and salaries $1,621M' , 'Support activities for mining $1,374M' , 320737,'$320.74 M'],
+[ 'Wages and salaries $1,621M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 53722,'$53.72 M'],
+[ 'Employers\' social contributions $208M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 8327,'$8.33 M'],
+[ 'Wages and salaries $1,621M' , 'Gold and silver ore mining $169M' , 55875,'$55.88 M'],
+[ 'Wages and salaries $1,621M' , 'Stone mining and quarrying $115M' , 30327,'$30.33 M'],
+[ 'Wages and salaries $1,621M' , 'Other non-metallic mineral mining  etc. $34M' , 8283,'$8.28 M'],
+[ 'Wages and salaries $1,621M' , 'Other metal ore mining $17M' , 1759,'$1.76 M'],
+[ 'Taxes on products $1M' , 'Other metal ore mining $17M' , 683,'$0.68 M'],
+[ 'Copper ores and concentrates $2,973M' , 'International exports $6,290M' , 2973158,'$2,973.16 M'],
+[ 'Coal $2,110M' , 'International exports $6,290M' , 1926998,'$1,927.00 M'],
+[ 'Natural gas $3,416M' , 'International exports $6,290M' , 1014249,'$1,014.25 M'],
+[ 'Support services for mining and quarrying etc. $878M' , 'International exports $6,290M' , 375548,'$375.55 M'],
+[ 'Conventional oil and gas extraction $5,439M' , 'Natural gas $3,416M' , 3375098,'$3,375.10 M'],
+[ 'Conventional oil and gas extraction $5,439M' , 'Conventional crude oil $1,290M' , 1044397,'$1,044.40 M'],
+[ 'Support services for oil and gas extraction etc. $605M' , 'Conventional oil and gas extraction $5,439M' , 604532,'$604.53 M'],
+[ 'Holding company services ... $264M' , 'Conventional oil and gas extraction $5,439M' , 263602,'$263.60 M'],
+[ 'Head office services  $392M' , 'Conventional oil and gas extraction $5,439M' , 180911,'$180.91 M'],
+[ 'Iron and steel pipes and tubes etc. $177M' , 'Conventional oil and gas extraction $5,439M' , 177029,'$177.03 M'],
+[ 'Repair construction services $454M' , 'Conventional oil and gas extraction $5,439M' , 161622,'$161.62 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $3,528M' , 'Copper ores and concentrates $2,973M' , 2973158,'$2,973.16 M'],
+[ 'Electricity $213M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 135784,'$135.78 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 98146,'$98.15 M'],
+[ 'Ferrous metal castings $100M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 97508,'$97.51 M'],
+[ 'Logging, mining and construction machinery  etc. $95M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 87701,'$87.70 M'],
+[ 'Coal mining $2,329M' , 'Coal $2,110M' , 2109426,'$2,109.43 M'],
+[ 'Repair construction services $454M' , 'Coal mining $2,329M' , 291993,'$291.99 M'],
+[ 'Head office services  $392M' , 'Coal mining $2,329M' , 208021,'$208.02 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Coal mining $2,329M' , 91970,'$91.97 M'],
+[ 'Electricity $213M' , 'Coal mining $2,329M' , 75281,'$75.28 M'],
+[ 'Natural gas $3,416M' , 'Alberta $2,092M' , 2042323,'$2,042.32 M'],
+[ 'Stone $242M' , 'Alberta $2,092M' , 49700,'$49.70 M'],
+[ 'Support activities for mining $1,374M' , 'Support services for mining and quarrying etc. $878M' , 871229,'$871.23 M'],
+[ 'Architectural, engineering ... $242M' , 'Support activities for mining $1,374M' , 241953,'$241.95 M'],
+[ 'Measuring, control and scientific etc. $87M' , 'Support activities for mining $1,374M' , 86685,'$86.69 M'],
+[ 'Conventional crude oil $1,290M' , 'Petroleum refineries $1,144M' , 1143778,'$1,143.78 M'],
+[ 'Natural gas $3,416M' , 'Other Industries $514M' , 129891,'$129.89 M'],
+[ 'Coal $2,110M' , 'Other Industries $514M' , 115592,'$115.59 M'],
+[ 'Conventional crude oil $1,290M' , 'Other Industries $514M' , 114207,'$114.21 M'],
+[ 'Stone $242M' , 'Other Industries $514M' , 88570,'$88.57 M'],
+[ 'Support services for mining and quarrying etc. $878M' , 'Other Industries $514M' , 66170,'$66.17 M'],
+[ 'Alberta $269M' , 'Conventional crude oil $1,290M' , 236480,'$236.48 M'],
+[ 'Alberta $269M' , 'Natural gas $3,416M' , 32666,'$32.67 M'],
+[ 'Support services for mining and quarrying etc. $878M' , 'Ontario $209M' , 208886,'$208.89 M'],
+[ 'Support services for mining and quarrying etc. $21M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 12232,'$12.23 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 8511,'$8.51 M'],
+[ 'Logging, mining and construction machinery  etc. $95M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 5844,'$5.84 M'],
+[ 'Management, scientific and technical consulting etc. $9M' , 'Gold and silver ore mining $169M' , 8675,'$8.68 M'],
+[ 'Stone mining and quarrying $115M' , 'Stone $242M' , 98928,'$98.93 M'],
+[ 'Stone $12M' , 'Stone mining and quarrying $115M' , 11589,'$11.59 M'],
+[ 'Support services for mining and quarrying etc. $21M' , 'Stone mining and quarrying $115M' , 6607,'$6.61 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Stone mining and quarrying $115M' , 5412,'$5.41 M'],
+[ 'From Other Provinces $71M' , 'Stone $242M' , 70443,'$70.44 M'],
+[ 'From Other Provinces $71M' , 'Natural gas $3,416M' , 112,'$0.11 M'],
+[ 'Stone $242M' , 'Transportation engineering construction $43M' , 43213,'$43.21 M'],
+[ 'International imports $38M' , 'Stone $242M' , 37472,'$37.47 M'],
+[ 'International imports $38M' , 'Coal $2,110M' , 642,'$0.64 M'],
+[ 'Head office services  $392M' , 'Other non-metallic mineral mining  etc. $34M' , 2740,'$2.74 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Other non-metallic mineral mining  etc. $34M' , 2256,'$2.26 M'],
+[ 'Support services for mining and quarrying etc. $21M' , 'Other non-metallic mineral mining  etc. $34M' , 2046,'$2.05 M'],
+[ 'Stone $242M' , 'Non-metallic mineral product manufacturing etc. $30M' , 30394,'$30.39 M'],
+[ 'Ferrous metal castings $100M' , 'Other metal ore mining $17M' , 2431,'$2.43 M'],
+[ 'Electricity $213M' , 'Other metal ore mining $17M' , 1783,'$1.78 M'],
+[ 'Logging, mining and construction machinery  etc. $95M' , 'Other metal ore mining $17M' , 1328,'$1.33 M'],
+[ 'Diesel and biodiesel fuels $207M' , 'Other metal ore mining $17M' , 933,'$0.93 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $1M' , 'Other metal ore mining $17M' , 921,'$0.92 M'],
+[ 'Rail transportation support, maintenance  etc. $1M' , 'Other metal ore mining $17M' , 647,'$0.65 M'],
+[ 'Yukon $7M' , 'Support services for mining and quarrying etc. $878M' , 7178,'$7.18 M'],
+[ 'Support services for mining and quarrying etc. $878M' , 'To Other Provinces $412M' , 209615,'$209.62 M'],
+[ 'Natural gas $3,416M' , 'To Other Provinces $412M' , 101764,'$101.76 M'],
+[ 'Coal $2,110M' , 'To Other Provinces $412M' , 67478,'$67.48 M'],
+[ 'Conventional crude oil $1,290M' , 'To Other Provinces $412M' , 31938,'$31.94 M'],
+[ 'Stone $242M' , 'To Other Provinces $412M' , 971,'$0.97 M'],
+[ 'Other Input Products $4,617M' , 'Conventional oil and gas extraction $5,439M' , 1888418,'$1,888.42 M'],
+[ 'Conventional oil and gas extraction $5,439M' , 'Other Output Products $2,557M' , 1014575,'$1,014.58 M'],
+[ 'Other Input Products $4,617M' , 'Copper, nickel, lead and zinc ore etc. $3,528M' , 1701269,'$1,701.27 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $3,528M' , 'Other Output Products $2,557M' , 458723,'$458.72 M'],
+[ 'Other Input Products $4,617M' , 'Coal mining $2,329M' , 516832,'$516.83 M'],
+[ 'Coal mining $2,329M' , 'Other Output Products $2,557M' , 152040,'$152.04 M'],
+[ 'Support activities for mining $1,374M' , 'Other Output Products $2,557M' , 496555,'$496.56 M'],
+[ 'Other Input Products $4,617M' , 'Support activities for mining $1,374M' , 320331,'$320.33 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $170M' , 'Other Output Products $2,557M' , 168215,'$168.22 M'],
+[ 'Other Input Products $4,617M' , 'Sand, gravel, clay, and ceramic  etc. $170M' , 55999,'$56.00 M'],
+[ 'Gold and silver ore mining $169M' , 'Other Output Products $2,557M' , 168678,'$168.68 M'],
+[ 'Other Input Products $4,617M' , 'Gold and silver ore mining $169M' , 81820,'$81.82 M'],
+[ 'Other Input Products $4,617M' , 'Stone mining and quarrying $115M' , 38778,'$38.78 M'],
+[ 'Stone mining and quarrying $115M' , 'Other Output Products $2,557M' , 14787,'$14.79 M'],
+[ 'Other non-metallic mineral mining  etc. $34M' , 'Other Output Products $2,557M' , 66946,'$66.95 M'],
+[ 'Other Input Products $4,617M' , 'Other non-metallic mineral mining  etc. $34M' , 9716,'$9.72 M'],
+[ 'Other metal ore mining $17M' , 'Other Output Products $2,557M' , 16620,'$16.62 M'],
+[ 'Other Input Products $4,617M' , 'Other metal ore mining $17M' , 4219,'$4.22 M'],
+];
+
+<!-- Canada -->  
+dataCAN = [
+[ 'Gross operating surplus $49,238M' , 'Conventional oil and gas extraction $54,023M' , 15148262,'$15,148.26 M'],
+[ 'Gross operating surplus $49,238M' , 'Non-conventional oil extraction $48,914M' , 17989746,'$17,989.75 M'],
+[ 'Gross operating surplus $49,238M' , 'Copper, nickel, lead and zinc ore etc. $9,979M' , 4588466,'$4,588.47 M'],
+[ 'Gross operating surplus $49,238M' , 'Gold and silver ore mining $7,420M' , 2008625,'$2,008.63 M'],
+[ 'Gross operating surplus $49,238M' , 'Potash mining $6,714M' , 3514529,'$3,514.53 M'],
+[ 'Gross operating surplus $49,238M' , 'Support activities for mining $5,583M' , 852729,'$852.73 M'],
+[ 'Gross operating surplus $49,238M' , 'Coal mining $3,244M' , 787700,'$787.70 M'],
+[ 'Gross operating surplus $49,238M' , 'Iron ore mining $3,088M' , 776697,'$776.70 M'],
+[ 'Gross operating surplus $49,238M' , 'Other metal ore mining $2,820M' , 1238962,'$1,238.96 M'],
+[ 'Gross operating surplus $49,238M' , 'Diamond mining $2,183M' , 800588,'$800.59 M'],
+[ 'Gross operating surplus $49,238M' , 'Stone mining and quarrying $1,805M' , 596985,'$596.99 M'],
+[ 'Gross operating surplus $49,238M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 355905,'$355.90 M'],
+[ 'Gross operating surplus $49,238M' , 'Other non-metallic mineral mining  etc. $1,432M' , 578471,'$578.47 M'],
+[ 'Wages and salaries $21,010M' , 'Conventional oil and gas extraction $54,023M' , 7965972,'$7,965.97 M'],
+[ 'Employers\' social contributions $2,719M' , 'Conventional oil and gas extraction $54,023M' , 1739048,'$1,739.05 M'],
+[ 'Wages and salaries $21,010M' , 'Non-conventional oil extraction $48,914M' , 4484102,'$4,484.10 M'],
+[ 'Wages and salaries $21,010M' , 'Copper, nickel, lead and zinc ore etc. $9,979M' , 1291184,'$1,291.18 M'],
+[ 'Wages and salaries $21,010M' , 'Gold and silver ore mining $7,420M' , 1475649,'$1,475.65 M'],
+[ 'Employers\' social contributions $2,719M' , 'Gold and silver ore mining $7,420M' , 338939,'$338.94 M'],
+[ 'Wages and salaries $21,010M' , 'Potash mining $6,714M' , 801257,'$801.26 M'],
+[ 'Wages and salaries $21,010M' , 'Support activities for mining $5,583M' , 2047224,'$2,047.22 M'],
+[ 'Employers\' social contributions $2,719M' , 'Support activities for mining $5,583M' , 249471,'$249.47 M'],
+[ 'Wages and salaries $21,010M' , 'Coal mining $3,244M' , 686668,'$686.67 M'],
+[ 'Employers\' social contributions $2,719M' , 'Coal mining $3,244M' , 118112,'$118.11 M'],
+[ 'Wages and salaries $21,010M' , 'Iron ore mining $3,088M' , 467628,'$467.63 M'],
+[ 'Employers\' social contributions $2,719M' , 'Iron ore mining $3,088M' , 101732,'$101.73 M'],
+[ 'Wages and salaries $21,010M' , 'Other metal ore mining $2,820M' , 428664,'$428.66 M'],
+[ 'Employers\' social contributions $2,719M' , 'Other metal ore mining $2,820M' , 111410,'$111.41 M'],
+[ 'Wages and salaries $21,010M' , 'Diamond mining $2,183M' , 299006,'$299.01 M'],
+[ 'Wages and salaries $21,010M' , 'Stone mining and quarrying $1,805M' , 278671,'$278.67 M'],
+[ 'Wages and salaries $21,010M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 503916,'$503.92 M'],
+[ 'Employers\' social contributions $2,719M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 60560,'$60.56 M'],
+[ 'Wages and salaries $21,010M' , 'Other non-metallic mineral mining  etc. $1,432M' , 279717,'$279.72 M'],
+[ 'Taxes on production $386M' , 'Potash mining $6,714M' , 386083,'$386.08 M'],
+[ 'Crude and diluted bitumen $22,617M' , 'International exports $83,171M' , 21977074,'$21,977.07 M'],
+[ 'Conventional crude oil $45,975M' , 'International exports $83,171M' , 20430399,'$20,430.40 M'],
+[ 'Synthetic crude oil $24,001M' , 'International exports $83,171M' , 14078835,'$14,078.83 M'],
+[ 'Natural gas $17,057M' , 'International exports $83,171M' , 6829939,'$6,829.94 M'],
+[ 'Potash $5,983M' , 'International exports $83,171M' , 5506580,'$5,506.58 M'],
+[ 'Copper ores and concentrates $5,262M' , 'International exports $83,171M' , 3715338,'$3,715.34 M'],
+[ 'Iron ores and concentrates $3,754M' , 'International exports $83,171M' , 2910340,'$2,910.34 M'],
+[ 'Coal $3,967M' , 'International exports $83,171M' , 2238081,'$2,238.08 M'],
+[ 'Uncut and industrial diamonds $2,238M' , 'International exports $83,171M' , 2095502,'$2,095.50 M'],
+[ 'Non-metallic minerals  $4,028M' , 'International exports $83,171M' , 1425622,'$1,425.62 M'],
+[ 'Support services for mining and quarrying etc. $3,598M' , 'International exports $83,171M' , 882292,'$882.29 M'],
+[ 'Radioactive ores and concentrates $2,151M' , 'International exports $83,171M' , 642660,'$642.66 M'],
+[ 'Other metal ores and concentrates $994M' , 'International exports $83,171M' , 437979,'$437.98 M'],
+[ 'Conventional oil and gas extraction $54,023M' , 'Conventional crude oil $45,975M' , 29801741,'$29,801.74 M'],
+[ 'Conventional oil and gas extraction $54,023M' , 'Natural gas $17,057M' , 13952132,'$13,952.13 M'],
+[ 'Support services for oil and gas extraction etc. $9,324M' , 'Conventional oil and gas extraction $54,023M' , 6170894,'$6,170.89 M'],
+[ 'Head office services  $2,095M' , 'Conventional oil and gas extraction $54,023M' , 1605072,'$1,605.07 M'],
+[ 'Repair construction services $2,176M' , 'Conventional oil and gas extraction $54,023M' , 1589328,'$1,589.33 M'],
+[ 'Holding company services ... $3,270M' , 'Conventional oil and gas extraction $54,023M' , 1513748,'$1,513.75 M'],
+[ 'Non-conventional oil extraction $48,914M' , 'Synthetic crude oil $24,001M' , 24000689,'$24,000.69 M'],
+[ 'Non-conventional oil extraction $48,914M' , 'Crude and diluted bitumen $22,617M' , 22617137,'$22,617.14 M'],
+[ 'Support services for oil and gas extraction etc. $9,324M' , 'Non-conventional oil extraction $48,914M' , 3153030,'$3,153.03 M'],
+[ 'Architectural, engineering ... $2,801M' , 'Non-conventional oil extraction $48,914M' , 1876333,'$1,876.33 M'],
+[ 'Holding company services ... $3,270M' , 'Non-conventional oil extraction $48,914M' , 1756608,'$1,756.61 M'],
+[ 'Conventional crude oil $1,501M' , 'Non-conventional oil extraction $48,914M' , 1501056,'$1,501.06 M'],
+[ 'Conventional crude oil $45,975M' , 'Petroleum refineries $33,495M' , 23453912,'$23,453.91 M'],
+[ 'Synthetic crude oil $24,001M' , 'Petroleum refineries $33,495M' , 10041286,'$10,041.29 M'],
+[ 'International imports $27,963M' , 'Conventional crude oil $45,975M' , 16173622,'$16,173.62 M'],
+[ 'International imports $27,963M' , 'Natural gas $17,057M' , 3105294,'$3,105.29 M'],
+[ 'International imports $27,963M' , 'Gold and silver ores and concentrates $9,189M' , 2863311,'$2,863.31 M'],
+[ 'International imports $27,963M' , 'Non-metallic minerals  $4,028M' , 1114990,'$1,114.99 M'],
+[ 'International imports $27,963M' , 'Nickel ores and concentrates $5,453M' , 1081642,'$1,081.64 M'],
+[ 'International imports $27,963M' , 'Coal $3,967M' , 976027,'$976.03 M'],
+[ 'International imports $27,963M' , 'Iron ores and concentrates $3,754M' , 729434,'$729.43 M'],
+[ 'International imports $27,963M' , 'Radioactive ores and concentrates $2,151M' , 525315,'$525.32 M'],
+[ 'International imports $27,963M' , 'Copper ores and concentrates $5,262M' , 515288,'$515.29 M'],
+[ 'International imports $27,963M' , 'Sand, gravel, clay, and refractory etc. $2,750M' , 453790,'$453.79 M'],
+[ 'International imports $27,963M' , 'Other metal ores and concentrates $994M' , 160025,'$160.03 M'],
+[ 'International imports $27,963M' , 'Stone $1,735M' , 117335,'$117.33 M'],
+[ 'International imports $27,963M' , 'Uncut and industrial diamonds $2,238M' , 89085,'$89.08 M'],
+[ 'International imports $27,963M' , 'Support services for mining and quarrying etc. $3,598M' , 48216,'$48.22 M'],
+[ 'International imports $27,963M' , 'Potash $5,983M' , 9955,'$9.96 M'],
+[ 'Gold and silver ores and concentrates $9,189M' , 'Non-ferrous metal  $15,915M' , 7021102,'$7,021.10 M'],
+[ 'Nickel ores and concentrates $5,453M' , 'Non-ferrous metal  $15,915M' , 5297806,'$5,297.81 M'],
+[ 'Copper ores and concentrates $5,262M' , 'Non-ferrous metal  $15,915M' , 1553414,'$1,553.41 M'],
+[ 'Radioactive ores and concentrates $2,151M' , 'Non-ferrous metal  $15,915M' , 1480482,'$1,480.48 M'],
+[ 'Other metal ores and concentrates $994M' , 'Non-ferrous metal  $15,915M' , 562356,'$562.36 M'],
+[ 'Natural gas $17,057M' , 'Other Industries $10,274M' , 5223536,'$5,223.54 M'],
+[ 'Sand, gravel, clay, and refractory etc. $2,750M' , 'Other Industries $10,274M' , 967078,'$967.08 M'],
+[ 'Coal $3,967M' , 'Other Industries $10,274M' , 839080,'$839.08 M'],
+[ 'Stone $1,735M' , 'Other Industries $10,274M' , 765664,'$765.66 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Other Industries $10,274M' , 764962,'$764.96 M'],
+[ 'Conventional crude oil $45,975M' , 'Other Industries $10,274M' , 589996,'$590.00 M'],
+[ 'Potash $5,983M' , 'Other Industries $10,274M' , 476848,'$476.85 M'],
+[ 'Crude and diluted bitumen $22,617M' , 'Other Industries $10,274M' , 457631,'$457.63 M'],
+[ 'Nickel ores and concentrates $5,453M' , 'Other Industries $10,274M' , 155003,'$155.00 M'],
+[ 'Uncut and industrial diamonds $2,238M' , 'Other Industries $10,274M' , 142473,'$142.47 M'],
+[ 'Gold and silver ores and concentrates $9,189M' , 'Other Industries $10,274M' , 126573,'$126.57 M'],
+[ 'Radioactive ores and concentrates $2,151M' , 'Other Industries $10,274M' , 27527,'$27.53 M'],
+[ 'Support services for mining and quarrying etc. $3,598M' , 'Other Industries $10,274M' , 91,'$0.09 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $9,979M' , 'Copper ores and concentrates $5,262M' , 4419789,'$4,419.79 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $9,979M' , 'Nickel ores and concentrates $5,453M' , 4371167,'$4,371.17 M'],
+[ 'Gold and silver ore mining $7,420M' , 'Gold and silver ores and concentrates $9,189M' , 6325944,'$6,325.94 M'],
+[ 'Support services for mining and quarrying etc. $1,157M' , 'Gold and silver ore mining $7,420M' , 396219,'$396.22 M'],
+[ 'Head office services  $2,095M' , 'Gold and silver ore mining $7,420M' , 271677,'$271.68 M'],
+[ 'Logging, mining and construction machinery  etc. $791M' , 'Gold and silver ore mining $7,420M' , 268353,'$268.35 M'],
+[ 'Electricity $344M' , 'Gold and silver ore mining $7,420M' , 230547,'$230.55 M'],
+[ 'Potash mining $6,714M' , 'Potash $5,983M' , 5973473,'$5,973.47 M'],
+[ 'Logging, mining and construction machinery  etc. $791M' , 'Potash mining $6,714M' , 274261,'$274.26 M'],
+[ 'Support activities for mining $5,583M' , 'Support services for mining and quarrying etc. $3,598M' , 3549761,'$3,549.76 M'],
+[ 'Architectural, engineering ... $2,801M' , 'Support activities for mining $5,583M' , 924540,'$924.54 M'],
+[ 'Measuring, control and scientific etc. $399M' , 'Support activities for mining $5,583M' , 399407,'$399.41 M'],
+[ 'Coal mining $3,244M' , 'Coal $3,967M' , 2991061,'$2,991.06 M'],
+[ 'Repair construction services $2,176M' , 'Coal mining $3,244M' , 493990,'$493.99 M'],
+[ 'Head office services  $2,095M' , 'Coal mining $3,244M' , 218602,'$218.60 M'],
+[ 'Diesel and biodiesel fuels $584M' , 'Coal mining $3,244M' , 117264,'$117.26 M'],
+[ 'Iron ore mining $3,088M' , 'Iron ores and concentrates $3,754M' , 3024795,'$3,024.80 M'],
+[ 'Diesel and biodiesel fuels $584M' , 'Iron ore mining $3,088M' , 134452,'$134.45 M'],
+[ 'Repair and maintenance services etc. $196M' , 'Iron ore mining $3,088M' , 116988,'$116.99 M'],
+[ 'Electricity $344M' , 'Iron ore mining $3,088M' , 113325,'$113.33 M'],
+[ 'Logging, mining and construction machinery  etc. $791M' , 'Iron ore mining $3,088M' , 110421,'$110.42 M'],
+[ 'Chemical products, n.e.c. $93M' , 'Iron ore mining $3,088M' , 93498,'$93.50 M'],
+[ 'Computer systems design ... $86M' , 'Iron ore mining $3,088M' , 85789,'$85.79 M'],
+[ 'Commercial and industrial machinery  etc. $83M' , 'Iron ore mining $3,088M' , 83050,'$83.05 M'],
+[ 'Other metal ore mining $2,820M' , 'Radioactive ores and concentrates $2,151M' , 1625354,'$1,625.35 M'],
+[ 'Other metal ore mining $2,820M' , 'Other metal ores and concentrates $994M' , 807355,'$807.36 M'],
+[ 'Support services for mining and quarrying etc. $1,157M' , 'Other metal ore mining $2,820M' , 266169,'$266.17 M'],
+[ 'Natural gas $17,057M' , 'Electric power generation, transmission  etc. $2,200M' , 1310342,'$1,310.34 M'],
+[ 'Coal $3,967M' , 'Electric power generation, transmission  etc. $2,200M' , 889927,'$889.93 M'],
+[ 'Diamond mining $2,183M' , 'Uncut and industrial diamonds $2,238M' , 2148890,'$2,148.89 M'],
+[ 'Diesel and biodiesel fuels $584M' , 'Diamond mining $2,183M' , 169975,'$169.97 M'],
+[ 'Support services for mining and quarrying etc. $1,157M' , 'Diamond mining $2,183M' , 133703,'$133.70 M'],
+[ 'Repair construction services $2,176M' , 'Diamond mining $2,183M' , 92301,'$92.30 M'],
+[ 'Repair and maintenance services etc. $196M' , 'Diamond mining $2,183M' , 79233,'$79.23 M'],
+[ 'Gold and silver ores and concentrates $9,189M' , 'Other miscellaneous manufacturing $2,042M' , 2041580,'$2,041.58 M'],
+[ 'Stone mining and quarrying $1,805M' , 'Stone $1,735M' , 1335630,'$1,335.63 M'],
+[ 'Support services for mining and quarrying etc. $1,157M' , 'Stone mining and quarrying $1,805M' , 176797,'$176.80 M'],
+[ 'Logging, mining and construction machinery  etc. $791M' , 'Stone mining and quarrying $1,805M' , 60313,'$60.31 M'],
+[ 'Diesel and biodiesel fuels $584M' , 'Stone mining and quarrying $1,805M' , 59746,'$59.75 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 'Sand, gravel, clay, and refractory etc. $2,750M' , 1404834,'$1,404.83 M'],
+[ 'Support services for mining and quarrying etc. $1,157M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 183986,'$183.99 M'],
+[ 'Diesel and biodiesel fuels $584M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 102765,'$102.77 M'],
+[ 'Logging, mining and construction machinery  etc. $791M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 77942,'$77.94 M'],
+[ 'Support services for mining and quarrying etc. $3,598M' , 'Other engineering construction $1,770M' , 1770231,'$1,770.23 M'],
+[ 'Other non-metallic mineral mining  etc. $1,432M' , 'Non-metallic minerals  $4,028M' , 2592252,'$2,592.25 M'],
+[ 'Stone $1,735M' , 'Transportation engineering construction $1,146M' , 631502,'$631.50 M'],
+[ 'Sand, gravel, clay, and refractory etc. $2,750M' , 'Transportation engineering construction $1,146M' , 514931,'$514.93 M'],
+[ 'Sand, gravel, clay, and refractory etc. $2,750M' , 'Cement and concrete product manufacturing $1,016M' , 1016293,'$1,016.29 M'],
+[ 'Iron ores and concentrates $3,754M' , 'Iron and steel mills and ferro-alloy etc. $933M' , 932557,'$932.56 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Petroleum and coal product manufacturing etc. $718M' , 465924,'$465.92 M'],
+[ 'Sand, gravel, clay, and refractory etc. $2,750M' , 'Petroleum and coal product manufacturing etc. $718M' , 251640,'$251.64 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Other provincial and territorial government etc. $377M' , 377228,'$377.23 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Other municipal government services $336M' , 335898,'$335.90 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Pesticide, fertilizer and other agricultural chemical etc. $330M' , 329620,'$329.62 M'],
+[ 'Non-metallic minerals  $4,028M' , 'Basic chemical manufacturing $329M' , 329086,'$329.09 M'],
+[ 'Stone $1,735M' , 'Repair construction $281M' , 280530,'$280.53 M'],
+[ 'Other Input Products $50,753M' , 'Conventional oil and gas extraction $54,023M' , 18291142,'$18,291.14 M'],
+[ 'Conventional oil and gas extraction $54,023M' , 'Other Output Products $18,017M' , 9889122,'$9,889.12 M'],
+[ 'Other Input Products $50,753M' , 'Non-conventional oil extraction $48,914M' , 18152674,'$18,152.67 M'],
+[ 'Non-conventional oil extraction $48,914M' , 'Other Output Products $18,017M' , 1909970,'$1,909.97 M'],
+[ 'Other Input Products $50,753M' , 'Copper, nickel, lead and zinc ore etc. $9,979M' , 4098940,'$4,098.94 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $9,979M' , 'Other Output Products $18,017M' , 1030192,'$1,030.19 M'],
+[ 'Other Input Products $50,753M' , 'Gold and silver ore mining $7,420M' , 2430465,'$2,430.47 M'],
+[ 'Gold and silver ore mining $7,420M' , 'Other Output Products $18,017M' , 949965,'$949.97 M'],
+[ 'Other Input Products $50,753M' , 'Potash mining $6,714M' , 1738112,'$1,738.11 M'],
+[ 'Potash mining $6,714M' , 'Other Output Products $18,017M' , 701699,'$701.70 M'],
+[ 'Support activities for mining $5,583M' , 'Other Output Products $18,017M' , 2011717,'$2,011.72 M'],
+[ 'Other Input Products $50,753M' , 'Support activities for mining $5,583M' , 1109276,'$1,109.28 M'],
+[ 'Other Input Products $50,753M' , 'Coal mining $3,244M' , 821189,'$821.19 M'],
+[ 'Coal mining $3,244M' , 'Other Output Products $18,017M' , 171533,'$171.53 M'],
+[ 'Other Input Products $50,753M' , 'Iron ore mining $3,088M' , 1004912,'$1,004.91 M'],
+[ 'Iron ore mining $3,088M' , 'Other Output Products $18,017M' , 34534,'$34.53 M'],
+[ 'Other Input Products $50,753M' , 'Other metal ore mining $2,820M' , 775274,'$775.27 M'],
+[ 'Other metal ore mining $2,820M' , 'Other Output Products $18,017M' , 368478,'$368.48 M'],
+[ 'Other Input Products $50,753M' , 'Diamond mining $2,183M' , 608200,'$608.20 M'],
+[ 'Diamond mining $2,183M' , 'Other Output Products $18,017M' , 2063,'$2.06 M'],
+[ 'Other Input Products $50,753M' , 'Stone mining and quarrying $1,805M' , 632947,'$632.95 M'],
+[ 'Stone mining and quarrying $1,805M' , 'Other Output Products $18,017M' , 460408,'$460.41 M'],
+[ 'Other Input Products $50,753M' , 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 516077,'$516.08 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $1,801M' , 'Other Output Products $18,017M' , 383850,'$383.85 M'],
+[ 'Other Input Products $50,753M' , 'Other non-metallic mineral mining  etc. $1,432M' , 573803,'$573.80 M'],
+[ 'Other non-metallic mineral mining  etc. $1,432M' , 'Other Output Products $18,017M' , 103614,'$103.61 M'],
+];
+
+<!-- Manitoba -->  
+dataMB = [
+[ 'Gross operating surplus $1,060M' , 'Conventional oil and gas extraction $970M' , 596469,'$596.47 M'],
+[ 'Gross operating surplus $1,060M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 314522,'$314.52 M'],
+[ 'Gross operating surplus $1,060M' , 'Support activities for mining $192M' , 53621,'$53.62 M'],
+[ 'Gross operating surplus $1,060M' , 'Other non-metallic mineral mining  etc. $96M' , 57051,'$57.05 M'],
+[ 'Gross operating surplus $1,060M' , 'Stone mining and quarrying $72M' , 24332,'$24.33 M'],
+[ 'Gross operating surplus $1,060M' , 'Sand, gravel, clay, and ceramic  etc. $41M' , 13896,'$13.90 M'],
+[ 'Wages and salaries $312M' , 'Conventional oil and gas extraction $970M' , 59356,'$59.36 M'],
+[ 'Wages and salaries $312M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 150283,'$150.28 M'],
+[ 'Wages and salaries $312M' , 'Support activities for mining $192M' , 51234,'$51.23 M'],
+[ 'Wages and salaries $312M' , 'Other non-metallic mineral mining  etc. $96M' , 7405,'$7.41 M'],
+[ 'Wages and salaries $312M' , 'Stone mining and quarrying $72M' , 9483,'$9.48 M'],
+[ 'Wages and salaries $312M' , 'Sand, gravel, clay, and ceramic  etc. $41M' , 14854,'$14.85 M'],
+[ 'Wages and salaries $312M' , 'Gold and silver ore mining $23M' , 14022,'$14.02 M'],
+[ 'Wages and salaries $312M' , 'Other metal ore mining $11M' , 5429,'$5.43 M'],
+[ 'Taxes on production $36M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 36395,'$36.40 M'],
+[ 'Conventional oil and gas extraction $970M' , 'Conventional crude oil $938M' , 937626,'$937.63 M'],
+[ 'Support services for oil and gas extraction etc. $92M' , 'Conventional oil and gas extraction $970M' , 91709,'$91.71 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $901M' , 'Copper ores and concentrates $335M' , 334890,'$334.89 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $901M' , 'Lead and zinc ores and concentrates $226M' , 189339,'$189.34 M'],
+[ 'Holding company services ... $72M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 72394,'$72.39 M'],
+[ 'Support services for mining and quarrying etc. $102M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 66705,'$66.70 M'],
+[ 'Conventional crude oil $938M' , 'International exports $792M' , 626580,'$626.58 M'],
+[ 'Copper ores and concentrates $335M' , 'International exports $792M' , 107340,'$107.34 M'],
+[ 'Non-metallic minerals  $257M' , 'International exports $792M' , 58412,'$58.41 M'],
+[ 'Conventional crude oil $938M' , 'Ontario $427M' , 300399,'$300.40 M'],
+[ 'Non-metallic minerals  $257M' , 'Ontario $427M' , 94870,'$94.87 M'],
+[ 'Gold and silver ores and concentrates $22M' , 'Ontario $427M' , 21197,'$21.20 M'],
+[ 'Other metal ores and concentrates $11M' , 'Ontario $427M' , 10862,'$10.86 M'],
+[ 'Lead and zinc ores and concentrates $226M' , 'Non-ferrous metal  $230M' , 230005,'$230.00 M'],
+[ 'Copper ores and concentrates $335M' , 'Quebec $228M' , 227550,'$227.55 M'],
+[ 'Support activities for mining $192M' , 'Support services for mining and quarrying etc. $163M' , 142612,'$142.61 M'],
+[ 'Support activities for mining $192M' , 'Mineral and oil and gas exploration $76M' , 48659,'$48.66 M'],
+[ 'Architectural, engineering ... $25M' , 'Support activities for mining $192M' , 25426,'$25.43 M'],
+[ 'Measuring, control and scientific etc. $13M' , 'Support activities for mining $192M' , 13010,'$13.01 M'],
+[ 'Commercial and industrial machinery  etc. $9M' , 'Support activities for mining $192M' , 9006,'$9.01 M'],
+[ 'Non-metallic minerals  $257M' , 'Other Industries $99M' , 39410,'$39.41 M'],
+[ 'Sand, gravel, clay, and refractory etc. $88M' , 'Other Industries $99M' , 27656,'$27.66 M'],
+[ 'Stone $54M' , 'Other Industries $99M' , 15454,'$15.45 M'],
+[ 'Conventional crude oil $938M' , 'Other Industries $99M' , 10647,'$10.65 M'],
+[ 'Mineral and oil and gas exploration $76M' , 'Other Industries $99M' , 4825,'$4.83 M'],
+[ 'Support services for mining and quarrying etc. $163M' , 'Other Industries $99M' , 4647,'$4.65 M'],
+[ 'Gold and silver ores and concentrates $22M' , 'Other Industries $99M' , 326,'$0.33 M'],
+[ 'Other metal ores and concentrates $11M' , 'Other Industries $99M' , 126,'$0.13 M'],
+[ 'Other non-metallic mineral mining  etc. $96M' , 'Non-metallic minerals  $257M' , 185968,'$185.97 M'],
+[ 'Stone mining and quarrying $72M' , 'Stone $54M' , 45212,'$45.21 M'],
+[ 'Support services for mining and quarrying etc. $102M' , 'Stone mining and quarrying $72M' , 25347,'$25.35 M'],
+[ 'Support services for mining and quarrying etc. $163M' , 'Other engineering construction $66M' , 66464,'$66.46 M'],
+[ 'Mineral and oil and gas exploration $76M' , 'Business Intellectual Property etc. $64M' , 64248,'$64.25 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $41M' , 'Sand, gravel, clay, and refractory etc. $88M' , 31534,'$31.53 M'],
+[ 'Support services for mining and quarrying etc. $102M' , 'Sand, gravel, clay, and ceramic  etc. $41M' , 3020,'$3.02 M'],
+[ 'Sand, gravel, clay, and refractory etc. $88M' , 'Cement and concrete product manufacturing $41M' , 40506,'$40.51 M'],
+[ 'Saskatchewan $40M' , 'Non-metallic minerals  $257M' , 36212,'$36.21 M'],
+[ 'Saskatchewan $40M' , 'Support services for mining and quarrying etc. $163M' , 4247,'$4.25 M'],
+[ 'International imports $33M' , 'Lead and zinc ores and concentrates $226M' , 28863,'$28.86 M'],
+[ 'International imports $33M' , 'Stone $54M' , 4218,'$4.22 M'],
+[ 'Non-metallic minerals  $257M' , 'Petroleum and coal product manufacturing etc. $26M' , 25956,'$25.96 M'],
+[ 'Gold and silver ore mining $23M' , 'Gold and silver ores and concentrates $22M' , 21523,'$21.52 M'],
+[ 'Support services for mining and quarrying etc. $102M' , 'Gold and silver ore mining $23M' , 6894,'$6.89 M'],
+[ 'Non-metallic minerals  $257M' , 'Basic chemical manufacturing $22M' , 22234,'$22.23 M'],
+[ 'Alberta $21M' , 'Non-metallic minerals  $257M' , 20872,'$20.87 M'],
+[ 'From Other Provinces $14M' , 'Support services for mining and quarrying etc. $163M' , 6882,'$6.88 M'],
+[ 'From Other Provinces $14M' , 'Non-metallic minerals  $257M' , 4420,'$4.42 M'],
+[ 'From Other Provinces $14M' , 'Stone $54M' , 1618,'$1.62 M'],
+[ 'From Other Provinces $14M' , 'Mineral and oil and gas exploration $76M' , 1526,'$1.53 M'],
+[ 'Ontario $12M' , 'Lead and zinc ores and concentrates $226M' , 7695,'$7.70 M'],
+[ 'Ontario $12M' , 'Mineral and oil and gas exploration $76M' , 4149,'$4.15 M'],
+[ 'Other metal ore mining $11M' , 'Other metal ores and concentrates $11M' , 10988,'$10.99 M'],
+[ 'Stone $54M' , 'Repair construction $11M' , 10551,'$10.55 M'],
+[ 'Stone $54M' , 'Transportation engineering construction $10M' , 9738,'$9.74 M'],
+[ 'British Columbia $10M' , 'Support services for mining and quarrying etc. $163M' , 9580,'$9.58 M'],
+[ 'Stone $54M' , 'Household and institutional furniture  etc. $9M' , 8727,'$8.73 M'],
+[ 'Stone $54M' , 'Inventory Changes $7M' , 7252,'$7.25 M'],
+[ 'Sand, gravel, clay, and refractory etc. $88M' , 'To Other Provinces $33M' , 19845,'$19.84 M'],
+[ 'Mineral and oil and gas exploration $76M' , 'To Other Provinces $33M' , 7277,'$7.28 M'],
+[ 'Non-metallic minerals  $257M' , 'To Other Provinces $33M' , 6108,'$6.11 M'],
+[ 'Other Input Products $584M' , 'Conventional oil and gas extraction $970M' , 222266,'$222.27 M'],
+[ 'Conventional oil and gas extraction $970M' , 'Other Output Products $429M' , 26166,'$26.17 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $901M' , 'Other Output Products $429M' , 365572,'$365.57 M'],
+[ 'Other Input Products $584M' , 'Copper, nickel, lead and zinc ore etc. $901M' , 260656,'$260.66 M'],
+[ 'Other Input Products $584M' , 'Support activities for mining $192M' , 39515,'$39.52 M'],
+[ 'Support activities for mining $192M' , 'Other Output Products $429M' , 241,'$0.24 M'],
+[ 'Other Input Products $584M' , 'Other non-metallic mineral mining  etc. $96M' , 31377,'$31.38 M'],
+[ 'Other non-metallic mineral mining  etc. $96M' , 'Other Output Products $429M' , 4,'$0.00 M'],
+[ 'Stone mining and quarrying $72M' , 'Other Output Products $429M' , 26962,'$26.96 M'],
+[ 'Other Input Products $584M' , 'Stone mining and quarrying $72M' , 13236,'$13.24 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $41M' , 'Other Output Products $429M' , 9799,'$9.80 M'],
+[ 'Other Input Products $584M' , 'Sand, gravel, clay, and ceramic  etc. $41M' , 9674,'$9.67 M'],
+[ 'Other Input Products $584M' , 'Gold and silver ore mining $23M' , 1769,'$1.77 M'],
+[ 'Gold and silver ore mining $23M' , 'Other Output Products $429M' , 25,'$0.03 M'],
+[ 'Other Input Products $584M' , 'Other metal ore mining $11M' , 5615,'$5.62 M'],
+[ 'Other metal ore mining $11M' , 'Other Output Products $429M' , 9,'$0.01 M'],
+];
+
+<!-- New Brunswick -->  
+dataNB = [
+[ 'Gross operating surplus $158M' , 'Potash mining $262M' , 82851,'$82.85 M'],
+[ 'Gross operating surplus $158M' , 'Other non-metallic mineral mining  etc. $125M' , 49162,'$49.16 M'],
+[ 'Gross operating surplus $158M' , 'Stone mining and quarrying $55M' , 5823,'$5.82 M'],
+[ 'Gross operating surplus $158M' , 'Copper, nickel, lead and zinc ore etc. $40M' , 19153,'$19.15 M'],
+[ 'Gross operating surplus $158M' , 'Sand, gravel, clay, and ceramic  etc. $6M' , 595,'$0.59 M'],
+[ 'Wages and salaries $143M' , 'Potash mining $262M' , 60666,'$60.67 M'],
+[ 'Employers\' social contributions $19M' , 'Potash mining $262M' , 15441,'$15.44 M'],
+[ 'Wages and salaries $143M' , 'Other non-metallic mineral mining  etc. $125M' , 30451,'$30.45 M'],
+[ 'Wages and salaries $143M' , 'Support activities for mining $83M' , 30540,'$30.54 M'],
+[ 'Wages and salaries $143M' , 'Stone mining and quarrying $55M' , 15378,'$15.38 M'],
+[ 'Employers\' social contributions $19M' , 'Stone mining and quarrying $55M' , 3994,'$3.99 M'],
+[ 'Wages and salaries $143M' , 'Copper, nickel, lead and zinc ore etc. $40M' , 3763,'$3.76 M'],
+[ 'Wages and salaries $143M' , 'Sand, gravel, clay, and ceramic  etc. $6M' , 1790,'$1.79 M'],
+[ 'Wages and salaries $143M' , 'Conventional oil and gas extraction $4M' , 711,'$0.71 M'],
+[ 'Potash $230M' , 'International exports $306M' , 200964,'$200.96 M'],
+[ 'Non-metallic minerals  $331M' , 'International exports $306M' , 97874,'$97.87 M'],
+[ 'Stone $40M' , 'International exports $306M' , 6665,'$6.67 M'],
+[ 'Potash mining $262M' , 'Potash $230M' , 229758,'$229.76 M'],
+[ 'Support services for mining and quarrying etc. $24M' , 'Potash mining $262M' , 23514,'$23.51 M'],
+[ 'Head office services  $33M' , 'Potash mining $262M' , 23165,'$23.16 M'],
+[ 'Electricity $13M' , 'Potash mining $262M' , 13045,'$13.04 M'],
+[ 'Other non-metallic mineral mining  etc. $125M' , 'Non-metallic minerals  $331M' , 239004,'$239.00 M'],
+[ 'Freight transportation arrangement  etc. $8M' , 'Other non-metallic mineral mining  etc. $125M' , 7511,'$7.51 M'],
+[ 'Non-metallic minerals  $331M' , 'Quebec $110M' , 78474,'$78.47 M'],
+[ 'Support services for mining and quarrying etc. $78M' , 'Quebec $110M' , 31417,'$31.42 M'],
+[ 'Support activities for mining $83M' , 'Support services for mining and quarrying etc. $78M' , 49991,'$49.99 M'],
+[ 'Architectural, engineering ... $20M' , 'Support activities for mining $83M' , 20268,'$20.27 M'],
+[ 'Support activities for mining $83M' , 'Mineral and oil and gas exploration $17M' , 14377,'$14.38 M'],
+[ 'Head office services  $33M' , 'Support activities for mining $83M' , 9759,'$9.76 M'],
+[ 'Measuring, control and scientific etc. $5M' , 'Support activities for mining $83M' , 5472,'$5.47 M'],
+[ 'Non-metallic minerals  $331M' , 'Other Industries $81M' , 60848,'$60.85 M'],
+[ 'Stone $40M' , 'Other Industries $81M' , 7155,'$7.16 M'],
+[ 'Potash $230M' , 'Other Industries $81M' , 6650,'$6.65 M'],
+[ 'Support services for mining and quarrying etc. $78M' , 'Other Industries $81M' , 5502,'$5.50 M'],
+[ 'Mineral and oil and gas exploration $17M' , 'Other Industries $81M' , 1149,'$1.15 M'],
+[ 'Non-metallic minerals  $331M' , 'Other provincial and territorial government etc. $64M' , 63598,'$63.60 M'],
+[ 'Stone mining and quarrying $55M' , 'Stone $40M' , 33160,'$33.16 M'],
+[ 'Chemical products, n.e.c. $4M' , 'Stone mining and quarrying $55M' , 3896,'$3.90 M'],
+[ 'Diesel and biodiesel fuels $4M' , 'Stone mining and quarrying $55M' , 3270,'$3.27 M'],
+[ 'Logging, mining and construction machinery  etc. $3M' , 'Stone mining and quarrying $55M' , 3163,'$3.16 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $2M' , 'Stone mining and quarrying $55M' , 2110,'$2.11 M'],
+[ 'International imports $40M' , 'Non-metallic minerals  $331M' , 39914,'$39.91 M'],
+[ 'International imports $40M' , 'Potash $230M' , 5,'$0.01 M'],
+[ 'Support services for mining and quarrying etc. $78M' , 'Other engineering construction $20M' , 19939,'$19.94 M'],
+[ 'Stone $40M' , 'Transportation engineering construction $16M' , 16450,'$16.45 M'],
+[ 'Saskatchewan $14M' , 'Support services for mining and quarrying etc. $78M' , 14338,'$14.34 M'],
+[ 'Nova Scotia $12M' , 'Support services for mining and quarrying etc. $78M' , 12392,'$12.39 M'],
+[ 'Mineral and oil and gas exploration $17M' , 'Business Intellectual Property etc. $8M' , 7782,'$7.78 M'],
+[ 'Stone $40M' , 'Repair construction $7M' , 7431,'$7.43 M'],
+[ 'From Other Provinces $7M' , 'Non-metallic minerals  $331M' , 4580,'$4.58 M'],
+[ 'From Other Provinces $7M' , 'Support services for mining and quarrying etc. $78M' , 1538,'$1.54 M'],
+[ 'From Other Provinces $7M' , 'Stone $40M' , 854,'$0.85 M'],
+[ 'From Other Provinces $7M' , 'Mineral and oil and gas exploration $17M' , 401,'$0.40 M'],
+[ 'Diesel and biodiesel fuels $4M' , 'Sand, gravel, clay, and ceramic  etc. $6M' , 662,'$0.66 M'],
+[ 'Gross mixed income $1M' , 'Sand, gravel, clay, and ceramic  etc. $6M' , 596,'$0.60 M'],
+[ 'Mineral and oil and gas exploration $17M' , 'Newfoundland and Labrador $5M' , 5259,'$5.26 M'],
+[ 'Quebec $4M' , 'Stone $40M' , 2773,'$2.77 M'],
+[ 'Quebec $4M' , 'Mineral and oil and gas exploration $17M' , 1667,'$1.67 M'],
+[ 'Support services for oil and gas extraction etc. $1M' , 'Conventional oil and gas extraction $4M' , 1495,'$1.50 M'],
+[ 'Non-metallic minerals  $331M' , 'To Other Provinces $56M' , 29920,'$29.92 M'],
+[ 'Potash $230M' , 'To Other Provinces $56M' , 22149,'$22.15 M'],
+[ 'Mineral and oil and gas exploration $17M' , 'To Other Provinces $56M' , 2344,'$2.34 M'],
+[ 'Stone $40M' , 'To Other Provinces $56M' , 1784,'$1.78 M'],
+[ 'Potash mining $262M' , 'Other Output Products $149M' , 60458,'$60.46 M'],
+[ 'Other Input Products $137M' , 'Potash mining $262M' , 43751,'$43.75 M'],
+[ 'Other Input Products $137M' , 'Other non-metallic mineral mining  etc. $125M' , 38342,'$38.34 M'],
+[ 'Other non-metallic mineral mining  etc. $125M' , 'Other Output Products $149M' , 180,'$0.18 M'],
+[ 'Support activities for mining $83M' , 'Other Output Products $149M' , 18141,'$18.14 M'],
+[ 'Other Input Products $137M' , 'Support activities for mining $83M' , 16618,'$16.62 M'],
+[ 'Stone mining and quarrying $55M' , 'Other Output Products $149M' , 20545,'$20.55 M'],
+[ 'Other Input Products $137M' , 'Stone mining and quarrying $55M' , 17626,'$17.63 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $40M' , 'Other Output Products $149M' , 39596,'$39.60 M'],
+[ 'Other Input Products $137M' , 'Copper, nickel, lead and zinc ore etc. $40M' , 16847,'$16.85 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $6M' , 'Other Output Products $149M' , 6040,'$6.04 M'],
+[ 'Other Input Products $137M' , 'Sand, gravel, clay, and ceramic  etc. $6M' , 2421,'$2.42 M'],
+[ 'Conventional oil and gas extraction $4M' , 'Other Output Products $149M' , 3693,'$3.69 M'],
+[ 'Other Input Products $137M' , 'Conventional oil and gas extraction $4M' , 1547,'$1.55 M'],
+];
+
+<!-- Newfoundland and Labrador -->  
+dataNL = [
+[ 'Gross operating surplus $4,266M' , 'Conventional oil and gas extraction $4,753M' , 3072935,'$3,072.93 M'],
+[ 'Gross operating surplus $4,266M' , 'Iron ore mining $1,501M' , 435515,'$435.51 M'],
+[ 'Gross operating surplus $4,266M' , 'Copper, nickel, lead and zinc ore etc. $902M' , 674492,'$674.49 M'],
+[ 'Gross operating surplus $4,266M' , 'Support activities for mining $122M' , 45122,'$45.12 M'],
+[ 'Gross operating surplus $4,266M' , 'Stone mining and quarrying $74M' , 33487,'$33.49 M'],
+[ 'Gross operating surplus $4,266M' , 'Gold and silver ore mining $26M' , 3541,'$3.54 M'],
+[ 'Gross operating surplus $4,266M' , 'Other non-metallic mineral mining  etc. $2M' , 677,'$0.68 M'],
+[ 'Wages and salaries $551M' , 'Conventional oil and gas extraction $4,753M' , 236360,'$236.36 M'],
+[ 'Wages and salaries $551M' , 'Iron ore mining $1,501M' , 187271,'$187.27 M'],
+[ 'Employers\' social contributions $42M' , 'Iron ore mining $1,501M' , 42456,'$42.46 M'],
+[ 'Wages and salaries $551M' , 'Copper, nickel, lead and zinc ore etc. $902M' , 73319,'$73.32 M'],
+[ 'Wages and salaries $551M' , 'Support activities for mining $122M' , 36710,'$36.71 M'],
+[ 'Wages and salaries $551M' , 'Stone mining and quarrying $74M' , 12505,'$12.51 M'],
+[ 'Wages and salaries $551M' , 'Gold and silver ore mining $26M' , 4073,'$4.07 M'],
+[ 'Wages and salaries $551M' , 'Other non-metallic mineral mining  etc. $2M' , 311,'$0.31 M'],
+[ 'Wages and salaries $551M' , 'Sand, gravel, clay, and ceramic  etc. $1M' , 665,'$0.67 M'],
+[ 'Taxes on production $<0.5M' , 'Other non-metallic mineral mining  etc. $2M' , 432,'$0.43 M'],
+[ 'Conventional oil and gas extraction $4,753M' , 'Conventional crude oil $6,201M' , 4162865,'$4,162.86 M'],
+[ 'Conventional oil and gas extraction $4,753M' , 'Mineral and oil and gas exploration $577M' , 527446,'$527.45 M'],
+[ 'Support services for oil and gas extraction etc. $523M' , 'Conventional oil and gas extraction $4,753M' , 523063,'$523.06 M'],
+[ 'Conventional crude oil $6,201M' , 'International exports $4,537M' , 2811010,'$2,811.01 M'],
+[ 'Iron ores and concentrates $1,456M' , 'International exports $4,537M' , 1430694,'$1,430.69 M'],
+[ 'Copper ores and concentrates $279M' , 'International exports $4,537M' , 279391,'$279.39 M'],
+[ 'Stone $52M' , 'International exports $4,537M' , 16035,'$16.04 M'],
+[ 'International imports $2,039M' , 'Conventional crude oil $6,201M' , 2037867,'$2,037.87 M'],
+[ 'International imports $2,039M' , 'Iron ores and concentrates $1,456M' , 906,'$0.91 M'],
+[ 'Conventional crude oil $6,201M' , 'Petroleum refineries $2,010M' , 2009689,'$2,009.69 M'],
+[ 'Iron ore mining $1,501M' , 'Iron ores and concentrates $1,456M' , 1454746,'$1,454.75 M'],
+[ 'Logging, mining and construction machinery  etc. $69M' , 'Iron ore mining $1,501M' , 69498,'$69.50 M'],
+[ 'Computer systems design ... $64M' , 'Iron ore mining $1,501M' , 63915,'$63.91 M'],
+[ 'Repair and maintenance services etc. $61M' , 'Iron ore mining $1,501M' , 61190,'$61.19 M'],
+[ 'Commercial and industrial machinery  etc. $58M' , 'Iron ore mining $1,501M' , 57663,'$57.66 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $46M' , 'Iron ore mining $1,501M' , 46332,'$46.33 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $902M' , 'Nickel ores and concentrates $602M' , 601629,'$601.63 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $902M' , 'Copper ores and concentrates $279M' , 279391,'$279.39 M'],
+[ 'Mineral and oil and gas exploration $577M' , 'Business Intellectual Property etc. $527M' , 527446,'$527.45 M'],
+[ 'Nickel ores and concentrates $602M' , 'Manitoba $377M' , 376965,'$376.96 M'],
+[ 'Nickel ores and concentrates $602M' , 'Other Industries $181M' , 88799,'$88.80 M'],
+[ 'Mineral and oil and gas exploration $577M' , 'Other Industries $181M' , 48263,'$48.26 M'],
+[ 'Conventional crude oil $6,201M' , 'Other Industries $181M' , 31224,'$31.22 M'],
+[ 'Stone $52M' , 'Other Industries $181M' , 19927,'$19.93 M'],
+[ 'Support services for mining and quarrying etc. $90M' , 'Other Industries $181M' , 152,'$0.15 M'],
+[ 'Nickel ores and concentrates $602M' , 'Ontario $161M' , 135865,'$135.87 M'],
+[ 'Gold and silver ores and concentrates $25M' , 'Ontario $161M' , 24979,'$24.98 M'],
+[ 'Support activities for mining $122M' , 'Support services for mining and quarrying etc. $90M' , 89807,'$89.81 M'],
+[ 'Architectural, engineering ... $9M' , 'Support activities for mining $122M' , 8622,'$8.62 M'],
+[ 'Stone mining and quarrying $74M' , 'Stone $52M' , 42333,'$42.33 M'],
+[ 'Diesel and biodiesel fuels $5M' , 'Stone mining and quarrying $74M' , 5042,'$5.04 M'],
+[ 'Support services for mining and quarrying etc. $90M' , 'Other engineering construction $53M' , 52854,'$52.85 M'],
+[ 'Gold and silver ore mining $26M' , 'Gold and silver ores and concentrates $25M' , 24979,'$24.98 M'],
+[ 'Support services for mining and quarrying etc. $9M' , 'Gold and silver ore mining $26M' , 9335,'$9.34 M'],
+[ 'Stone $52M' , 'Quebec $13M' , 12511,'$12.51 M'],
+[ 'Ontario $12M' , 'Mineral and oil and gas exploration $577M' , 11863,'$11.86 M'],
+[ 'New Brunswick $5M' , 'Mineral and oil and gas exploration $577M' , 5259,'$5.26 M'],
+[ 'From Other Provinces $5M' , 'Stone $52M' , 2673,'$2.67 M'],
+[ 'From Other Provinces $5M' , 'Mineral and oil and gas exploration $577M' , 1902,'$1.90 M'],
+[ 'Diesel and biodiesel fuels $5M' , 'Sand, gravel, clay, and ceramic  etc. $1M' , 143,'$0.14 M'],
+[ 'Conventional crude oil $6,201M' , 'To Other Provinces $1,352M' , 1348809,'$1,348.81 M'],
+[ 'Stone $52M' , 'To Other Provinces $1,352M' , 2293,'$2.29 M'],
+[ 'Mineral and oil and gas exploration $577M' , 'To Other Provinces $1,352M' , 1326,'$1.33 M'],
+[ 'Other Input Products $1,675M' , 'Conventional oil and gas extraction $4,753M' , 920304,'$920.30 M'],
+[ 'Conventional oil and gas extraction $4,753M' , 'Other Output Products $149M' , 31616,'$31.62 M'],
+[ 'Other Input Products $1,675M' , 'Iron ore mining $1,501M' , 537173,'$537.17 M'],
+[ 'Iron ore mining $1,501M' , 'Other Output Products $149M' , 32070,'$32.07 M'],
+[ 'Other Input Products $1,675M' , 'Copper, nickel, lead and zinc ore etc. $902M' , 153856,'$153.86 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $902M' , 'Other Output Products $149M' , 17841,'$17.84 M'],
+[ 'Support activities for mining $122M' , 'Other Output Products $149M' , 31508,'$31.51 M'],
+[ 'Other Input Products $1,675M' , 'Support activities for mining $122M' , 31248,'$31.25 M'],
+[ 'Stone mining and quarrying $74M' , 'Other Output Products $149M' , 31163,'$31.16 M'],
+[ 'Other Input Products $1,675M' , 'Stone mining and quarrying $74M' , 23039,'$23.04 M'],
+[ 'Other Input Products $1,675M' , 'Gold and silver ore mining $26M' , 8708,'$8.71 M'],
+[ 'Gold and silver ore mining $26M' , 'Other Output Products $149M' , 56,'$0.06 M'],
+[ 'Other non-metallic mineral mining  etc. $2M' , 'Other Output Products $149M' , 3277,'$3.28 M'],
+[ 'Other Input Products $1,675M' , 'Other non-metallic mineral mining  etc. $2M' , 230,'$0.23 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $1M' , 'Other Output Products $149M' , 1298,'$1.30 M'],
+[ 'Other Input Products $1,675M' , 'Sand, gravel, clay, and ceramic  etc. $1M' , 497,'$0.50 M'],
+];
+
+<!-- Northwest Territories -->  
+dataNT = [
+[ 'Gross operating surplus $656M' , 'Diamond mining $1,778M' , 512090,'$512.09 M'],
+[ 'Gross operating surplus $656M' , 'Conventional oil and gas extraction $269M' , 125799,'$125.80 M'],
+[ 'Gross operating surplus $656M' , 'Support activities for mining $171M' , 18303,'$18.30 M'],
+[ 'Wages and salaries $355M' , 'Diamond mining $1,778M' , 266320,'$266.32 M'],
+[ 'Wages and salaries $355M' , 'Support activities for mining $171M' , 69863,'$69.86 M'],
+[ 'Wages and salaries $355M' , 'Other metal ore mining $63M' , 18903,'$18.90 M'],
+[ 'Diamond mining $1,778M' , 'Uncut and industrial diamonds $1,746M' , 1745597,'$1,745.60 M'],
+[ 'Diesel and biodiesel fuels $174M' , 'Diamond mining $1,778M' , 162797,'$162.80 M'],
+[ 'Support services for mining and quarrying etc. $131M' , 'Diamond mining $1,778M' , 130889,'$130.89 M'],
+[ 'Repair construction services $89M' , 'Diamond mining $1,778M' , 88502,'$88.50 M'],
+[ 'Repair and maintenance services etc. $77M' , 'Diamond mining $1,778M' , 76836,'$76.84 M'],
+[ 'Uncut and industrial diamonds $1,746M' , 'International exports $1,756M' , 1693820,'$1,693.82 M'],
+[ 'Other metal ores and concentrates $59M' , 'International exports $1,756M' , 62359,'$62.36 M'],
+[ 'Conventional oil and gas extraction $269M' , 'Conventional crude oil $214M' , 213947,'$213.95 M'],
+[ 'Support services for oil and gas extraction etc. $71M' , 'Conventional oil and gas extraction $269M' , 71037,'$71.04 M'],
+[ 'Support services for mining and quarrying etc. $348M' , 'Other engineering construction $216M' , 216076,'$216.08 M'],
+[ 'Conventional crude oil $214M' , 'Ontario $214M' , 213947,'$213.95 M'],
+[ 'Support activities for mining $171M' , 'Support services for mining and quarrying etc. $348M' , 134360,'$134.36 M'],
+[ 'Architectural, engineering ... $29M' , 'Support activities for mining $171M' , 28976,'$28.98 M'],
+[ 'Measuring, control and scientific etc. $10M' , 'Support activities for mining $171M' , 9921,'$9.92 M'],
+[ 'Ontario $118M' , 'Support services for mining and quarrying etc. $348M' , 117690,'$117.69 M'],
+[ 'Yukon $67M' , 'Support services for mining and quarrying etc. $348M' , 66945,'$66.94 M'],
+[ 'Other metal ore mining $63M' , 'Other metal ores and concentrates $59M' , 58967,'$58.97 M'],
+[ 'Diesel and biodiesel fuels $174M' , 'Other metal ore mining $63M' , 11372,'$11.37 M'],
+[ 'Logging, mining and construction machinery  etc. $3M' , 'Other metal ore mining $63M' , 3026,'$3.03 M'],
+[ 'Basic organic chemicals, n.e.c. $3M' , 'Other metal ore mining $63M' , 2697,'$2.70 M'],
+[ 'Uncut and industrial diamonds $1,746M' , 'Other Industries $48M' , 51777,'$51.78 M'],
+[ 'From Other Provinces $29M' , 'Support services for mining and quarrying etc. $348M' , 28630,'$28.63 M'],
+[ 'Other Input Products $684M' , 'Diamond mining $1,778M' , 540872,'$540.87 M'],
+[ 'Diamond mining $1,778M' , 'Other Output Products $93M' , 1989,'$1.99 M'],
+[ 'Other Input Products $684M' , 'Conventional oil and gas extraction $269M' , 72287,'$72.29 M'],
+[ 'Conventional oil and gas extraction $269M' , 'Other Output Products $93M' , 55034,'$55.03 M'],
+[ 'Other Input Products $684M' , 'Support activities for mining $171M' , 43966,'$43.97 M'],
+[ 'Support activities for mining $171M' , 'Other Output Products $93M' , 35803,'$35.80 M'],
+[ 'Other Input Products $684M' , 'Other metal ore mining $63M' , 26588,'$26.59 M'],
+];
+
+<!-- Nova Scotia -->  
+dataNS = [
+[ 'Gross operating surplus $99M' , 'Conventional oil and gas extraction $409M' , 61255,'$61.26 M'],
+[ 'Gross operating surplus $99M' , 'Other non-metallic mineral mining  etc. $90M' , 21113,'$21.11 M'],
+[ 'Gross operating surplus $99M' , 'Stone mining and quarrying $77M' , 16052,'$16.05 M'],
+[ 'Gross operating surplus $99M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 1038,'$1.04 M'],
+[ 'Wages and salaries $76M' , 'Conventional oil and gas extraction $409M' , 23472,'$23.47 M'],
+[ 'Wages and salaries $76M' , 'Other non-metallic mineral mining  etc. $90M' , 21780,'$21.78 M'],
+[ 'Wages and salaries $76M' , 'Stone mining and quarrying $77M' , 14900,'$14.90 M'],
+[ 'Employers\' social contributions $6M' , 'Stone mining and quarrying $77M' , 5821,'$5.82 M'],
+[ 'Wages and salaries $76M' , 'Support activities for mining $26M' , 14389,'$14.39 M'],
+[ 'Wages and salaries $76M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 1293,'$1.29 M'],
+[ 'Taxes on production $1M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 613,'$0.61 M'],
+[ 'Conventional oil and gas extraction $409M' , 'Natural gas $193M' , 189562,'$189.56 M'],
+[ 'Conventional oil and gas extraction $409M' , 'Mineral and oil and gas exploration $157M' , 143411,'$143.41 M'],
+[ 'Support services for oil and gas extraction etc. $129M' , 'Conventional oil and gas extraction $409M' , 129406,'$129.41 M'],
+[ 'Conventional oil and gas extraction $409M' , 'Conventional crude oil $58M' , 57453,'$57.45 M'],
+[ 'Holding company services ... $46M' , 'Conventional oil and gas extraction $409M' , 45595,'$45.59 M'],
+[ 'Natural gas $193M' , 'International exports $170M' , 91489,'$91.49 M'],
+[ 'Non-metallic minerals  $183M' , 'International exports $170M' , 44726,'$44.73 M'],
+[ 'Stone $89M' , 'International exports $170M' , 33781,'$33.78 M'],
+[ 'Mineral and oil and gas exploration $157M' , 'Business Intellectual Property etc. $143M' , 143411,'$143.41 M'],
+[ 'Natural gas $193M' , 'Other Industries $109M' , 51332,'$51.33 M'],
+[ 'Non-metallic minerals  $183M' , 'Other Industries $109M' , 19912,'$19.91 M'],
+[ 'Mineral and oil and gas exploration $157M' , 'Other Industries $109M' , 13982,'$13.98 M'],
+[ 'Stone $89M' , 'Other Industries $109M' , 13360,'$13.36 M'],
+[ 'Conventional crude oil $58M' , 'Other Industries $109M' , 6414,'$6.41 M'],
+[ 'Support services for mining and quarrying etc. $20M' , 'Other Industries $109M' , 3609,'$3.61 M'],
+[ 'Other non-metallic mineral mining  etc. $90M' , 'Non-metallic minerals  $183M' , 163346,'$163.35 M'],
+[ 'Head office services  $8M' , 'Other non-metallic mineral mining  etc. $90M' , 8301,'$8.30 M'],
+[ 'Electricity $8M' , 'Other non-metallic mineral mining  etc. $90M' , 4636,'$4.64 M'],
+[ 'Logging, mining and construction machinery  etc. $9M' , 'Other non-metallic mineral mining  etc. $90M' , 4510,'$4.51 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $6M' , 'Other non-metallic mineral mining  etc. $90M' , 3110,'$3.11 M'],
+[ 'Stone mining and quarrying $77M' , 'Stone $89M' , 59513,'$59.51 M'],
+[ 'Support services for mining and quarrying etc. $6M' , 'Stone mining and quarrying $77M' , 5793,'$5.79 M'],
+[ 'Logging, mining and construction machinery  etc. $9M' , 'Stone mining and quarrying $77M' , 4684,'$4.68 M'],
+[ 'Diesel and biodiesel fuels $5M' , 'Stone mining and quarrying $77M' , 4469,'$4.47 M'],
+[ 'Electricity $8M' , 'Stone mining and quarrying $77M' , 2975,'$2.98 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $6M' , 'Stone mining and quarrying $77M' , 2907,'$2.91 M'],
+[ 'Gross mixed income $3M' , 'Stone mining and quarrying $77M' , 2654,'$2.65 M'],
+[ 'Conventional crude oil $58M' , 'Ontario $75M' , 51412,'$51.41 M'],
+[ 'Non-metallic minerals  $183M' , 'Ontario $75M' , 23272,'$23.27 M'],
+[ 'Natural gas $193M' , 'Electric power generation, transmission  etc. $49M' , 48677,'$48.68 M'],
+[ 'Non-metallic minerals  $183M' , 'Petroleum and coal product manufacturing etc. $30M' , 29980,'$29.98 M'],
+[ 'Non-metallic minerals  $183M' , 'Quebec $27M' , 26768,'$26.77 M'],
+[ 'Support activities for mining $26M' , 'Support services for mining and quarrying etc. $20M' , 20489,'$20.49 M'],
+[ 'Architectural, engineering ... $3M' , 'Support activities for mining $26M' , 3118,'$3.12 M'],
+[ 'International imports $21M' , 'Non-metallic minerals  $183M' , 16812,'$16.81 M'],
+[ 'International imports $21M' , 'Natural gas $193M' , 3598,'$3.60 M'],
+[ 'International imports $21M' , 'Conventional crude oil $58M' , 373,'$0.37 M'],
+[ 'Stone $89M' , 'Repair construction $17M' , 17449,'$17.45 M'],
+[ 'Non-metallic minerals  $183M' , 'Other municipal government services $15M' , 15094,'$15.09 M'],
+[ 'Support services for mining and quarrying etc. $20M' , 'New Brunswick $12M' , 12392,'$12.39 M'],
+[ 'Support services for mining and quarrying etc. $6M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 557,'$0.56 M'],
+[ 'Diesel and biodiesel fuels $5M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 386,'$0.39 M'],
+[ 'From Other Provinces $5M' , 'Non-metallic minerals  $183M' , 2682,'$2.68 M'],
+[ 'From Other Provinces $5M' , 'Mineral and oil and gas exploration $157M' , 1326,'$1.33 M'],
+[ 'From Other Provinces $5M' , 'Stone $89M' , 915,'$0.92 M'],
+[ 'Ontario $4M' , 'Mineral and oil and gas exploration $157M' , 4127,'$4.13 M'],
+[ 'Quebec $3M' , 'Mineral and oil and gas exploration $157M' , 2839,'$2.84 M'],
+[ 'Stone $89M' , 'To Other Provinces $46M' , 24538,'$24.54 M'],
+[ 'Non-metallic minerals  $183M' , 'To Other Provinces $46M' , 20542,'$20.54 M'],
+[ 'Support services for mining and quarrying etc. $20M' , 'To Other Provinces $46M' , 387,'$0.39 M'],
+[ 'Natural gas $193M' , 'To Other Provinces $46M' , 230,'$0.23 M'],
+[ 'Other Input Products $203M' , 'Conventional oil and gas extraction $409M' , 149759,'$149.76 M'],
+[ 'Conventional oil and gas extraction $409M' , 'Other Output Products $52M' , 16955,'$16.95 M'],
+[ 'Other Input Products $203M' , 'Other non-metallic mineral mining  etc. $90M' , 26183,'$26.18 M'],
+[ 'Other non-metallic mineral mining  etc. $90M' , 'Other Output Products $52M' , 6976,'$6.98 M'],
+[ 'Stone mining and quarrying $77M' , 'Other Output Products $52M' , 16619,'$16.62 M'],
+[ 'Other Input Products $203M' , 'Stone mining and quarrying $77M' , 16580,'$16.58 M'],
+[ 'Other Input Products $203M' , 'Support activities for mining $26M' , 8771,'$8.77 M'],
+[ 'Support activities for mining $26M' , 'Other Output Products $52M' , 5763,'$5.76 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $5M' , 'Other Output Products $52M' , 5431,'$5.43 M'],
+[ 'Other Input Products $203M' , 'Sand, gravel, clay, and ceramic  etc. $5M' , 1580,'$1.58 M'],
+];
+
+<!-- Nunavut -->  
+dataNU = [
+[ 'Gross operating surplus $267M' , 'Gold and silver ore mining $582M' , 240368,'$240.37 M'],
+[ 'Gross operating surplus $267M' , 'Support activities for mining $106M' , 11178,'$11.18 M'],
+[ 'Gross operating surplus $267M' , 'Iron ore mining $69M' , 15792,'$15.79 M'],
+[ 'Wages and salaries $162M' , 'Gold and silver ore mining $582M' , 93330,'$93.33 M'],
+[ 'Wages and salaries $162M' , 'Support activities for mining $106M' , 42765,'$42.77 M'],
+[ 'Employers\' social contributions $5M' , 'Support activities for mining $106M' , 5218,'$5.22 M'],
+[ 'Wages and salaries $162M' , 'Iron ore mining $69M' , 25961,'$25.96 M'],
+[ 'Gold and silver ore mining $582M' , 'Gold and silver ores and concentrates $570M' , 569502,'$569.50 M'],
+[ 'Diesel and biodiesel fuels $45M' , 'Gold and silver ore mining $582M' , 44834,'$44.83 M'],
+[ 'Gold and silver ores and concentrates $570M' , 'Ontario $574M' , 573793,'$573.79 M'],
+[ 'Support activities for mining $106M' , 'Support services for mining and quarrying etc. $70M' , 69741,'$69.74 M'],
+[ 'Architectural, engineering ... $14M' , 'Support activities for mining $106M' , 13873,'$13.87 M'],
+[ 'Measuring, control and scientific etc. $5M' , 'Support activities for mining $106M' , 5321,'$5.32 M'],
+[ 'Commercial and industrial machinery  etc. $9M' , 'Support activities for mining $106M' , 4808,'$4.81 M'],
+[ 'Iron ore mining $69M' , 'Iron ores and concentrates $68M' , 68313,'$68.31 M'],
+[ 'Repair construction services $7M' , 'Iron ore mining $69M' , 6806,'$6.81 M'],
+[ 'Commercial and industrial machinery  etc. $9M' , 'Iron ore mining $69M' , 4590,'$4.59 M'],
+[ 'Iron ores and concentrates $68M' , 'International exports $68M' , 68313,'$68.31 M'],
+[ 'Support services for mining and quarrying etc. $70M' , 'Other engineering construction $51M' , 50756,'$50.76 M'],
+[ 'Other Input Products $243M' , 'Gold and silver ore mining $582M' , 203958,'$203.96 M'],
+[ 'Gold and silver ore mining $582M' , 'Other Output Products $44M' , 8286,'$8.29 M'],
+[ 'Support activities for mining $106M' , 'Other Output Products $44M' , 35987,'$35.99 M'],
+[ 'Other Input Products $243M' , 'Support activities for mining $106M' , 23250,'$23.25 M'],
+[ 'Other Input Products $243M' , 'Iron ore mining $69M' , 15399,'$15.40 M'],
+];
+
+<!-- Ontario -->  
+dataON = [
+[ 'Gross operating surplus $4,211M' , 'Gold and silver ore mining $3,689M' , 869629,'$869.63 M'],
+[ 'Gross operating surplus $4,211M' , 'Copper, nickel, lead and zinc ore etc. $3,438M' , 2295833,'$2,295.83 M'],
+[ 'Gross operating surplus $4,211M' , 'Support activities for mining $1,753M' , 147431,'$147.43 M'],
+[ 'Gross operating surplus $4,211M' , 'Stone mining and quarrying $835M' , 262127,'$262.13 M'],
+[ 'Gross operating surplus $4,211M' , 'Other non-metallic mineral mining  etc. $606M' , 255676,'$255.68 M'],
+[ 'Gross operating surplus $4,211M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 48853,'$48.85 M'],
+[ 'Gross operating surplus $4,211M' , 'Diamond mining $405M' , 288498,'$288.50 M'],
+[ 'Gross operating surplus $4,211M' , 'Other metal ore mining $190M' , 43035,'$43.03 M'],
+[ 'Wages and salaries $2,403M' , 'Gold and silver ore mining $3,689M' , 854138,'$854.14 M'],
+[ 'Employers\' social contributions $350M' , 'Gold and silver ore mining $3,689M' , 220399,'$220.40 M'],
+[ 'Wages and salaries $2,403M' , 'Copper, nickel, lead and zinc ore etc. $3,438M' , 337961,'$337.96 M'],
+[ 'Wages and salaries $2,403M' , 'Support activities for mining $1,753M' , 690925,'$690.92 M'],
+[ 'Employers\' social contributions $350M' , 'Support activities for mining $1,753M' , 78305,'$78.31 M'],
+[ 'Wages and salaries $2,403M' , 'Stone mining and quarrying $835M' , 94068,'$94.07 M'],
+[ 'Employers\' social contributions $350M' , 'Stone mining and quarrying $835M' , 29290,'$29.29 M'],
+[ 'Wages and salaries $2,403M' , 'Other non-metallic mineral mining  etc. $606M' , 104998,'$105.00 M'],
+[ 'Wages and salaries $2,403M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 215221,'$215.22 M'],
+[ 'Wages and salaries $2,403M' , 'Diamond mining $405M' , 32686,'$32.69 M'],
+[ 'Wages and salaries $2,403M' , 'Other metal ore mining $190M' , 46522,'$46.52 M'],
+[ 'Employers\' social contributions $350M' , 'Other metal ore mining $190M' , 13856,'$13.86 M'],
+[ 'Wages and salaries $2,403M' , 'Conventional oil and gas extraction $31M' , 26829,'$26.83 M'],
+[ 'Employers\' social contributions $350M' , 'Conventional oil and gas extraction $31M' , 7806,'$7.81 M'],
+[ 'Gold and silver ores and concentrates $8,899M' , 'Non-ferrous metal  $11,014M' , 6852350,'$6,852.35 M'],
+[ 'Nickel ores and concentrates $3,961M' , 'Non-ferrous metal  $11,014M' , 3968728,'$3,968.73 M'],
+[ 'Other metal ores and concentrates $235M' , 'Non-ferrous metal  $11,014M' , 192738,'$192.74 M'],
+[ 'International imports $4,169M' , 'Gold and silver ores and concentrates $8,899M' , 2696249,'$2,696.25 M'],
+[ 'International imports $4,169M' , 'Nickel ores and concentrates $3,961M' , 561350,'$561.35 M'],
+[ 'International imports $4,169M' , 'Non-metallic minerals  $1,990M' , 469346,'$469.35 M'],
+[ 'International imports $4,169M' , 'Sand, gravel, clay, and refractory etc. $1,101M' , 268884,'$268.88 M'],
+[ 'International imports $4,169M' , 'Uncut and industrial diamonds $490M' , 86510,'$86.51 M'],
+[ 'International imports $4,169M' , 'Stone $772M' , 47163,'$47.16 M'],
+[ 'International imports $4,169M' , 'Other metal ores and concentrates $235M' , 39139,'$39.14 M'],
+[ 'Gold and silver ore mining $3,689M' , 'Gold and silver ores and concentrates $8,899M' , 3393172,'$3,393.17 M'],
+[ 'Support services for mining and quarrying etc. $307M' , 'Gold and silver ore mining $3,689M' , 179999,'$180.00 M'],
+[ 'Electricity $145M' , 'Gold and silver ore mining $3,689M' , 135006,'$135.01 M'],
+[ 'Head office services  $174M' , 'Gold and silver ore mining $3,689M' , 123990,'$123.99 M'],
+[ 'Logging, mining and construction machinery  etc. $209M' , 'Gold and silver ore mining $3,689M' , 116705,'$116.70 M'],
+[ 'Repair construction services $108M' , 'Gold and silver ore mining $3,689M' , 107619,'$107.62 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $3,438M' , 'Nickel ores and concentrates $3,961M' , 2732271,'$2,732.27 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $3,438M' , 'Copper ores and concentrates $492M' , 491684,'$491.68 M'],
+[ 'Quebec $2,518M' , 'Gold and silver ores and concentrates $8,899M' , 1964241,'$1,964.24 M'],
+[ 'Quebec $2,518M' , 'Nickel ores and concentrates $3,961M' , 528962,'$528.96 M'],
+[ 'Quebec $2,518M' , 'Mineral and oil and gas exploration $785M' , 24336,'$24.34 M'],
+[ 'Gold and silver ores and concentrates $8,899M' , 'Other miscellaneous manufacturing $2,042M' , 2041580,'$2,041.58 M'],
+[ 'Non-metallic minerals  $1,990M' , 'International exports $1,803M' , 875950,'$875.95 M'],
+[ 'Support services for mining and quarrying etc. $1,275M' , 'International exports $1,803M' , 416533,'$416.53 M'],
+[ 'Uncut and industrial diamonds $490M' , 'International exports $1,803M' , 401682,'$401.68 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'International exports $1,803M' , 109257,'$109.26 M'],
+[ 'Support activities for mining $1,753M' , 'Support services for mining and quarrying etc. $1,275M' , 1016388,'$1,016.39 M'],
+[ 'Support activities for mining $1,753M' , 'Mineral and oil and gas exploration $785M' , 690510,'$690.51 M'],
+[ 'Architectural, engineering ... $257M' , 'Support activities for mining $1,753M' , 256523,'$256.52 M'],
+[ 'Measuring, control and scientific etc. $210M' , 'Support activities for mining $1,753M' , 210032,'$210.03 M'],
+[ 'From Other Provinces $1,241M' , 'Gold and silver ores and concentrates $8,899M' , 844953,'$844.95 M'],
+[ 'From Other Provinces $1,241M' , 'Non-metallic minerals  $1,990M' , 207066,'$207.07 M'],
+[ 'From Other Provinces $1,241M' , 'Nickel ores and concentrates $3,961M' , 138707,'$138.71 M'],
+[ 'From Other Provinces $1,241M' , 'Stone $772M' , 27566,'$27.57 M'],
+[ 'From Other Provinces $1,241M' , 'Support services for mining and quarrying etc. $1,275M' , 12137,'$12.14 M'],
+[ 'From Other Provinces $1,241M' , 'Sand, gravel, clay, and refractory etc. $1,101M' , 8321,'$8.32 M'],
+[ 'From Other Provinces $1,241M' , 'Mineral and oil and gas exploration $785M' , 2202,'$2.20 M'],
+[ 'Non-metallic minerals  $1,990M' , 'Other Industries $1,201M' , 352016,'$352.02 M'],
+[ 'Stone $772M' , 'Other Industries $1,201M' , 333104,'$333.10 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'Other Industries $1,201M' , 322702,'$322.70 M'],
+[ 'Uncut and industrial diamonds $490M' , 'Other Industries $1,201M' , 88121,'$88.12 M'],
+[ 'Copper ores and concentrates $492M' , 'Other Industries $1,201M' , 65819,'$65.82 M'],
+[ 'Other metal ores and concentrates $235M' , 'Other Industries $1,201M' , 41825,'$41.83 M'],
+[ 'Gold and silver ores and concentrates $8,899M' , 'Other Industries $1,201M' , 4685,'$4.68 M'],
+[ 'Stone mining and quarrying $835M' , 'Stone $772M' , 592630,'$592.63 M'],
+[ 'Support services for mining and quarrying etc. $307M' , 'Stone mining and quarrying $835M' , 86388,'$86.39 M'],
+[ 'Logging, mining and construction machinery  etc. $209M' , 'Stone mining and quarrying $835M' , 32759,'$32.76 M'],
+[ 'Head office services  $174M' , 'Stone mining and quarrying $835M' , 26742,'$26.74 M'],
+[ 'Other non-metallic mineral mining  etc. $606M' , 'Non-metallic minerals  $1,990M' , 1093850,'$1,093.85 M'],
+[ 'Logging, mining and construction machinery  etc. $209M' , 'Other non-metallic mineral mining  etc. $606M' , 37021,'$37.02 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $28M' , 'Other non-metallic mineral mining  etc. $606M' , 27575,'$27.57 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $538M' , 'Sand, gravel, clay, and refractory etc. $1,101M' , 438415,'$438.42 M'],
+[ 'Support services for mining and quarrying etc. $307M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 41053,'$41.05 M'],
+[ 'Diesel and biodiesel fuels $30M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 29525,'$29.52 M'],
+[ 'Head office services  $174M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 22924,'$22.92 M'],
+[ 'Logging, mining and construction machinery  etc. $209M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 22625,'$22.63 M'],
+[ 'Stone $772M' , 'Transportation engineering construction $457M' , 356143,'$356.14 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'Transportation engineering construction $457M' , 101208,'$101.21 M'],
+[ 'Mineral and oil and gas exploration $785M' , 'Business Intellectual Property etc. $452M' , 451557,'$451.56 M'],
+[ 'Copper ores and concentrates $492M' , 'Quebec $426M' , 425865,'$425.87 M'],
+[ 'Diamond mining $405M' , 'Uncut and industrial diamonds $490M' , 403293,'$403.29 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'Cement and concrete product manufacturing $384M' , 384064,'$384.06 M'],
+[ 'Support services for mining and quarrying etc. $1,275M' , 'Other engineering construction $347M' , 346649,'$346.65 M'],
+[ 'British Columbia $253M' , 'Support services for mining and quarrying etc. $1,275M' , 208886,'$208.89 M'],
+[ 'British Columbia $253M' , 'Mineral and oil and gas exploration $785M' , 44161,'$44.16 M'],
+[ 'Non-metallic minerals  $1,990M' , 'Petroleum and coal product manufacturing etc. $253M' , 155656,'$155.66 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'Petroleum and coal product manufacturing etc. $253M' , 97083,'$97.08 M'],
+[ 'Non-metallic minerals  $1,990M' , 'Other municipal government services $223M' , 222514,'$222.51 M'],
+[ 'Non-metallic minerals  $1,990M' , 'Other provincial and territorial government etc. $222M' , 221530,'$221.53 M'],
+[ 'Alberta $213M' , 'Non-metallic minerals  $1,990M' , 188764,'$188.76 M'],
+[ 'Alberta $213M' , 'Mineral and oil and gas exploration $785M' , 24264,'$24.26 M'],
+[ 'Other metal ore mining $190M' , 'Other metal ores and concentrates $235M' , 184562,'$184.56 M'],
+[ 'Electricity $145M' , 'Other metal ore mining $190M' , 10317,'$10.32 M'],
+[ 'Basic organic chemicals, n.e.c. $7M' , 'Other metal ore mining $190M' , 7272,'$7.27 M'],
+[ 'Support services for oil and gas extraction etc. $8M' , 'Conventional oil and gas extraction $31M' , 8311,'$8.31 M'],
+[ 'Manitoba $11M' , 'Other metal ores and concentrates $235M' , 10862,'$10.86 M'],
+[ 'Mineral and oil and gas exploration $785M' , 'To Other Provinces $825M' , 333916,'$333.92 M'],
+[ 'Support services for mining and quarrying etc. $1,275M' , 'To Other Provinces $825M' , 243253,'$243.25 M'],
+[ 'Non-metallic minerals  $1,990M' , 'To Other Provinces $825M' , 98980,'$98.98 M'],
+[ 'Sand, gravel, clay, and refractory etc. $1,101M' , 'To Other Provinces $825M' , 86462,'$86.46 M'],
+[ 'Stone $772M' , 'To Other Provinces $825M' , 62866,'$62.87 M'],
+[ 'Other Input Products $3,039M' , 'Gold and silver ore mining $3,689M' , 1081147,'$1,081.15 M'],
+[ 'Gold and silver ore mining $3,689M' , 'Other Output Products $826M' , 194630,'$194.63 M'],
+[ 'Other Input Products $3,039M' , 'Copper, nickel, lead and zinc ore etc. $3,438M' , 804426,'$804.43 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $3,438M' , 'Other Output Products $826M' , 172559,'$172.56 M'],
+[ 'Other Input Products $3,039M' , 'Support activities for mining $1,753M' , 370067,'$370.07 M'],
+[ 'Support activities for mining $1,753M' , 'Other Output Products $826M' , 39824,'$39.82 M'],
+[ 'Other Input Products $3,039M' , 'Stone mining and quarrying $835M' , 303751,'$303.75 M'],
+[ 'Stone mining and quarrying $835M' , 'Other Output Products $826M' , 239517,'$239.52 M'],
+[ 'Other Input Products $3,039M' , 'Other non-metallic mineral mining  etc. $606M' , 180685,'$180.69 M'],
+[ 'Other non-metallic mineral mining  etc. $606M' , 'Other Output Products $826M' , 48815,'$48.81 M'],
+[ 'Other Input Products $3,039M' , 'Sand, gravel, clay, and ceramic  etc. $538M' , 157604,'$157.60 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $538M' , 'Other Output Products $826M' , 96834,'$96.83 M'],
+[ 'Other Input Products $3,039M' , 'Diamond mining $405M' , 83516,'$83.52 M'],
+[ 'Diamond mining $405M' , 'Other Output Products $826M' , 74,'$0.07 M'],
+[ 'Other Input Products $3,039M' , 'Other metal ore mining $190M' , 69110,'$69.11 M'],
+[ 'Other metal ore mining $190M' , 'Other Output Products $826M' , 2936,'$2.94 M'],
+[ 'Conventional oil and gas extraction $31M' , 'Other Output Products $826M' , 30588,'$30.59 M'],
+];
+
+<!-- Prince Edward Island -->  
+dataPE = [
+[ 'Gross operating surplus $1M' , 'Other non-metallic mineral mining  etc. $2M' , 643,'$0.64 M'],
+[ 'Wages and salaries $1M' , 'Other non-metallic mineral mining  etc. $2M' , 649,'$0.65 M'],
+[ 'Other non-metallic mineral mining  etc. $2M' , 'Other Output Products $4M' , 3764,'$3.76 M'],
+[ 'Other Input Products $1M' , 'Other non-metallic mineral mining  etc. $2M' , 608,'$0.61 M'],
+];
+
+<!-- Quebec -->  
+dataQC = [
+[ 'Gross operating surplus $2,166M' , 'Gold and silver ore mining $2,725M' , 779267,'$779.27 M'],
+[ 'Gross operating surplus $2,166M' , 'Iron ore mining $1,519M' , 325390,'$325.39 M'],
+[ 'Gross operating surplus $2,166M' , 'Copper, nickel, lead and zinc ore etc. $1,020M' , 455407,'$455.41 M'],
+[ 'Gross operating surplus $2,166M' , 'Support activities for mining $584M' , 26639,'$26.64 M'],
+[ 'Gross operating surplus $2,166M' , 'Other metal ore mining $544M' , 260414,'$260.41 M'],
+[ 'Gross operating surplus $2,166M' , 'Stone mining and quarrying $505M' , 205154,'$205.15 M'],
+[ 'Gross operating surplus $2,166M' , 'Other non-metallic mineral mining  etc. $261M' , 88118,'$88.12 M'],
+[ 'Gross operating surplus $2,166M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 25135,'$25.14 M'],
+[ 'Wages and salaries $1,352M' , 'Gold and silver ore mining $2,725M' , 417076,'$417.08 M'],
+[ 'Employers\' social contributions $219M' , 'Gold and silver ore mining $2,725M' , 91178,'$91.18 M'],
+[ 'Wages and salaries $1,352M' , 'Iron ore mining $1,519M' , 254396,'$254.40 M'],
+[ 'Employers\' social contributions $219M' , 'Iron ore mining $1,519M' , 57776,'$57.78 M'],
+[ 'Wages and salaries $1,352M' , 'Copper, nickel, lead and zinc ore etc. $1,020M' , 149888,'$149.89 M'],
+[ 'Employers\' social contributions $219M' , 'Copper, nickel, lead and zinc ore etc. $1,020M' , 43037,'$43.04 M'],
+[ 'Wages and salaries $1,352M' , 'Support activities for mining $584M' , 267335,'$267.33 M'],
+[ 'Employers\' social contributions $219M' , 'Support activities for mining $584M' , 27169,'$27.17 M'],
+[ 'Wages and salaries $1,352M' , 'Other metal ore mining $544M' , 67484,'$67.48 M'],
+[ 'Wages and salaries $1,352M' , 'Stone mining and quarrying $505M' , 88566,'$88.57 M'],
+[ 'Wages and salaries $1,352M' , 'Other non-metallic mineral mining  etc. $261M' , 81074,'$81.07 M'],
+[ 'Wages and salaries $1,352M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 22853,'$22.85 M'],
+[ 'Wages and salaries $1,352M' , 'Conventional oil and gas extraction $8M' , 3668,'$3.67 M'],
+[ 'Taxes on production $59M' , 'Iron ore mining $1,519M' , 58779,'$58.78 M'],
+[ 'Gold and silver ore mining $2,725M' , 'Gold and silver ores and concentrates $2,085M' , 2085030,'$2,085.03 M'],
+[ 'Support services for mining and quarrying etc. $224M' , 'Gold and silver ore mining $2,725M' , 178263,'$178.26 M'],
+[ 'Logging, mining and construction machinery  etc. $184M' , 'Gold and silver ore mining $2,725M' , 143243,'$143.24 M'],
+[ 'Head office services  $115M' , 'Gold and silver ore mining $2,725M' , 115496,'$115.50 M'],
+[ 'Wholesale margins - machinery, equipment  etc. $102M' , 'Gold and silver ore mining $2,725M' , 102240,'$102.24 M'],
+[ 'Electricity $186M' , 'Gold and silver ore mining $2,725M' , 90013,'$90.01 M'],
+[ 'Gold and silver ores and concentrates $2,085M' , 'Ontario $2,493M' , 1964241,'$1,964.24 M'],
+[ 'Nickel ores and concentrates $672M' , 'Ontario $2,493M' , 528962,'$528.96 M'],
+[ 'Iron ores and concentrates $1,522M' , 'International exports $1,694M' , 1411333,'$1,411.33 M'],
+[ 'Other metal ores and concentrates $656M' , 'International exports $1,694M' , 282861,'$282.86 M'],
+[ 'Iron ore mining $1,519M' , 'Iron ores and concentrates $1,522M' , 1501736,'$1,501.74 M'],
+[ 'Electricity $186M' , 'Iron ore mining $1,519M' , 96277,'$96.28 M'],
+[ 'Diesel and biodiesel fuels $141M' , 'Iron ore mining $1,519M' , 92783,'$92.78 M'],
+[ 'Chemical products, n.e.c. $69M' , 'Iron ore mining $1,519M' , 68655,'$68.66 M'],
+[ 'Repair and maintenance services etc. $55M' , 'Iron ore mining $1,519M' , 55369,'$55.37 M'],
+[ 'Logging, mining and construction machinery  etc. $184M' , 'Iron ore mining $1,519M' , 40523,'$40.52 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $1,020M' , 'Nickel ores and concentrates $672M' , 671910,'$671.91 M'],
+[ 'Diesel and biodiesel fuels $141M' , 'Copper, nickel, lead and zinc ore etc. $1,020M' , 43847,'$43.85 M'],
+[ 'Support activities for mining $584M' , 'Support services for mining and quarrying etc. $695M' , 368188,'$368.19 M'],
+[ 'Support activities for mining $584M' , 'Mineral and oil and gas exploration $296M' , 181153,'$181.15 M'],
+[ 'Architectural, engineering ... $125M' , 'Support activities for mining $584M' , 124759,'$124.76 M'],
+[ 'Other metal ore mining $544M' , 'Other metal ores and concentrates $656M' , 536218,'$536.22 M'],
+[ 'Stone mining and quarrying $505M' , 'Stone $465M' , 394347,'$394.35 M'],
+[ 'Support services for mining and quarrying etc. $224M' , 'Stone mining and quarrying $505M' , 38695,'$38.70 M'],
+[ 'Motor vehicle rental and leasing etc. $25M' , 'Stone mining and quarrying $505M' , 18999,'$19.00 M'],
+[ 'Support services for mining and quarrying etc. $695M' , 'Other engineering construction $403M' , 402619,'$402.62 M'],
+[ 'Other metal ores and concentrates $656M' , 'Non-ferrous metal  $370M' , 369618,'$369.62 M'],
+[ 'Nickel ores and concentrates $672M' , 'Other Industries $322M' , 142948,'$142.95 M'],
+[ 'Gold and silver ores and concentrates $2,085M' , 'Other Industries $322M' , 120789,'$120.79 M'],
+[ 'Stone $465M' , 'Other Industries $322M' , 120401,'$120.40 M'],
+[ 'Mineral and oil and gas exploration $296M' , 'Other Industries $322M' , 7806,'$7.81 M'],
+[ 'Support services for mining and quarrying etc. $695M' , 'Other Industries $322M' , 3373,'$3.37 M'],
+[ 'Mineral and oil and gas exploration $296M' , 'Business Intellectual Property etc. $259M' , 259477,'$259.48 M'],
+[ 'Ontario $243M' , 'Support services for mining and quarrying etc. $695M' , 122363,'$122.36 M'],
+[ 'Ontario $243M' , 'Mineral and oil and gas exploration $296M' , 96336,'$96.34 M'],
+[ 'Ontario $243M' , 'Stone $465M' , 23842,'$23.84 M'],
+[ 'British Columbia $163M' , 'Support services for mining and quarrying etc. $695M' , 162837,'$162.84 M'],
+[ 'International imports $141M' , 'Other metal ores and concentrates $656M' , 120185,'$120.19 M'],
+[ 'International imports $141M' , 'Iron ores and concentrates $1,522M' , 20566,'$20.57 M'],
+[ 'Stone $465M' , 'Transportation engineering construction $135M' , 135095,'$135.09 M'],
+[ 'Stone $465M' , 'Repair construction $94M' , 93791,'$93.79 M'],
+[ 'Support services for mining and quarrying etc. $224M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 6632,'$6.63 M'],
+[ 'Motor vehicle rental and leasing etc. $25M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 6461,'$6.46 M'],
+[ 'Diesel and biodiesel fuels $141M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 4471,'$4.47 M'],
+[ 'From Other Provinces $68M' , 'Support services for mining and quarrying etc. $695M' , 31417,'$31.42 M'],
+[ 'From Other Provinces $68M' , 'Stone $465M' , 25280,'$25.28 M'],
+[ 'From Other Provinces $68M' , 'Mineral and oil and gas exploration $296M' , 10830,'$10.83 M'],
+[ 'Stone $465M' , 'Non-metallic mineral product manufacturing etc. $51M' , 51057,'$51.06 M'],
+[ 'Support services for oil and gas extraction etc. $2M' , 'Conventional oil and gas extraction $8M' , 2418,'$2.42 M'],
+[ 'Sales of other government services $2M' , 'Conventional oil and gas extraction $8M' , 1631,'$1.63 M'],
+[ 'Iron ores and concentrates $1,522M' , 'To Other Provinces $302M' , 167302,'$167.30 M'],
+[ 'Stone $465M' , 'To Other Provinces $302M' , 62312,'$62.31 M'],
+[ 'Support services for mining and quarrying etc. $695M' , 'To Other Provinces $302M' , 43600,'$43.60 M'],
+[ 'Mineral and oil and gas exploration $296M' , 'To Other Provinces $302M' , 28842,'$28.84 M'],
+[ 'Other Input Products $2,230M' , 'Gold and silver ore mining $2,725M' , 808381,'$808.38 M'],
+[ 'Gold and silver ore mining $2,725M' , 'Other Output Products $1,663M' , 604950,'$604.95 M'],
+[ 'Other Input Products $2,230M' , 'Iron ore mining $1,519M' , 468983,'$468.98 M'],
+[ 'Iron ore mining $1,519M' , 'Other Output Products $1,663M' , 2464,'$2.46 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $1,020M' , 'Other Output Products $1,663M' , 342662,'$342.66 M'],
+[ 'Other Input Products $2,230M' , 'Copper, nickel, lead and zinc ore etc. $1,020M' , 327866,'$327.87 M'],
+[ 'Other Input Products $2,230M' , 'Support activities for mining $584M' , 137643,'$137.64 M'],
+[ 'Support activities for mining $584M' , 'Other Output Products $1,663M' , 32462,'$32.46 M'],
+[ 'Other Input Products $2,230M' , 'Other metal ore mining $544M' , 215833,'$215.83 M'],
+[ 'Other metal ore mining $544M' , 'Other Output Products $1,663M' , 579,'$0.58 M'],
+[ 'Other Input Products $2,230M' , 'Stone mining and quarrying $505M' , 153458,'$153.46 M'],
+[ 'Stone mining and quarrying $505M' , 'Other Output Products $1,663M' , 108225,'$108.22 M'],
+[ 'Other non-metallic mineral mining  etc. $261M' , 'Other Output Products $1,663M' , 473072,'$473.07 M'],
+[ 'Other Input Products $2,230M' , 'Other non-metallic mineral mining  etc. $261M' , 91602,'$91.60 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $92M' , 'Other Output Products $1,663M' , 90744,'$90.74 M'],
+[ 'Other Input Products $2,230M' , 'Sand, gravel, clay, and ceramic  etc. $92M' , 25999,'$26.00 M'],
+[ 'Conventional oil and gas extraction $8M' , 'Other Output Products $1,663M' , 7806,'$7.81 M'],
+[ 'Other Input Products $2,230M' , 'Conventional oil and gas extraction $8M' , 103,'$0.10 M'],
+];
+
+<!-- Saskatchewan -->  
+dataSK = [
+[ 'Gross operating surplus $10,803M' , 'Conventional oil and gas extraction $9,288M' , 5860011,'$5,860.01 M'],
+[ 'Gross operating surplus $10,803M' , 'Potash mining $6,452M' , 3431678,'$3,431.68 M'],
+[ 'Gross operating surplus $10,803M' , 'Non-conventional oil extraction $2,513M' , 343857,'$343.86 M'],
+[ 'Gross operating surplus $10,803M' , 'Other metal ore mining $1,996M' , 934232,'$934.23 M'],
+[ 'Gross operating surplus $10,803M' , 'Support activities for mining $445M' , 37812,'$37.81 M'],
+[ 'Gross operating surplus $10,803M' , 'Coal mining $210M' , 63558,'$63.56 M'],
+[ 'Gross operating surplus $10,803M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 36335,'$36.34 M'],
+[ 'Gross operating surplus $10,803M' , 'Gold and silver ore mining $123M' , 57761,'$57.76 M'],
+[ 'Gross operating surplus $10,803M' , 'Other non-metallic mineral mining  etc. $100M' , 37882,'$37.88 M'],
+[ 'Wages and salaries $1,392M' , 'Potash mining $6,452M' , 740591,'$740.59 M'],
+[ 'Wages and salaries $1,392M' , 'Other metal ore mining $1,996M' , 288567,'$288.57 M'],
+[ 'Wages and salaries $1,392M' , 'Support activities for mining $445M' , 231151,'$231.15 M'],
+[ 'Employers\' social contributions $53M' , 'Support activities for mining $445M' , 53303,'$53.30 M'],
+[ 'Wages and salaries $1,392M' , 'Coal mining $210M' , 56664,'$56.66 M'],
+[ 'Wages and salaries $1,392M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 34067,'$34.07 M'],
+[ 'Wages and salaries $1,392M' , 'Gold and silver ore mining $123M' , 28398,'$28.40 M'],
+[ 'Wages and salaries $1,392M' , 'Other non-metallic mineral mining  etc. $100M' , 12457,'$12.46 M'],
+[ 'Taxes on production $383M' , 'Potash mining $6,452M' , 383066,'$383.07 M'],
+[ 'Conventional crude oil $10,871M' , 'International exports $14,609M' , 7167452,'$7,167.45 M'],
+[ 'Potash $5,748M' , 'International exports $14,609M' , 5305616,'$5,305.62 M'],
+[ 'Synthetic crude oil $2,488M' , 'International exports $14,609M' , 1382257,'$1,382.26 M'],
+[ 'Radioactive ores and concentrates $1,625M' , 'International exports $14,609M' , 642660,'$642.66 M'],
+[ 'Non-metallic minerals  $264M' , 'International exports $14,609M' , 111044,'$111.04 M'],
+[ 'Conventional oil and gas extraction $9,288M' , 'Conventional crude oil $10,871M' , 8650948,'$8,650.95 M'],
+[ 'Potash mining $6,452M' , 'Potash $5,748M' , 5743715,'$5,743.72 M'],
+[ 'Non-conventional oil extraction $2,513M' , 'Synthetic crude oil $2,488M' , 2487862,'$2,487.86 M'],
+[ 'Conventional crude oil $1,501M' , 'Non-conventional oil extraction $2,513M' , 1501056,'$1,501.06 M'],
+[ 'Crude and diluted bitumen $182M' , 'Non-conventional oil extraction $2,513M' , 182432,'$182.43 M'],
+[ 'Support services for oil and gas extraction etc. $128M' , 'Non-conventional oil extraction $2,513M' , 127510,'$127.51 M'],
+[ 'Alberta $2,316M' , 'Conventional crude oil $10,871M' , 2212503,'$2,212.50 M'],
+[ 'Alberta $2,316M' , 'Mineral and oil and gas exploration $431M' , 50373,'$50.37 M'],
+[ 'Alberta $2,316M' , 'Non-metallic minerals  $264M' , 49516,'$49.52 M'],
+[ 'Alberta $2,316M' , 'Sand, gravel, clay, and refractory etc. $94M' , 3476,'$3.48 M'],
+[ 'Other metal ore mining $1,996M' , 'Radioactive ores and concentrates $1,625M' , 1625354,'$1,625.35 M'],
+[ 'Support services for mining and quarrying etc. $272M' , 'Other metal ore mining $1,996M' , 262083,'$262.08 M'],
+[ 'Head office services  $97M' , 'Other metal ore mining $1,996M' , 88103,'$88.10 M'],
+[ 'Conventional crude oil $10,871M' , 'Other Industries $1,620M' , 1444290,'$1,444.29 M'],
+[ 'Potash $5,748M' , 'Other Industries $1,620M' , 69926,'$69.93 M'],
+[ 'Mineral and oil and gas exploration $431M' , 'Other Industries $1,620M' , 53792,'$53.79 M'],
+[ 'Non-metallic minerals  $264M' , 'Other Industries $1,620M' , 44282,'$44.28 M'],
+[ 'Radioactive ores and concentrates $1,625M' , 'Other Industries $1,620M' , 14275,'$14.28 M'],
+[ 'Sand, gravel, clay, and refractory etc. $94M' , 'Other Industries $1,620M' , 13772,'$13.77 M'],
+[ 'Gold and silver ores and concentrates $112M' , 'Other Industries $1,620M' , 4523,'$4.52 M'],
+[ 'Synthetic crude oil $2,488M' , 'Petroleum refineries $1,124M' , 1123896,'$1,123.90 M'],
+[ 'Radioactive ores and concentrates $1,625M' , 'Ontario $1,076M' , 968419,'$968.42 M'],
+[ 'Gold and silver ores and concentrates $112M' , 'Ontario $1,076M' , 107924,'$107.92 M'],
+[ 'Support activities for mining $445M' , 'Mineral and oil and gas exploration $431M' , 168331,'$168.33 M'],
+[ 'Architectural, engineering ... $66M' , 'Support activities for mining $445M' , 65619,'$65.62 M'],
+[ 'Mineral and oil and gas exploration $431M' , 'Business Intellectual Property etc. $377M' , 377428,'$377.43 M'],
+[ 'Coal $207M' , 'Electric power generation, transmission  etc. $213M' , 212646,'$212.65 M'],
+[ 'Coal mining $210M' , 'Coal $207M' , 206091,'$206.09 M'],
+[ 'Repair construction services $26M' , 'Coal mining $210M' , 26337,'$26.34 M'],
+[ 'Motor vehicle metal stamping $10M' , 'Coal mining $210M' , 9623,'$9.62 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $130M' , 'Sand, gravel, clay, and refractory etc. $94M' , 86774,'$86.77 M'],
+[ 'Gross mixed income $14M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 14363,'$14.36 M'],
+[ 'Support services for mining and quarrying etc. $272M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 10238,'$10.24 M'],
+[ 'Diesel and biodiesel fuels $6M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 6404,'$6.40 M'],
+[ 'Gold and silver ore mining $123M' , 'Gold and silver ores and concentrates $112M' , 112447,'$112.45 M'],
+[ 'Head office services  $97M' , 'Gold and silver ore mining $123M' , 8874,'$8.87 M'],
+[ 'Other non-metallic mineral mining  etc. $100M' , 'Non-metallic minerals  $264M' , 187744,'$187.74 M'],
+[ 'Non-metallic minerals  $12M' , 'Other non-metallic mineral mining  etc. $100M' , 11980,'$11.98 M'],
+[ 'Boilers, tanks and heavy gauge metal etc. $4M' , 'Other non-metallic mineral mining  etc. $100M' , 4484,'$4.48 M'],
+[ 'Non-metallic minerals  $264M' , 'Manitoba $36M' , 36212,'$36.21 M'],
+[ 'Sand, gravel, clay, and refractory etc. $94M' , 'Cement and concrete product manufacturing $32M' , 31989,'$31.99 M'],
+[ 'Non-metallic minerals  $264M' , 'Alberta $26M' , 25994,'$25.99 M'],
+[ 'Ontario $23M' , 'Mineral and oil and gas exploration $431M' , 22848,'$22.85 M'],
+[ 'British Columbia $21M' , 'Mineral and oil and gas exploration $431M' , 20517,'$20.52 M'],
+[ 'British Columbia $21M' , 'Coal $207M' , 667,'$0.67 M'],
+[ 'Sand, gravel, clay, and refractory etc. $94M' , 'Other municipal government services $17M' , 16941,'$16.94 M'],
+[ 'Sand, gravel, clay, and refractory etc. $94M' , 'Petroleum and coal product manufacturing etc. $15M' , 15271,'$15.27 M'],
+[ 'From Other Provinces $6M' , 'Mineral and oil and gas exploration $431M' , 5075,'$5.08 M'],
+[ 'From Other Provinces $6M' , 'Non-metallic minerals  $264M' , 656,'$0.66 M'],
+[ 'From Other Provinces $6M' , 'Sand, gravel, clay, and refractory etc. $94M' , 28,'$0.03 M'],
+[ 'International imports $4M' , 'Potash $5,748M' , 4381,'$4.38 M'],
+[ 'Conventional crude oil $10,871M' , 'To Other Provinces $1,155M' , 758132,'$758.13 M'],
+[ 'Potash $5,748M' , 'To Other Provinces $1,155M' , 372554,'$372.55 M'],
+[ 'Non-metallic minerals  $264M' , 'To Other Provinces $1,155M' , 14388,'$14.39 M'],
+[ 'Sand, gravel, clay, and refractory etc. $94M' , 'To Other Provinces $1,155M' , 9990,'$9.99 M'],
+[ 'Coal $207M' , 'To Other Provinces $1,155M' , 405,'$0.41 M'],
+[ 'Other Input Products $6,307M' , 'Conventional oil and gas extraction $9,288M' , 3428222,'$3,428.22 M'],
+[ 'Conventional oil and gas extraction $9,288M' , 'Other Output Products $1,932M' , 570139,'$570.14 M'],
+[ 'Other Input Products $6,307M' , 'Potash mining $6,452M' , 1896474,'$1,896.47 M'],
+[ 'Potash mining $6,452M' , 'Other Output Products $1,932M' , 641241,'$641.24 M'],
+[ 'Other Input Products $6,307M' , 'Non-conventional oil extraction $2,513M' , 358402,'$358.40 M'],
+[ 'Non-conventional oil extraction $2,513M' , 'Other Output Products $1,932M' , 23444,'$23.44 M'],
+[ 'Other Input Products $6,307M' , 'Other metal ore mining $1,996M' , 423271,'$423.27 M'],
+[ 'Other metal ore mining $1,996M' , 'Other Output Products $1,932M' , 364954,'$364.95 M'],
+[ 'Support activities for mining $445M' , 'Other Output Products $1,932M' , 276802,'$276.80 M'],
+[ 'Other Input Products $6,307M' , 'Support activities for mining $445M' , 57390,'$57.39 M'],
+[ 'Other Input Products $6,307M' , 'Coal mining $210M' , 53672,'$53.67 M'],
+[ 'Coal mining $210M' , 'Other Output Products $1,932M' , 3680,'$3.68 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $130M' , 'Other Output Products $1,932M' , 43035,'$43.03 M'],
+[ 'Other Input Products $6,307M' , 'Sand, gravel, clay, and ceramic  etc. $130M' , 28969,'$28.97 M'],
+[ 'Other Input Products $6,307M' , 'Gold and silver ore mining $123M' , 27559,'$27.56 M'],
+[ 'Gold and silver ore mining $123M' , 'Other Output Products $1,932M' , 8938,'$8.94 M'],
+[ 'Other Input Products $6,307M' , 'Other non-metallic mineral mining  etc. $100M' , 33470,'$33.47 M'],
+[ 'Other non-metallic mineral mining  etc. $100M' , 'Other Output Products $1,932M' , 30,'$0.03 M'],
+];
+
+<!--Yukon -->  
+dataYK = [
+[ 'Gross operating surplus $148M' , 'Copper, nickel, lead and zinc ore etc. $150M' , 89728,'$89.73 M'],
+[ 'Gross operating surplus $148M' , 'Support activities for mining $92M' , 13780,'$13.78 M'],
+[ 'Gross operating surplus $148M' , 'Gold and silver ore mining $83M' , 42329,'$42.33 M'],
+[ 'Gross operating surplus $148M' , 'Sand, gravel, clay, and ceramic  etc. $14M' , 1926,'$1.93 M'],
+[ 'Wages and salaries $68M' , 'Copper, nickel, lead and zinc ore etc. $150M' , 18840,'$18.84 M'],
+[ 'Wages and salaries $68M' , 'Support activities for mining $92M' , 35882,'$35.88 M'],
+[ 'Employers\' social contributions $8M' , 'Support activities for mining $92M' , 6444,'$6.44 M'],
+[ 'Wages and salaries $68M' , 'Gold and silver ore mining $83M' , 8654,'$8.65 M'],
+[ 'Wages and salaries $68M' , 'Sand, gravel, clay, and ceramic  etc. $14M' , 4102,'$4.10 M'],
+[ 'Employers\' social contributions $8M' , 'Sand, gravel, clay, and ceramic  etc. $14M' , 1267,'$1.27 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $150M' , 'Copper ores and concentrates $139M' , 138822,'$138.82 M'],
+[ 'Diesel and biodiesel fuels $14M' , 'Copper, nickel, lead and zinc ore etc. $150M' , 13686,'$13.69 M'],
+[ 'Copper ores and concentrates $139M' , 'International exports $139M' , 138822,'$138.82 M'],
+[ 'Support activities for mining $92M' , 'Support services for mining and quarrying etc. $92M' , 81478,'$81.48 M'],
+[ 'Architectural, engineering ... $13M' , 'Support activities for mining $92M' , 13313,'$13.31 M'],
+[ 'Gold and silver ore mining $83M' , 'Gold and silver ores and concentrates $82M' , 82262,'$82.26 M'],
+[ 'Gross mixed income $5M' , 'Gold and silver ore mining $83M' , 5354,'$5.35 M'],
+[ 'Gold and silver ores and concentrates $82M' , 'Ontario $82M' , 82262,'$82.26 M'],
+[ 'Support services for mining and quarrying etc. $92M' , 'Northwest Territories $67M' , 66945,'$66.94 M'],
+[ 'Support services for mining and quarrying etc. $92M' , 'Other Industries $18M' , 17942,'$17.94 M'],
+[ 'Holding company services ... $1M' , 'Sand, gravel, clay, and ceramic  etc. $14M' , 767,'$0.77 M'],
+[ 'British Columbia $2M' , 'Support services for mining and quarrying etc. $92M' , 2482,'$2.48 M'],
+[ 'Support services for mining and quarrying etc. $92M' , 'To Other Provinces $7M' , 7178,'$7.18 M'],
+[ 'Other Input Products $82M' , 'Copper, nickel, lead and zinc ore etc. $150M' , 28076,'$28.08 M'],
+[ 'Copper, nickel, lead and zinc ore etc. $150M' , 'Other Output Products $34M' , 11101,'$11.10 M'],
+[ 'Other Input Products $82M' , 'Support activities for mining $92M' , 22132,'$22.13 M'],
+[ 'Support activities for mining $92M' , 'Other Output Products $34M' , 9596,'$9.60 M'],
+[ 'Other Input Products $82M' , 'Gold and silver ore mining $83M' , 26647,'$26.65 M'],
+[ 'Sand, gravel, clay, and ceramic  etc. $14M' , 'Other Output Products $34M' , 13240,'$13.24 M'],
+[ 'Other Input Products $82M' , 'Sand, gravel, clay, and ceramic  etc. $14M' , 5503,'$5.50 M'],
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var AB = new google.visualization.DataTable();
+        AB.addColumn('string', 'From');
+        AB.addColumn('string', 'To');
+        AB.addColumn('number', '$k');
+        AB.addColumn({type: 'string', role: 'tooltip'});
+        AB.addRows(dataAB);
+
+        var BC = new google.visualization.DataTable();
+        BC.addColumn('string', 'From');
+        BC.addColumn('string', 'To');
+        BC.addColumn('number', '$k');
+        BC.addColumn({type: 'string', role: 'tooltip'});
+        BC.addRows(dataBC);
+
+        var MB = new google.visualization.DataTable();
+        MB.addColumn('string', 'From');
+        MB.addColumn('string', 'To');
+        MB.addColumn('number', '$k');
+        MB.addColumn({type: 'string', role: 'tooltip'});
+        MB.addRows(dataMB);
+
+        var NB = new google.visualization.DataTable();
+        NB.addColumn('string', 'From');
+        NB.addColumn('string', 'To');
+        NB.addColumn('number', '$k');
+        NB.addColumn({type: 'string', role: 'tooltip'});
+        NB.addRows(dataNB);
+
+        var NL = new google.visualization.DataTable();
+        NL.addColumn('string', 'From');
+        NL.addColumn('string', 'To');
+        NL.addColumn('number', '$k');
+        NL.addColumn({type: 'string', role: 'tooltip'});
+        NL.addRows(dataNL);
+
+        var NS = new google.visualization.DataTable();
+        NS.addColumn('string', 'From');
+        NS.addColumn('string', 'To');
+        NS.addColumn('number', '$k');
+        NS.addColumn({type: 'string', role: 'tooltip'});
+        NS.addRows(dataNS);
+
+        var NU = new google.visualization.DataTable();
+        NU.addColumn('string', 'From');
+        NU.addColumn('string', 'To');
+        NU.addColumn('number', '$k');
+        NU.addColumn({type: 'string', role: 'tooltip'});
+        NU.addRows(dataNU);
+
+        var ON = new google.visualization.DataTable();
+        ON.addColumn('string', 'From');
+        ON.addColumn('string', 'To');
+        ON.addColumn('number', '$k');
+        ON.addColumn({type: 'string', role: 'tooltip'});
+        ON.addRows(dataON);
+
+        var PE = new google.visualization.DataTable();
+        PE.addColumn('string', 'From');
+        PE.addColumn('string', 'To');
+        PE.addColumn('number', '$k');
+        PE.addColumn({type: 'string', role: 'tooltip'});
+        PE.addRows(dataPE);
+
+        var QC = new google.visualization.DataTable();
+        QC.addColumn('string', 'From');
+        QC.addColumn('string', 'To');
+        QC.addColumn('number', '$k');
+        QC.addColumn({type: 'string', role: 'tooltip'});
+        QC.addRows(dataQC);
+
+        var SK = new google.visualization.DataTable();
+        SK.addColumn('string', 'From');
+        SK.addColumn('string', 'To');
+        SK.addColumn('number', '$k');
+        SK.addColumn({type: 'string', role: 'tooltip'});
+        SK.addRows(dataSK);
+
+        var NT = new google.visualization.DataTable();
+        NT.addColumn('string', 'From');
+        NT.addColumn('string', 'To');
+        NT.addColumn('number', '$k');
+        NT.addColumn({type: 'string', role: 'tooltip'});
+        NT.addRows(dataNT);
+
+        var YK = new google.visualization.DataTable();
+        YK.addColumn('string', 'From');
+        YK.addColumn('string', 'To');
+        YK.addColumn('number', '$k');
+        YK.addColumn({type: 'string', role: 'tooltip'});
+        YK.addRows(dataYK);
+
+        var CAN = new google.visualization.DataTable();
+        CAN.addColumn('string', 'From');
+        CAN.addColumn('string', 'To');
+        CAN.addColumn('number', '$k');
+        CAN.addColumn({type: 'string', role: 'tooltip'});
+        CAN.addRows(dataCAN);
+
+
+        // Sets chart options.
+    var colors = ["#D00000", "#751F1F", "#D06E00", "#755F1F", "#D0C700", "#60751F", "#88D000", "#1F752B", "#00D02C", "#1F7561", "#00D08B", "#1F5D75", "#00D0C3", "#1F2B75", "#009AD0", "#3E1F75", "#003FD0", "#6F1F75", "#3F00D0", "#9E00D0", "#751F49", "#D000AD", "#D0005F"];
+
+    var options = {
+      height: 1700,
+      width:  1200,
+      sankey: {
+      iterations:0,
+        node: {
+            nodePadding: 16,
+            width: 16,
+            interactivity: true, // Allows you to select nodes.
+            label: {
+  				fontName: 'Arial-Black',
+      				fontSize: 12,
+      				color: '#000000',
+      				bold: true,
+      				italic: false
+    					},
+          colorMode: 'unique',
+          colors:[
+'#CE7C7F',
+'#E6B79C',
+'#91C4B7',
+'#45999B',
+'#A8AF4B',
+'#F66D44',
+'#FEAE65',
+'#E6F69D',
+'#AADEA7',
+'#64C2A6',
+'#2D87BB'
+             ]
+            
+        },
+        link: {
+          interactivity: true, // Allows you to select nodes.
+          colorMode: 'gradient',
+          colors:[
+'#CE7C7F',
+'#E6B79C',
+'#91C4B7',
+'#45999B',
+'#A8AF4B',
+'#F66D44',
+'#FEAE65',
+'#E6F69D',
+'#AADEA7',
+'#64C2A6',
+'#2D87BB'
+             ]
+        },
+      }
+    };
+
+      var chart_div = document.getElementById('chart_div');
+      
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+if (selValue == 'AB') { x = AB;}
+if (selValue == 'BC') { x = BC;}
+if (selValue == 'MB') { x = MB;}
+if (selValue == 'NB') { x = NB;}
+if (selValue == 'NL') { x = NL;}
+if (selValue == 'NS') { x = NS;}
+if (selValue == 'NU') { x = NU;}
+if (selValue == 'ON') { x = ON;}
+if (selValue == 'PE') { x = PE;}
+if (selValue == 'QC') { x = QC;}
+if (selValue == 'SK') { x = SK;}
+if (selValue == 'NT') { x = NT;}
+if (selValue == 'YK') { x = YK;}
+if (selValue == 'CAN') { x = CAN;}
+        chart.draw(x, options);
+
+}
+
+
+}
+//]]> 
+
+   </script>
+ </head>
+
+ <body>
+  <div class="chartWithOverlay">
+
+   <div class="overlay">
+    <div style="font-family:'Gotham-Book'; font-size: 14px;"><b>Direction of Goods and Services Flows</b></div>
+    <div style="font-family:'Gotham-Book'; font-size: 46px;">&#x2192 &#x2192 &#x2192 &#x2192</div>
+  </div>
+
+ </div>
+
+</body>
+
+
+  <script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "kv876zox"
+    }], "*")
+  }
+</script>
+</article>
+  </div>
+
+</body>
+
+<footer class="footer">
+		<p>Copyright &copy; 2019 <a href="">GK Fellows</a></p>
+	</footer>
+
+</html>

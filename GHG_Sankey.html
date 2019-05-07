@@ -53,7 +53,9 @@
 				<nav>
       <ul>
 	<li class="active"><a href="Charts_Index.html">Charts:</a></li>
-	<li class="active"><a href="GHG_Sankey.html">Embodied Emissions Sankey Diagrams</a></li>
+	<li class="active"><a href="GHG_Sankey.html">Embodied Emissions Sankey</a></li>
+	<li><a href="MOCG_Sankey.html">Mining and Oil and Gas Sankey</a></li>
+	<li><a href="AFF_Sankey.html">Agriculture Sankey</a></li>
 		</ul></nav>
 	</header>
 		
@@ -95,19 +97,19 @@ Choose a province from the drop down menu    <select id="chart" name='select1' o
    <style>
     .chartWithOverlay {
            position: relative;
-           width: 800px;
+           width: 1100px;
     }
     .overlay {
            width: 600px;
            height: 150px;
            position: absolute;
            top: -180px;   /* chartArea top  */
-           left: 300px; /* chartArea left */
+           left: 550px; /* chartArea left */
     }
    </style>
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-       <div id="sankey_basic" style="width: 800px; height: 550px;"></div>
+       <div id="sankey_basic" style="width: 1100px; height: 550px;"></div>
 
 <script type='text/javascript'>//<![CDATA[
 
@@ -861,7 +863,7 @@ dataCDN = [
 
     var options = {
       height: 550,
-      width:  820,
+      width:  1100,
       sankey: {
       iterations:0,
         node: {
