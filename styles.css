@@ -42,7 +42,16 @@ body {
 {
 	clear: both; 
 	margin: 0 auto;
-	width: 70%;
+	width: 1344px;
+}
+
+body > div {
+    width: 90%;
+    height: 100%;
+}
+
+body > div > div {
+    width: 100%;
 }
 
 h1 {
@@ -115,10 +124,10 @@ a:hover, a:active {
 .header nav a:link, .header nav a:visited {
 	color: #fff;
 	display: inline-block;
-	height: 30px;
 	padding: 5px 23px;
 	text-decoration: none;
 }
+
 .header nav a:hover, .header nav a:active,
 .header nav .active a:link, .header nav .active a:visited {
 	background-color: rgba(207,92,63,0.5);
@@ -179,10 +188,29 @@ a:hover, a:active {
 	font-size: 85%;
 }
 
+@media only screen and (min-width: 1344px) {
+    .content {
+        float: left;
+    }
+    .sidebar-1 {
+	float: left;
+	
+    }
+    .sidebar-2 {
+	float: left;
+    }
+    .sidebar-3 {
+	float: left;
+    }
+}
 
+
+
+
+
+    
 .sidebar-1 {
 	width: 24%;
-	float: left;
 	margin-left: 2%;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -193,7 +221,6 @@ a:hover, a:active {
 
 .sidebar-2 {
 	width: 24%;
-	float: left;
 	margin-left: 2%;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -204,7 +231,6 @@ a:hover, a:active {
 
 .sidebar-3 {
 	width: 24%;
-	float: left;
 	margin-left: 2%;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -231,24 +257,24 @@ a:hover, a:active {
 }
 
 
-@media only screen and (min-width : 10px) and (max-width : 700px)
+@media only screen and (min-width : 10px) and (max-width : 1344px)
 {
 	.body {
 		clear: both; 
 		margin: 0 auto;
-    padding:0;
+                padding:0;
 		width: 90%;
 		font-size: 90%;
 	}
 	h1 {
 		font-size: 1.143em;
-}	
+	}	
 
 
 	.header nav {
 	  background-color: rgba(0,0,0,0.5);
 		font-size: 1.143em;
-		height: 160px;
+		height: 250px;
 		line-height: 30px;
 		margin-bottom: 0;
 		border-radius: 5px;
