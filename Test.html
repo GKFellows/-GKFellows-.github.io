@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive IS-LM Model</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10px;
+      text-align: center;
+    }
+    .slider-container {
+      margin: 20px;
+    }
+    label {
+      margin-right: 10px;
+    }
+    canvas {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    #graphs-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #graph-layout {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0; /* Remove any extra padding around the layout */
+    }
+    .graph-container {
+      width: 47%;
+      text-align: center;
+      margin: 0 10px; /* Reduce margin between the graph containers */
+    }
+    .slider-section {
+      display: flex;
+      justify-content: space-between;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Interactive IS-LM Model</h1>
+
+  <div class="slider-section">
+    <div class="slider-container">
+      <label for="M-slider">Money Supply (M): </label>
+      <input type="range" id="M-slider" min="1" max="9" step="0.5" value="5">
+      <span id="M-value">5</span>
+    </div>
+    <div class="slider-container">
+      <label for="G-slider">Government Spending (G): </label>
+      <input type="range" id="G-slider" min="1" max="4" step="0.5" value="2.5">
+      <span id="G-value">2.5</span>
+    </div>
+  </div>
+
+  <div id="graph-layout">
+    <!-- Money Market Graph -->
+    <div class="graph-container">
+      <canvas id="MoneyMarketGraph" width="500" height="500" ></canvas>
+      <h2>Money Market</h2>
+    </div>
+
+    <!-- IS-LM Graph -->
+    <div class="graph-container">
+      <canvas id="ISLMGraph" width="500" height="500"></canvas>
+      <h2>IS-LM Graph</h2>
+    </div>
+  </div>
+
+  <div id="graph-layout">
+<!-- Blank Keynesian Cross Graph -->
+  <div class="graph-container">
+    <canvas id="" width="500" height="500"></canvas>
+  </div>
+  <!-- Keynesian Cross Graph -->
+  <div class="graph-container">
+    <canvas id="KeynesianCrossGraph" width="500" height="500"></canvas>
+    <h2>Keynesian Cross</h2>
+  </div>
+  </div>
+
+  <script>
+    // Initial Parameters
+    let G = 2.5;  // Government Spending
+    let M = 5;  // Money Supply
+
+    // Create Chart.js instances for each graph
+    const ctxISLM = document.getElementById('ISLMGraph').getContext('2d');
+    const ctxKeynesian = document.getElementById('KeynesianCrossGraph').getContext('2d');
+    const ctxMoneyMarket = document.getElementById('MoneyMarketGraph').getContext('2d');
+
+    const ISLMGraph = new Chart(ctxISLM, {
+      type: 'line',
+      data: {
+        labels: Array.from({ length: 100 }, (_, i) => i * 0.1), // Output (Y)
+        datasets: [
+          {
+            label: 'IS old',
+            data: [],
+            borderColor: 'red',
+            fill: false,
+            borderWidth: 2,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+          {
+            label: 'LM old',
+            data: [],
+            borderColor: 'green',
+            fill: false,
+            borderWidth: 2,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+          {
+            label: 'IS new',
+            data: [],
+            borderColor: 'red',
+            fill: false,
+            borderWidth: 1,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+          {
+            label: 'LM new',
+            data: [],
+            borderColor: 'green',
+            fill: false,
+            borderWidth: 1,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+          {
+            label: 'Equilibrium',
+            data: [],
+            borderColor: 'green',
+            pointRadius: 1,
+            backgroundColor: 'red',
+            fill: false
+          },
+          {
+            label: 'Equilibrium',
+            data: [],
+            borderColor: 'red',
+            pointRadius: 1,
+            backgroundColor: 'red',
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+       x: {
+        title: { display: true, text: 'Output (Y)' },
+         ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the x-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      },
+      y: {
+        title: { display: true, text: 'Interest Rate (i)' },
+        min: 0,
+        max: 10,
+        ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the y-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      }
+    }
+  }
+});
+    const KeynesianGraph = new Chart(ctxKeynesian, {
+      type: 'line',
+      data: {
+        labels: Array.from({ length: 100 }, (_, i) => i * 0.1), // Output (Y)
+        datasets: [
+          {
+            label: 'E0',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+            borderWidth: 1,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+          {
+            label: 'E=Y',
+            data: [],
+            borderColor: 'black',
+            borderWidth: 2,
+            fill: false,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+          },
+	  {
+            label: 'E(G)',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+            borderWidth: 2,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          },
+	  {
+            label: 'E(G,i)',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+            borderWidth: 3,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+      x: {
+        title: { display: true, text: 'Output (Y)' },
+        ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the x-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      },
+     y: {
+        title: { display: true, text: 'Expenditure (E)' },
+        min: 0,
+        max: 10,
+        ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the y-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      }
+    }
+  }
+});
+    const MoneyMarketGraph = new Chart(ctxMoneyMarket, {
+      type: 'line',
+      data: {
+        labels: Array.from({ length: 100 }, (_, i) => i * 0.1), // Money (M)
+        datasets: [
+          {
+            label: 'Md',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+            borderWidth: 1,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+          },
+          {
+            label: 'Ms',
+            data: [],
+            borderColor: 'black',
+            borderWidth: 2,
+            fill: false,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+          },
+	              {
+            label: 'Md(Y)',
+            data: [],
+            borderColor: 'blue',
+            fill: false,
+            borderWidth: 2,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+          },
+          {
+            label: 'Horizontol Line',
+            data: [],
+            borderColor: 'Gray',
+            fill: false,
+            borderWidth: 1,
+            lineTension: 0.4, // Make the line smooth, you can adjust this value
+            pointRadius: 0,   // Remove points on the curve
+          },
+        ]
+      },
+      options: {
+        responsive: true,
+        scales: {
+       x: {
+       title: { display: true, text: 'Money (M)' },
+       ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the x-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      },
+      y: {
+        title: { display: true, text: 'Interest Rate (i)' },
+        min: 0,
+        max: 10,
+        ticks: {
+          display: false, // Hide tick labels
+        },
+        grid: {
+          display: false, // Hide grid lines
+        },
+        border: {
+          display: true,  // Keep the y-axis line
+          color: 'black',  // Set the color of the axis line (can change color)
+          width: 2,        // Set the width of the axis line
+        }
+      }
+    }
+  }
+});
+
+    // Function to update the IS curve based on government spending (G)
+    function updateISCurve() {
+      const ISData = [];
+      for (let Y = 0; Y <= 10; Y += 0.1) {
+        const i = 5 + (G - (1-0.5)*Y)/0.5 ; // IS curve equation with G
+        ISData.push(i);
+      }
+      ISLMGraph.data.datasets[0].data = ISData;
+    }
+
+    // Function to update the LM curve based on money supply (M)
+    function updateLMCurve() {
+      const LMData = [];
+      for (let Y = 0; Y <= 10; Y += 0.1) {
+        const i = 2*Y - M; // LM curve equation with M
+        LMData.push(i);
+      }
+      ISLMGraph.data.datasets[1].data = LMData;
+    }
+
+
+
+// Function to update the IS-LM Graph
+function updateISLMGraph() {
+  const ISData = [];
+  const LMData = [];
+  const staticISData = [];
+  const staticLMData = [];
+  const verticalLineData = []; // New dataset for the vertical line at Y = 2 * G
+  
+  // Y = 2 * G is the constant x-coordinate for the vertical line
+  const verticalLineX = 2 * G; // The value of Y at which the vertical line will be drawn
+
+  for (let i = 0; i <= 10; i += 0.1) {
+    const ISValue = 5 + (G - (1 - 0.5) * i) / 0.5;  // IS curve equation with G
+    const LMValue = 2 * i - M;  // LM curve equation with M
+    const ISStatic = 5 + (2.5 - (1 - 0.5) * i) / 0.5;  // IS curve equation with G
+    const LMSstatic = 2 * i - 5;  // LM curve equation with M
+    ISData.push(ISValue);
+    LMData.push(LMValue);
+    staticISData.push(ISStatic);
+    staticLMData.push(LMSstatic);
+    
+    // Add vertical line data: this will just have the same X coordinate and vary in Y
+    verticalLineData.push({ x: verticalLineX, y: i }); // This creates the vertical line
+  }
+
+  // Update IS and LM curves
+  ISLMGraph.data.datasets[0].data = ISData;  // IS curve
+  ISLMGraph.data.datasets[1].data = LMData;  // LM curve
+  ISLMGraph.data.datasets[2].data = staticISData;  // IS curve
+  ISLMGraph.data.datasets[3].data = staticLMData;  // LM curve
+  
+  
+  // Horizontal line at y = 5 (for the interest rate)
+  const horizontalLineData = Array.from({ length: 100 }, () => 10-M);  // Create an array where y-values are 5
+
+  // Add the horizontal line to the dataset
+  ISLMGraph.data.datasets[4] = {
+    label: 'Horizontal Line at y=5',
+    data: horizontalLineData.map((y, index) => ({ x: index * 0.1, y: y })),
+    borderColor: 'gray',
+    borderWidth: 1,
+    fill: false,
+    lineTension: 0,
+    pointRadius: 0
+  };
+
+
+  // Add the dataset for the vertical line at Y = 2 * G
+  ISLMGraph.data.datasets[5] = {
+    label: `Y = 2 * G (G=${G})`,
+    data: verticalLineData, // The vertical line is a constant x-value
+    borderColor: 'gray',
+    borderWidth: 1,
+    fill: false,
+    pointRadius: 0,
+    showLine: true,   // Ensure that the line is visible
+    lineTension: 0,   // Make sure it's a straight vertical line
+  };
+
+
+  ISLMGraph.update();
+}
+
+
+
+    // Function to update the Keynesian Cross
+    function updateKeynesianCross() {
+      const plannedExpenditure = [];
+      const plannedExpenditure2 = [];
+      const plannedExpenditure3 = [];
+      const actualOutput = [];
+      for (let Y = 0; Y <= 10; Y += 0.1) {
+        plannedExpenditure.push(2.5 + 0.5 * Y);  // Planned expenditure: C + I + G
+        plannedExpenditure2.push((1-0.2*(5))+ G + 0.5 * Y);  // Planned expenditure: C + I + G
+          plannedExpenditure3.push((1-0.2*(10-M))+ 2.5 + 0.3*(G-2.5) + 0.5 * Y);  // Planned expenditure: C + I + G
+        actualOutput.push(Y);  // Actual output
+      }
+      KeynesianGraph.data.datasets[0].data = plannedExpenditure;
+      KeynesianGraph.data.datasets[1].data = actualOutput;
+      KeynesianGraph.data.datasets[2].data = plannedExpenditure2;
+      KeynesianGraph.data.datasets[3].data = plannedExpenditure3;
+
+  // Calculate the x position of the vertical line based on G
+  const verticalLineX = 2*G;  // The vertical line will be at x = 5 + 0.5 * G
+
+  // Create the vertical line dataset at x = 5 + 0.5 * G
+  const verticalLineData = Array.from({ length: 100 }, (_, index) => ({
+    x: verticalLineX,      // Fixed x value (5 + 0.5 * G)
+    y: index * 0.1         // Create varied y-values to plot the line across the graph
+  }));
+
+
+
+  // Add the vertical line to the dataset
+  KeynesianGraph.data.datasets[4] = {
+    label: `Vertical Line at x=5+0.5*G (G=${G})`,
+    data: verticalLineData,
+    borderColor: 'gray',
+    borderWidth: 1,
+    fill: false,
+    lineTension: 0,
+    pointRadius: 0
+  };
+
+  KeynesianGraph.update();
+}
+
+// Function to update the Money Market
+function updateMoneyMarket() {
+  moneyDemand = [];
+  moneyDemand2 = [];
+  moneySupply = [];
+
+  
+  // Money demand curve: downward sloping (as before)
+  for (let M_val = 0; M_val <= 10; M_val += 0.1) {
+    moneyDemand.push(10 - M_val);  // Money demand equation (downward sloping)
+  }
+
+  // Second Money demand curve: downward sloping (as before)
+  for (let M_val = 0; M_val <= 10; M_val += 0.1) {
+    moneyDemand2.push(7.5 + G - M_val);  // Money demand equation (downward sloping)
+  }
+
+
+  // Money supply curve: vertical line at the value of M
+  moneySupply.push(M);
+  moneySupplyData = Array(100).fill(M);  // Create an array of fixed M values
+
+  // Plot money supply as a vertical line by setting x values (moneySupplyData) to fixed M
+  const moneySupplyValues = moneySupplyData.map((M, index) => ({
+    x: M, // The fixed value of M (money supply) for all y values
+    y: moneyDemand[index] // Use the corresponding y (interest rates) from the moneyDemand array
+  }));
+
+
+  // Horizontal line at y = 10 - M
+  const horizontalLineData = Array.from({ length: 100 }, () => 10-M);  // Create an array where y-values are 5
+
+  // Add the horizontal line to the dataset
+  MoneyMarketGraph.data.datasets[3] = {
+    label: 'Horizontal Line at y=10-M',
+    data: horizontalLineData.map((y, index) => ({ x: index * 0.1, y: y })),
+    borderColor: 'gray',
+    borderWidth: 1,
+    fill: false,
+    lineTension: 0,
+    pointRadius: 0
+  };
+
+  // Set the datasets for the chart
+  MoneyMarketGraph.data.datasets[0].data = moneyDemand;      // Money demand curve
+  MoneyMarketGraph.data.datasets[1].data = moneySupplyValues;  // Money supply curve
+  MoneyMarketGraph.data.datasets[2].data = moneyDemand2;      // Second Money demand curve
+  MoneyMarketGraph.data.datasets[2].borderColor = 'blue';     // Set color for the second curve
+  MoneyMarketGraph.data.datasets[2].borderWidth = 2;
+
+  MoneyMarketGraph.update();  // Update the graph
+}
+    // Event listeners for the sliders
+    document.getElementById('G-slider').addEventListener('input', (e) => {
+      G = parseFloat(e.target.value);
+      document.getElementById('G-value').textContent = G.toFixed(1);
+      updateGraphs();
+    });
+
+    document.getElementById('M-slider').addEventListener('input', (e) => {
+      M = parseFloat(e.target.value);
+      document.getElementById('M-value').textContent = M.toFixed(1);
+      updateGraphs();
+    });
+
+// Function to update all graphs
+function updateGraphs() {
+  updateMoneyMarket();   // Update Money Market graph
+  MoneyMarketGraph.update(); // Update Money Market chart
+  updateISLMGraph();     // Update IS-LM graph with Y = 2 * G line
+  updateKeynesianCross(); // Update Keynesian Cross graph with dynamic vertical line
+  updateISCurve();       // Update IS curve
+  updateLMCurve();       // Update LM curve
+  ISLMGraph.update();    // Update IS-LM chart
+  KeynesianGraph.update(); // Update Keynesian Cross chart
+}
+
+
+    // Initialize the graphs with default values
+    updateGraphs();
+  </script>
+</body>
+</html>
